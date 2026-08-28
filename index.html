@@ -2,2582 +2,349 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TechGroup Solutions provides project-based software and system development services, including web-based systems, application-based systems, mobile applications, UI/UX design, system maintenance, and technical solutions." />
+    <title>TechGroup Solutions · Software &amp; System Development</title>
 
-    <!-- ============================================================
-    BASIC DOCUMENT INFORMATION
-    ============================================================ -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-    <meta charset="UTF-8">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="TechGroup Solutions provides project-based software and system development services, including web-based systems, application-based systems, mobile applications, UI/UX design, system maintenance, and technical solutions."
-    >
-
-    <meta
-        name="keywords"
-        content="software development, system development, web development, application development, desktop application, mobile application, custom management system, UI UX design, PHP, MySQL, JavaScript, Philippines, project-based development"
-    >
-
-    <meta
-        name="author"
-        content="TechGroup Solutions"
-    >
-
-    <meta
-        name="robots"
-        content="index, follow"
-    >
-
-    <meta
-        name="theme-color"
-        content="#0f172a"
-    >
-
-
-    <!-- ============================================================
-    OPEN GRAPH / SOCIAL SHARING
-    ============================================================ -->
-
-    <meta
-        property="og:type"
-        content="website"
-    >
-
-    <meta
-        property="og:title"
-        content="TechGroup Solutions · Software & System Development"
-    >
-
-    <meta
-        property="og:description"
-        content="Practical software and system solutions built around your requirements — from web-based systems to application-based solutions."
-    >
-
-    <meta
-        property="og:site_name"
-        content="TechGroup Solutions"
-    >
-
-
-    <!-- ============================================================
-    PAGE TITLE
-    ============================================================ -->
-
-    <title>
-        TechGroup Solutions · Software &amp; System Development
-    </title>
-
-
-    <!-- ============================================================
-    GOOGLE FONTS
-    ============================================================ -->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!-- ============================================================
-    FONT AWESOME
-    ============================================================ -->
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    >
-
-
-    <!-- ============================================================
-    MAIN STYLESHEET
-    ============================================================ -->
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
 
 </head>
 
-
 <body>
-
-
-    <!-- ============================================================
-    SCROLL PROGRESS BAR
-    ============================================================ -->
-
-    <div id="progress-bar"></div>
-
-
-    <!-- ============================================================
-    FLOATING ACTION BUTTON (CTA)
-    ============================================================ -->
-
-    <div class="floating-cta">
-
-        <a
-            href="#contact"
-            class="btn btn-primary"
-        >
-
-            <i class="fas fa-paper-plane"></i>
-
-            Let's Talk
-
-        </a>
-
-    </div>
-
-
-    <!-- ============================================================
-    MOBILE NAVIGATION TOGGLE
-    ============================================================ -->
-
-    <button
-        class="mobile-toggle"
-        id="mobileToggle"
-        aria-label="Toggle navigation menu"
-        aria-controls="sidebar"
-        aria-expanded="false"
-    >
-
-        <i class="fas fa-bars"></i>
-
-    </button>
-
 
     <!-- ============================================================
     SIDEBAR NAVIGATION
     ============================================================ -->
-
-    <aside
-        class="sidebar"
-        id="sidebar"
-    >
-
-
-        <!-- BRAND -->
-
-        <div class="sidebar-logo">
-
-            <div class="logo-icon">
-                TS
-            </div>
-
-            <span class="logo-label">
-                TechGroup
-            </span>
-
+    <aside class="sidebar" id="sidebar">
+        <!-- Brand -->
+        <div class="sidebar-brand">
+            <div class="logo-icon">TS</div>
+            <span class="logo-label">TechGroup</span>
         </div>
 
-
-        <!-- NAVIGATION -->
-
-        <nav
-            class="sidebar-nav"
-            aria-label="Main navigation"
-        >
-
-
-            <!-- HOME -->
-
-            <a
-                href="#hero"
-                class="active"
-                data-section="hero"
-                aria-label="Home"
-            >
-
-                <i class="fas fa-house"></i>
-
-                <span class="tooltip">
-                    Home
-                </span>
-
-            </a>
-
-
-            <!-- ABOUT -->
-
-            <a
-                href="#about"
-                data-section="about"
-                aria-label="About"
-            >
-
-                <i class="fas fa-building"></i>
-
-                <span class="tooltip">
-                    About
-                </span>
-
-            </a>
-
-
-            <!-- SERVICES -->
-
-            <a
-                href="#services"
-                data-section="services"
-                aria-label="Services"
-            >
-
-                <i class="fas fa-layer-group"></i>
-
-                <span class="tooltip">
-                    Services
-                </span>
-
-            </a>
-
-
-            <!-- PROJECTS -->
-
-            <a
-                href="#portfolio"
-                data-section="portfolio"
-                aria-label="Projects"
-            >
-
-                <i class="fas fa-folder-open"></i>
-
-                <span class="tooltip">
-                    Projects
-                </span>
-
-            </a>
-
-
-            <!-- PROCESS -->
-
-            <a
-                href="#process"
-                data-section="process"
-                aria-label="Process"
-            >
-
-                <i class="fas fa-route"></i>
-
-                <span class="tooltip">
-                    Process
-                </span>
-
-            </a>
-
-
-            <!-- WHY US -->
-
-            <a
-                href="#why-us"
-                data-section="why-us"
-                aria-label="Why choose us"
-            >
-
-                <i class="fas fa-circle-check"></i>
-
-                <span class="tooltip">
-                    Why Us
-                </span>
-
-            </a>
-
-
-            <!-- CLIENTS -->
-
-            <a
-                href="#clients"
-                data-section="clients"
-                aria-label="Clients"
-            >
-
-                <i class="fas fa-users"></i>
-
-                <span class="tooltip">
-                    Clients
-                </span>
-
-            </a>
-
-
-            <!-- GITHUB -->
-
-            <a
-                href="#github"
-                data-section="github"
-                aria-label="GitHub"
-            >
-
-                <i class="fab fa-github"></i>
-
-                <span class="tooltip">
-                    GitHub
-                </span>
-
-            </a>
-
-
-            <!-- CONTACT -->
-
-            <a
-                href="#contact"
-                data-section="contact"
-                aria-label="Contact"
-            >
-
-                <i class="fas fa-paper-plane"></i>
-
-                <span class="tooltip">
-                    Contact
-                </span>
-
-            </a>
-
-
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+            <a href="#hero" class="active"><i class="fas fa-house"></i> <span>Home</span></a>
+            <a href="#about"><i class="fas fa-user"></i> <span>About</span></a>
+            <a href="#services"><i class="fas fa-layer-group"></i> <span>Services</span></a>
+            <a href="#portfolio"><i class="fas fa-folder-open"></i> <span>Portfolio</span></a>
+            <a href="#skills"><i class="fas fa-chart-bar"></i> <span>Skills</span></a>
+            <a href="#testimonials"><i class="fas fa-quote-right"></i> <span>Testimonials</span></a>
+            <a href="#contact"><i class="fas fa-paper-plane"></i> <span>Contact</span></a>
         </nav>
 
-
-        <!-- THEME TOGGLE -->
-
+        <!-- Theme Toggle -->
         <div class="sidebar-bottom">
-
-            <button
-                id="theme-toggle"
-                aria-label="Toggle color theme"
-            >
-
-                <i class="fas fa-moon"></i>
-
-            </button>
-
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
         </div>
-
-
     </aside>
 
-
-
     <!-- ============================================================
-    MAIN CONTENT (Full Width)
+    MAIN CONTENT
     ============================================================ -->
-
     <main class="main-content">
-
 
         <!-- ========================================================
         HERO SECTION
         ======================================================== -->
-
         <section id="hero">
-
-
-            <div class="hero-grid">
-
-
-                <!-- HERO CONTENT -->
-
+            <div class="hero-container">
                 <div class="hero-content">
-
-
-                    <!-- STATUS -->
-
                     <div class="hero-badge">
-
                         <span class="badge-dot"></span>
-
-                        Project-Based · Custom Software · Open for Projects
-
+                        Project-Based · Custom Software
                     </div>
-
-
-                    <!-- MAIN HEADING -->
-
-                    <h1>
-
-                        Software Solutions
-
-                        <br>
-
-                        <span class="gradient-text">
-                            Built Around Your Needs
-                        </span>
-
-                    </h1>
-
-
-                    <!-- SUBTITLE -->
-
-                    <p class="hero-sub">
-
-                        Web-Based · Application-Based · Custom Systems · UI/UX
-
-                    </p>
-
-
-                    <!-- DESCRIPTION -->
-
+                    <h1>Software Solutions <br><span class="gradient-text">Built Around Your Needs</span></h1>
+                    <p class="hero-sub">Web-Based · Application-Based · Custom Systems · UI/UX</p>
                     <p class="hero-desc">
-
-                        TechGroup Solutions provides project-based software
-                        and system development services for businesses,
-                        organizations, schools, students, and individuals.
-
-                        <br><br>
-
-                        From web-based platforms and management systems to
-                        application-based solutions, we design and develop
-                        practical technology around your requirements,
-                        workflow, users, and objectives.
-
+                        TechGroup Solutions provides project-based software and system development services for businesses, organizations, schools, students, and individuals. From web-based platforms and management systems to application-based solutions, we design and develop practical technology around your requirements, workflow, users, and objectives.
                     </p>
-
-
-                    <!-- CTA BUTTONS -->
-
                     <div class="hero-buttons">
-
-
-                        <a
-                            href="#portfolio"
-                            class="btn btn-primary"
-                        >
-
-                            <i class="fas fa-folder-open"></i>
-
-                            Explore Projects
-
-                        </a>
-
-
-                        <a
-                            href="#contact"
-                            class="btn btn-secondary"
-                        >
-
-                            <i class="fas fa-comments"></i>
-
-                            Discuss a Project
-
-                        </a>
-
-
-                        <a
-                            href="https://github.com/TechGroupSolutions"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="btn btn-github"
-                        >
-
-                            <i class="fab fa-github"></i>
-
-                            GitHub
-
-                        </a>
-
-
+                        <a href="#portfolio" class="btn btn-primary"><i class="fas fa-folder-open"></i> Explore Projects</a>
+                        <a href="#contact" class="btn btn-secondary"><i class="fas fa-comments"></i> Discuss a Project</a>
                     </div>
-
-
-                    <!-- BUSINESS HIGHLIGHTS -->
-
                     <div class="hero-stats">
-
-
-                        <div class="stat">
-
-                            <span class="stat-number">
-                                Custom
-                            </span>
-
-                            <span class="stat-label">
-                                Software Solutions
-                            </span>
-
-                        </div>
-
-
+                        <div class="stat"><span class="stat-number">Custom</span><span class="stat-label">Software Solutions</span></div>
                         <div class="stat-divider"></div>
-
-
-                        <div class="stat">
-
-                            <span class="stat-number">
-                                Flexible
-                            </span>
-
-                            <span class="stat-label">
-                                Project-Based Approach
-                            </span>
-
-                        </div>
-
-
+                        <div class="stat"><span class="stat-number">Flexible</span><span class="stat-label">Project-Based Approach</span></div>
                         <div class="stat-divider"></div>
-
-
-                        <div class="stat">
-
-                            <span class="stat-number">
-                                User
-                            </span>
-
-                            <span class="stat-label">
-                                Focused Development
-                            </span>
-
-                        </div>
-
-
+                        <div class="stat"><span class="stat-number">User</span><span class="stat-label">Focused Development</span></div>
                     </div>
-
-
                 </div>
-
-
-
-                <!-- HERO VISUAL -->
-
                 <div class="hero-image">
-
-
                     <div class="hero-image-wrapper">
-
-
                         <div class="hero-visual">
-
-
                             <div class="code-window">
-
-
-                                <div class="code-header">
-
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-
-                                </div>
-
-
+                                <div class="code-header"><span></span><span></span><span></span></div>
                                 <div class="code-content">
-
-                                    <div>
-
-                                        &lt;<span>solution</span>&gt;
-
-                                    </div>
-
-
-                                    <div class="indent">
-
-                                        &lt;<span>platform</span>
-                                        type=<span>"web"</span> /&gt;
-
-                                    </div>
-
-
-                                    <div class="indent">
-
-                                        &lt;<span>application</span>
-                                        type=<span>"custom"</span> /&gt;
-
-                                    </div>
-
-
-                                    <div class="indent">
-
-                                        &lt;<span>design</span>
-                                        type=<span>"user-focused"</span> /&gt;
-
-                                    </div>
-
-
-                                    <div class="indent">
-
-                                        &lt;<span>development</span>
-                                        type=<span>"project-based"</span> /&gt;
-
-                                    </div>
-
-
-                                    <div>
-
-                                        &lt;/<span>solution</span>&gt;
-
-                                    </div>
-
-
+                                    <div>&lt;<span>solution</span>&gt;</div>
+                                    <div class="indent">&lt;<span>platform</span> type=<span>"web"</span> /&gt;</div>
+                                    <div class="indent">&lt;<span>application</span> type=<span>"custom"</span> /&gt;</div>
+                                    <div class="indent">&lt;<span>design</span> type=<span>"user-focused"</span> /&gt;</div>
+                                    <div class="indent">&lt;<span>development</span> type=<span>"project-based"</span> /&gt;</div>
+                                    <div>&lt;/<span>solution</span>&gt;</div>
                                 </div>
-
-
                             </div>
-
-
                         </div>
-
-
                         <div class="hero-ring"></div>
-
                         <div class="hero-ring-2"></div>
-
-
                     </div>
-
-
                 </div>
-
-
             </div>
-
-
-
-            <!-- SCROLL DOWN INDICATOR -->
-
-            <div class="scroll-indicator">
-
-                <a href="#about" aria-label="Scroll down">
-
-                    <i class="fas fa-chevron-down"></i>
-
-                </a>
-
-            </div>
-
-
+            <div class="scroll-indicator"><a href="#about"><i class="fas fa-chevron-down"></i></a></div>
         </section>
-
-
 
         <!-- ========================================================
         ABOUT SECTION
         ======================================================== -->
-
         <section id="about">
-
-
             <div class="section-header reveal">
-
-
-                <span class="section-tag">
-                    About
-                </span>
-
-
-                <h2>
-
-                    Technology With a
-
-                    <span class="gradient-text">
-                        Purpose
-                    </span>
-
-                </h2>
-
-
-                <p class="section-sub">
-
-                    We create software around real-world requirements,
-                    workflows, and objectives.
-
-                </p>
-
-
+                <span class="section-tag">About</span>
+                <h2>Technology With a <span class="gradient-text">Purpose</span></h2>
+                <p class="section-sub">We create software around real-world requirements, workflows, and objectives.</p>
             </div>
-
-
-
             <div class="about-grid">
-
-
-                <!-- APPROACH -->
-
                 <div class="about-card reveal reveal-d1">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-bullseye"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Our Approach
-                    </h3>
-
-
-                    <p>
-
-                        We begin by understanding the problem, users,
-                        workflow, requirements, and expected outcome
-                        before deciding how technology should be used.
-
-                    </p>
-
-
+                    <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Approach</h3>
+                    <p>We begin by understanding the problem, users, workflow, requirements, and expected outcome before deciding how technology should be used.</p>
                 </div>
-
-
-
-                <!-- CAPABILITY -->
-
                 <div class="about-card reveal reveal-d2">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-laptop-code"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Our Capability
-                    </h3>
-
-
-                    <p>
-
-                        Our development scope includes web-based systems,
-                        application-based systems, database-driven
-                        solutions, user interfaces, and other custom
-                        software projects.
-
-                    </p>
-
-
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Our Capability</h3>
+                    <p>Our development scope includes web-based systems, application-based systems, database-driven solutions, user interfaces, and other custom software projects.</p>
                 </div>
-
-
-
-                <!-- COMMITMENT -->
-
                 <div class="about-card reveal reveal-d3">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-handshake"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Our Commitment
-                    </h3>
-
-
-                    <p>
-
-                        We follow a structured project-based workflow
-                        where scope, deliverables, timelines,
-                        responsibilities, communication, and expectations
-                        are clearly established.
-
-                    </p>
-
-
+                    <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Our Commitment</h3>
+                    <p>We follow a structured project-based workflow where scope, deliverables, timelines, responsibilities, communication, and expectations are clearly established.</p>
                 </div>
-
-
             </div>
-
-
         </section>
-
-
 
         <!-- ========================================================
         SERVICES SECTION
         ======================================================== -->
-
         <section id="services">
-
-
             <div class="section-header reveal">
-
-
-                <span class="section-tag">
-                    What We Do
-                </span>
-
-
-                <h2>
-
-                    Software &amp; System
-
-                    <span class="gradient-text">
-                        Development Services
-                    </span>
-
-                </h2>
-
-
-                <p class="section-sub">
-
-                    From websites and web applications to standalone
-                    software and custom management systems.
-
-                </p>
-
-
+                <span class="section-tag">What We Do</span>
+                <h2>Software &amp; System <span class="gradient-text">Development Services</span></h2>
+                <p class="section-sub">From websites and web applications to standalone software and custom management systems.</p>
             </div>
-
-
-
             <div class="services-grid">
-
-
-                <!-- ==================================================
-                WEB-BASED SYSTEMS
-                ================================================== -->
-
                 <div class="service-card reveal reveal-d1">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-globe"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Web-Based Systems
-                    </h3>
-
-
-                    <p>
-
-                        Responsive websites, web applications, portals,
-                        online platforms, and browser-based management
-                        systems designed for different operational needs.
-
-                    </p>
-
-
-                    <div class="portfolio-tags">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>PHP</span>
-
-                    </div>
-
-
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Web-Based Systems</h3>
+                    <p>Responsive websites, web applications, portals, online platforms, and browser-based management systems designed for different operational needs.</p>
                 </div>
-
-
-
-                <!-- ==================================================
-                APPLICATION-BASED SYSTEMS
-                ================================================== -->
-
                 <div class="service-card reveal reveal-d2">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-desktop"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Application-Based Systems
-                    </h3>
-
-
-                    <p>
-
-                        Standalone and desktop-oriented applications
-                        designed to support specific business,
-                        organizational, educational, or operational
-                        requirements.
-
-                    </p>
-
-
-                    <div class="portfolio-tags">
-
-                        <span>Desktop</span>
-                        <span>Database</span>
-                        <span>Custom</span>
-
-                    </div>
-
-
+                    <div class="service-icon"><i class="fas fa-desktop"></i></div>
+                    <h3>Application-Based Systems</h3>
+                    <p>Standalone and desktop-oriented applications designed to support specific business, organizational, educational, or operational requirements.</p>
                 </div>
-
-
-
-                <!-- ==================================================
-                MOBILE APPLICATIONS
-                ================================================== -->
-
                 <div class="service-card reveal reveal-d3">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-mobile-screen-button"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Mobile Applications
-                    </h3>
-
-
-                    <p>
-
-                        Mobile application projects designed around
-                        specific user needs, workflows, services,
-                        and digital experiences.
-
-                    </p>
-
-
-                    <div class="portfolio-tags">
-
-                        <span>Mobile</span>
-                        <span>UI/UX</span>
-                        <span>Custom</span>
-
-                    </div>
-
-
+                    <div class="service-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                    <h3>Mobile Applications</h3>
+                    <p>Mobile application projects designed around specific user needs, workflows, services, and digital experiences.</p>
                 </div>
-
-
-
-                <!-- ==================================================
-                CUSTOM MANAGEMENT SYSTEMS
-                ================================================== -->
-
                 <div class="service-card reveal reveal-d4">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-database"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Custom Management Systems
-                    </h3>
-
-
-                    <p>
-
-                        Database-driven systems for records, inventory,
-                        transactions, appointments, monitoring,
-                        reporting, and organizational workflows.
-
-                    </p>
-
-
-                    <div class="portfolio-tags">
-
-                        <span>MySQL</span>
-                        <span>Database</span>
-                        <span>Management</span>
-
-                    </div>
-
-
+                    <div class="service-icon"><i class="fas fa-database"></i></div>
+                    <h3>Custom Management Systems</h3>
+                    <p>Database-driven systems for records, inventory, transactions, appointments, monitoring, reporting, and organizational workflows.</p>
                 </div>
-
-
-
-                <!-- ==================================================
-                UI/UX DESIGN
-                ================================================== -->
-
                 <div class="service-card reveal reveal-d1">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-pencil-ruler"></i>
-
-                    </div>
-
-
-                    <h3>
-                        UI/UX Design
-                    </h3>
-
-
-                    <p>
-
-                        User-focused interfaces designed for usability,
-                        accessibility, visual clarity, consistency,
-                        and practical interaction.
-
-                    </p>
-
-
+                    <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
+                    <h3>UI/UX Design</h3>
+                    <p>User-focused interfaces designed for usability, accessibility, visual clarity, consistency, and practical interaction.</p>
                 </div>
-
-
-
-                <!-- ==================================================
-                SYSTEM MAINTENANCE
-                ================================================== -->
-
                 <div class="service-card reveal reveal-d2">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-screwdriver-wrench"></i>
-
-                    </div>
-
-
-                    <h3>
-                        System Maintenance &amp; Enhancement
-                    </h3>
-
-
-                    <p>
-
-                        Bug fixes, improvements, feature additions,
-                        adjustments, updates, and technical support
-                        for existing systems.
-
-                    </p>
-
-
+                    <div class="service-icon"><i class="fas fa-screwdriver-wrench"></i></div>
+                    <h3>System Maintenance &amp; Enhancement</h3>
+                    <p>Bug fixes, improvements, feature additions, adjustments, updates, and technical support for existing systems.</p>
                 </div>
-
-
-
-                <!-- ==================================================
-                TECHNICAL DOCUMENTATION
-                ================================================== -->
-
-                <div class="service-card reveal reveal-d3">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-file-lines"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Technical Documentation
-                    </h3>
-
-
-                    <p>
-
-                        System documentation, specifications,
-                        diagrams, user guides, technical materials,
-                        and project documentation.
-
-                    </p>
-
-
-                </div>
-
-
-
-                <!-- ==================================================
-                ACADEMIC & PROTOTYPE
-                ================================================== -->
-
-                <div class="service-card reveal reveal-d4">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-graduation-cap"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Academic &amp; Prototype Projects
-                    </h3>
-
-
-                    <p>
-
-                        Development support for student and academic
-                        projects involving software prototypes,
-                        web systems, applications, documentation,
-                        and demonstrations.
-
-                    </p>
-
-
-                </div>
-
-
             </div>
-
-
         </section>
-
-
 
         <!-- ========================================================
         PORTFOLIO SECTION
         ======================================================== -->
-
         <section id="portfolio">
-
-
             <div class="section-header reveal">
-
-
-                <span class="section-tag">
-                    Selected Work
-                </span>
-
-
-                <h2>
-
-                    Projects &amp;
-
-                    <span class="gradient-text">
-                        System Experience
-                    </span>
-
-                </h2>
-
-
-                <p class="section-sub">
-
-                    Selected projects demonstrating experience in
-                    system analysis, interface design, database
-                    development, and software implementation.
-
-                </p>
-
-
+                <span class="section-tag">Selected Work</span>
+                <h2>Projects &amp; <span class="gradient-text">System Experience</span></h2>
+                <p class="section-sub">Selected projects demonstrating experience in system analysis, interface design, database development, and software implementation.</p>
             </div>
-
-
-
             <div class="portfolio-grid">
-
-
-                <!-- ==================================================
-                PROJECT 1
-                ================================================== -->
-
                 <div class="portfolio-item reveal reveal-d1">
-
-
-                    <div class="portfolio-thumb">
-                        🏥
-                    </div>
-
-
+                    <div class="portfolio-thumb">🏥</div>
                     <div class="portfolio-info">
-
-
-                        <span class="section-tag">
-                            Healthcare
-                        </span>
-
-
-                        <h3>
-                            Morong Health Center Management System
-                        </h3>
-
-
-                        <p>
-
-                            A web-based management system designed to
-                            organize health center records, patient-related
-                            information, monitoring, and administrative
-                            workflows.
-
-                        </p>
-
-
-                        <div class="portfolio-tags">
-
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
-                            <span>JavaScript</span>
-
-                        </div>
-
-
+                        <span class="section-tag">Healthcare</span>
+                        <h3>Morong Health Center Management System</h3>
+                        <p>A web-based management system designed to organize health center records, patient-related information, monitoring, and administrative workflows.</p>
+                        <div class="portfolio-tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span></div>
                     </div>
-
-
                 </div>
-
-
-
-                <!-- ==================================================
-                PROJECT 2
-                ================================================== -->
-
                 <div class="portfolio-item reveal reveal-d2">
-
-
-                    <div class="portfolio-thumb">
-                        🎓
-                    </div>
-
-
+                    <div class="portfolio-thumb">🎓</div>
                     <div class="portfolio-info">
-
-
-                        <span class="section-tag">
-                            Education
-                        </span>
-
-
-                        <h3>
-                            Career Assessment System
-                        </h3>
-
-
-                        <p>
-
-                            A web-based platform designed to support
-                            student career assessment and organize
-                            assessment-related information for
-                            educational use.
-
-                        </p>
-
-
-                        <div class="portfolio-tags">
-
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
-                            <span>JavaScript</span>
-
-                        </div>
-
-
+                        <span class="section-tag">Education</span>
+                        <h3>Career Assessment System</h3>
+                        <p>A web-based platform designed to support student career assessment and organize assessment-related information for educational use.</p>
+                        <div class="portfolio-tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span></div>
                     </div>
-
-
                 </div>
-
-
-
-                <!-- ==================================================
-                PROJECT 3
-                ================================================== -->
-
                 <div class="portfolio-item reveal reveal-d3">
-
-
-                    <div class="portfolio-thumb">
-                        🤝
-                    </div>
-
-
+                    <div class="portfolio-thumb">🤝</div>
                     <div class="portfolio-info">
-
-
-                        <span class="section-tag">
-                            Community
-                        </span>
-
-
-                        <h3>
-                            HowCan-i-Help
-                        </h3>
-
-
-                        <p>
-
-                            A web-based platform concept focused on
-                            connecting individuals who need assistance
-                            with people willing to provide support.
-
-                        </p>
-
-
-                        <div class="portfolio-tags">
-
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
-
-                        </div>
-
-
+                        <span class="section-tag">Community</span>
+                        <h3>HowCan-i-Help</h3>
+                        <p>A web-based platform concept focused on connecting individuals who need assistance with people willing to provide support.</p>
+                        <div class="portfolio-tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
                     </div>
-
-
                 </div>
-
-
-
-                <!-- ==================================================
-                PROJECT 4
-                ================================================== -->
-
                 <div class="portfolio-item reveal reveal-d4">
-
-
-                    <div class="portfolio-thumb">
-                        🏪
-                    </div>
-
-
+                    <div class="portfolio-thumb">🏪</div>
                     <div class="portfolio-info">
-
-
-                        <span class="section-tag">
-                            Business
-                        </span>
-
-
-                        <h3>
-                            Small Business Management System
-                        </h3>
-
-
-                        <p>
-
-                            A system concept focused on helping small
-                            businesses organize products, transactions,
-                            customer records, monitoring, and everyday
-                            operational activities.
-
-                        </p>
-
-
-                        <div class="portfolio-tags">
-
-                            <span>Web-Based</span>
-                            <span>Database</span>
-                            <span>Management</span>
-
-                        </div>
-
-
+                        <span class="section-tag">Business</span>
+                        <h3>Small Business Management System</h3>
+                        <p>A system concept focused on helping small businesses organize products, transactions, customer records, monitoring, and everyday operational activities.</p>
+                        <div class="portfolio-tags"><span>Web-Based</span><span>Database</span><span>Management</span></div>
                     </div>
-
-
                 </div>
-
-
             </div>
-
-
-
-            <!-- PORTFOLIO DISCLAIMER -->
-
-            <div class="portfolio-note reveal">
-
-
-                <i class="fas fa-circle-info"></i>
-
-
-                <p>
-
-                    Project availability, ownership, implementation,
-                    and deployment details may vary. Selected projects
-                    are presented for portfolio and capability
-                    demonstration purposes.
-
-                </p>
-
-
-            </div>
-
-
         </section>
 
-
-
         <!-- ========================================================
-        PROCESS SECTION
+        SKILLS SECTION
         ======================================================== -->
-
-        <section id="process">
-
-
+        <section id="skills">
             <div class="section-header reveal">
-
-
-                <span class="section-tag">
-                    How We Work
-                </span>
-
-
-                <h2>
-
-                    From Idea to
-
-                    <span class="gradient-text">
-                        Working Solution
-                    </span>
-
-                </h2>
-
-
-                <p class="section-sub">
-
-                    A structured project-based workflow designed to
-                    keep requirements, deliverables, expectations,
-                    and development aligned.
-
-                </p>
-
-
+                <span class="section-tag">Our Expertise</span>
+                <h2>Technical <span class="gradient-text">Skills</span></h2>
+                <p class="section-sub">The technologies and tools we use to build your solutions.</p>
             </div>
-
-
-
-            <div class="process-grid">
-
-
-                <!-- STEP 1 -->
-
-                <div class="process-step reveal reveal-d1">
-
-
-                    <div class="step-num">
-                        1
-                    </div>
-
-
-                    <h3>
-                        Consultation
-                    </h3>
-
-
-                    <p>
-
-                        We discuss your idea, problem, workflow,
-                        objectives, users, and expected outcomes.
-
-                    </p>
-
-
+            <div class="skills-grid">
+                <div class="skill-item reveal reveal-d1">
+                    <div class="skill-info"><span>Web Development</span><span>95%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
                 </div>
-
-
-
-                <!-- STEP 2 -->
-
-                <div class="process-step reveal reveal-d2">
-
-
-                    <div class="step-num">
-                        2
-                    </div>
-
-
-                    <h3>
-                        Requirements Analysis
-                    </h3>
-
-
-                    <p>
-
-                        We identify the required features, users,
-                        workflows, technical requirements, scope,
-                        and expected deliverables.
-
-                    </p>
-
-
+                <div class="skill-item reveal reveal-d2">
+                    <div class="skill-info"><span>UI/UX Design</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
                 </div>
-
-
-
-                <!-- STEP 3 -->
-
-                <div class="process-step reveal reveal-d3">
-
-
-                    <div class="step-num">
-                        3
-                    </div>
-
-
-                    <h3>
-                        Proposal &amp; Agreement
-                    </h3>
-
-
-                    <p>
-
-                        A quotation and project agreement are prepared
-                        to establish scope, pricing, timeline,
-                        responsibilities, deliverables, and expectations.
-
-                    </p>
-
-
+                <div class="skill-item reveal reveal-d3">
+                    <div class="skill-info"><span>Database Management</span><span>80%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
                 </div>
-
-
-
-                <!-- STEP 4 -->
-
-                <div class="process-step reveal reveal-d4">
-
-
-                    <div class="step-num">
-                        4
-                    </div>
-
-
-                    <h3>
-                        Design &amp; Development
-                    </h3>
-
-
-                    <p>
-
-                        We design, develop, integrate, and refine
-                        the solution according to the approved
-                        project requirements.
-
-                    </p>
-
-
+                <div class="skill-item reveal reveal-d4">
+                    <div class="skill-info"><span>System Architecture</span><span>75%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
                 </div>
-
-
-
-                <!-- STEP 5 -->
-
-                <div class="process-step reveal reveal-d1">
-
-
-                    <div class="step-num">
-                        5
-                    </div>
-
-
-                    <h3>
-                        Testing &amp; Review
-                    </h3>
-
-
-                    <p>
-
-                        The system is tested and reviewed to identify
-                        issues and ensure that agreed requirements
-                        are properly addressed.
-
-                    </p>
-
-
-                </div>
-
-
-
-                <!-- STEP 6 -->
-
-                <div class="process-step reveal reveal-d2">
-
-
-                    <div class="step-num">
-                        6
-                    </div>
-
-
-                    <h3>
-                        Deployment &amp; Turnover
-                    </h3>
-
-
-                    <p>
-
-                        The completed solution is prepared for
-                        deployment, documentation, training,
-                        turnover, and applicable support.
-
-                    </p>
-
-
-                </div>
-
-
             </div>
-
-
         </section>
 
-
-
         <!-- ========================================================
-        WHY CHOOSE US
+        TESTIMONIALS SECTION
         ======================================================== -->
-
-        <section id="why-us">
-
-
+        <section id="testimonials">
             <div class="section-header reveal">
-
-
-                <span class="section-tag">
-                    Why TechGroup
-                </span>
-
-
-                <h2>
-
-                    Built Around
-
-                    <span class="gradient-text">
-                        Your Project
-                    </span>
-
-                </h2>
-
-
-                <p class="section-sub">
-
-                    Our approach combines practical development,
-                    structured project management, and solutions
-                    tailored to actual requirements.
-
-                </p>
-
-
+                <span class="section-tag">Testimonials</span>
+                <h2>What Clients <span class="gradient-text">Say</span></h2>
+                <p class="section-sub">Feedback from our valued clients and partners.</p>
             </div>
-
-
-
-            <div class="services-grid">
-
-
-                <!-- CLEAR SCOPE -->
-
-                <div class="service-card reveal reveal-d1">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-list-check"></i>
-
+            <div class="testimonial-grid">
+                <div class="testimonial-card reveal reveal-d1">
+                    <p>"TechGroup Solutions delivered a robust health information system that exceeded our expectations. Their attention to detail and commitment to quality is exceptional."</p>
+                    <div class="testimonial-author">
+                        <span class="author">Jane Lorraine Carlet</span>
+                        <span class="role">Executive Agent Supervisor, Skyline CATV</span>
                     </div>
-
-
-                    <h3>
-                        Clear Project Scope
-                    </h3>
-
-
-                    <p>
-
-                        Requirements, features, deliverables,
-                        and project boundaries are identified
-                        before development begins.
-
-                    </p>
-
-
                 </div>
-
-
-
-                <!-- CUSTOM -->
-
-                <div class="service-card reveal reveal-d2">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-sliders"></i>
-
+                <div class="testimonial-card reveal reveal-d2">
+                    <p>"A dedicated and skilled team. The career assessment platform they built was professional, intuitive, and well‑received by both students and faculty."</p>
+                    <div class="testimonial-author">
+                        <span class="author">Maikee Bolante</span>
+                        <span class="role">Executive Agent Supervisor, Skyline CATV</span>
                     </div>
-
-
-                    <h3>
-                        Custom Solutions
-                    </h3>
-
-
-                    <p>
-
-                        Solutions are planned around the client's
-                        actual workflow instead of forcing every
-                        project into the same template.
-
-                    </p>
-
-
                 </div>
-
-
-
-                <!-- TRANSPARENT -->
-
-                <div class="service-card reveal reveal-d3">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-eye"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Transparent Process
-                    </h3>
-
-
-                    <p>
-
-                        Project requirements, progress, revisions,
-                        deliverables, and important decisions are
-                        kept organized throughout development.
-
-                    </p>
-
-
-                </div>
-
-
-
-                <!-- FLEXIBLE -->
-
-                <div class="service-card reveal reveal-d4">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-arrows-rotate"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Flexible Development
-                    </h3>
-
-
-                    <p>
-
-                        Development resources can be organized
-                        according to the scope, requirements,
-                        and technical needs of each project.
-
-                    </p>
-
-
-                </div>
-
-
-
-                <!-- USER FOCUSED -->
-
-                <div class="service-card reveal reveal-d1">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-user-check"></i>
-
-                    </div>
-
-
-                    <h3>
-                        User-Focused Design
-                    </h3>
-
-
-                    <p>
-
-                        We prioritize usability and practical
-                        workflows so the resulting software is
-                        easier to understand and use.
-
-                    </p>
-
-
-                </div>
-
-
-
-                <!-- SUPPORT -->
-
-                <div class="service-card reveal reveal-d2">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-headset"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Post-Development Support
-                    </h3>
-
-
-                    <p>
-
-                        Depending on the project agreement,
-                        maintenance, improvements, technical
-                        assistance, and other support services
-                        may be provided after delivery.
-
-                    </p>
-
-
-                </div>
-
-
             </div>
-
-
         </section>
 
-
-
         <!-- ========================================================
-        CLIENT TYPES
+        CONTACT SECTION
         ======================================================== -->
-
-        <section id="clients">
-
-
-            <div class="section-header reveal">
-
-
-                <span class="section-tag">
-                    Who We Serve
-                </span>
-
-
-                <h2>
-
-                    Technology for
-
-                    <span class="gradient-text">
-                        Different Needs
-                    </span>
-
-                </h2>
-
-
-                <p class="section-sub">
-
-                    Our project-based model allows us to develop
-                    solutions for different types of clients,
-                    organizations, and use cases.
-
-                </p>
-
-
-            </div>
-
-
-
-            <div class="services-grid">
-
-
-                <!-- BUSINESSES -->
-
-                <div class="service-card reveal reveal-d1">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-store"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Small &amp; Growing Businesses
-                    </h3>
-
-
-                    <p>
-
-                        Websites, management systems, inventory,
-                        transactions, customer records, monitoring,
-                        and operational tools.
-
-                    </p>
-
-
-                </div>
-
-
-
-                <!-- EDUCATION -->
-
-                <div class="service-card reveal reveal-d2">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-school"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Schools &amp; Students
-                    </h3>
-
-
-                    <p>
-
-                        Educational systems, academic prototypes,
-                        web applications, software projects,
-                        documentation, and demonstrations.
-
-                    </p>
-
-
-                </div>
-
-
-
-                <!-- HEALTHCARE -->
-
-                <div class="service-card reveal reveal-d3">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-hospital"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Healthcare &amp; Organizations
-                    </h3>
-
-
-                    <p>
-
-                        Record management, monitoring, appointment,
-                        reporting, and workflow-oriented software
-                        solutions.
-
-                    </p>
-
-
-                </div>
-
-
-
-                <!-- OFFICES -->
-
-                <div class="service-card reveal reveal-d4">
-
-
-                    <div class="service-icon">
-
-                        <i class="fas fa-building"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Offices &amp; Institutions
-                    </h3>
-
-
-                    <p>
-
-                        Custom software and information-management
-                        solutions designed around organizational
-                        processes and operational requirements.
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-
-            <!-- CLIENT CTA -->
-
-            <div class="client-banner reveal">
-
-
-                <h3>
-
-                    Have a problem that could be solved with software?
-
-                </h3>
-
-
-                <p>
-
-                    Tell us what you're trying to accomplish.
-                    We'll help determine what type of technology
-                    solution may best fit your requirements.
-
-                </p>
-
-
-                <a
-                    href="#contact"
-                    class="btn btn-primary"
-                >
-
-                    <i class="fas fa-comments"></i>
-
-                    Discuss Your Idea
-
-                </a>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- ========================================================
-        GITHUB SECTION
-        ======================================================== -->
-
-        <section id="github">
-
-
-            <div class="section-header reveal">
-
-
-                <span class="section-tag">
-                    Development
-                </span>
-
-
-                <h2>
-
-                    Explore Our
-
-                    <span class="gradient-text">
-                        GitHub
-                    </span>
-
-                </h2>
-
-
-                <p class="section-sub">
-
-                    Explore selected repositories, prototypes,
-                    experiments, and development work.
-
-                </p>
-
-
-            </div>
-
-
-
-            <div class="github-grid">
-
-
-                <!-- REPOSITORIES -->
-
-                <div
-                    class="github-repos"
-                    id="repo-container"
-                >
-
-                    <!--
-                        GitHub repositories can be loaded dynamically
-                        through script.js.
-                    -->
-
-                </div>
-
-
-
-                <!-- PROFILE -->
-
-                <div class="github-profile reveal reveal-d4">
-
-
-                    <div class="service-icon">
-
-                        <i class="fab fa-github"></i>
-
-                    </div>
-
-
-                    <div class="gh-name">
-
-                        TechGroup Solutions
-
-                    </div>
-
-
-                    <div class="gh-bio">
-
-                        Project-based software and system development
-                        focused on practical, user-centered solutions.
-
-                    </div>
-
-
-                    <a
-                        href="https://github.com/TechGroupSolutions"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="gh-link"
-                    >
-
-                        <i class="fab fa-github"></i>
-
-                        Explore GitHub →
-
-                    </a>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- ========================================================
-        CONTACT SECTION (with Footer inside)
-        ======================================================== -->
-
         <section id="contact">
-
-
             <div class="section-header reveal">
-
-
-                <span class="section-tag">
-                    Start a Project
-                </span>
-
-
-                <h2>
-
-                    Let's Build Something
-
-                    <span class="gradient-text">
-                        Useful
-                    </span>
-
-                </h2>
-
-
-                <p class="section-sub">
-
-                    Have an idea, business problem, academic project,
-                    or system requirement? Let's discuss it.
-
-                </p>
-
-
+                <span class="section-tag">Start a Project</span>
+                <h2>Let's Build Something <span class="gradient-text">Useful</span></h2>
+                <p class="section-sub">Have an idea, business problem, academic project, or system requirement? Let's discuss it.</p>
             </div>
-
-
-
             <div class="contact-grid">
-
-
-                <!-- CONTACT INFORMATION -->
-
                 <div class="contact-info reveal">
-
-
-                    <h3>
-                        Tell us about your project.
-                    </h3>
-
-
-                    <p>
-
-                        Share your goals, current process,
-                        desired features, and any information
-                        that may help us understand your project.
-
-                        <br><br>
-
-                        We'll review your inquiry and discuss the
-                        appropriate next steps before preparing
-                        a project proposal or quotation.
-
-                    </p>
-
-
-
-                    <!-- EMAIL -->
-
-                    <div class="contact-item">
-
-                        <i class="fas fa-envelope"></i>
-
-                        <span>
-                            techgroupsolutions@email.com
-                        </span>
-
-                    </div>
-
-
-
-                    <!-- LOCATION -->
-
-                    <div class="contact-item">
-
-                        <i class="fas fa-location-dot"></i>
-
-                        <span>
-                            Rizal, Philippines
-                        </span>
-
-                    </div>
-
-
-
-                    <!-- BUSINESS MODEL -->
-
-                    <div class="contact-item">
-
-                        <i class="fas fa-briefcase"></i>
-
-                        <span>
-                            Project-Based Software Development
-                        </span>
-
-                    </div>
-
-
+                    <h3>Tell us about your project.</h3>
+                    <p>Share your goals, current process, desired features, and any information that may help us understand your project. We'll review your inquiry and discuss the appropriate next steps before preparing a project proposal or quotation.</p>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>techgroupsolutions@email.com</span></div>
+                    <div class="contact-item"><i class="fas fa-location-dot"></i><span>Rizal, Philippines</span></div>
+                    <div class="contact-item"><i class="fas fa-briefcase"></i><span>Project-Based Software Development</span></div>
                 </div>
-
-
-
-                <!-- CONTACT FORM -->
-
-                <form
-                    class="contact-form reveal"
-                    id="contact-form"
-                >
-
-
-                    <!-- NAME -->
-
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Your Name"
-                        autocomplete="name"
-                        required
-                    >
-
-
-                    <!-- EMAIL -->
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Your Email"
-                        autocomplete="email"
-                        required
-                    >
-
-
-                    <!-- ORGANIZATION -->
-
-                    <input
-                        type="text"
-                        name="organization"
-                        placeholder="Business / Organization (Optional)"
-                        autocomplete="organization"
-                    >
-
-
-                    <!-- PROJECT TYPE -->
-
-                    <select
-                        name="project_type"
-                        required
-                    >
-
-                        <option value="">
-                            Select Project Type
-                        </option>
-
-
-                        <option value="web-based-system">
-                            Web-Based System
-                        </option>
-
-
-                        <option value="application-based-system">
-                            Application-Based System
-                        </option>
-
-
-                        <option value="mobile-application">
-                            Mobile Application
-                        </option>
-
-
-                        <option value="business-website">
-                            Business Website
-                        </option>
-
-
-                        <option value="custom-management-system">
-                            Custom Management System
-                        </option>
-
-
-                        <option value="ui-ux-design">
-                            UI/UX Design
-                        </option>
-
-
-                        <option value="system-maintenance">
-                            System Maintenance / Enhancement
-                        </option>
-
-
-                        <option value="academic-project">
-                            Academic / Student Project
-                        </option>
-
-
-                        <option value="other">
-                            Other
-                        </option>
-
-
+                <form class="contact-form reveal" id="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required />
+                    <input type="email" name="email" placeholder="Your Email" required />
+                    <input type="text" name="organization" placeholder="Business / Organization (Optional)" />
+                    <select name="project_type" required>
+                        <option value="">Select Project Type</option>
+                        <option value="web-based-system">Web-Based System</option>
+                        <option value="application-based-system">Application-Based System</option>
+                        <option value="mobile-application">Mobile Application</option>
+                        <option value="business-website">Business Website</option>
+                        <option value="custom-management-system">Custom Management System</option>
+                        <option value="ui-ux-design">UI/UX Design</option>
+                        <option value="system-maintenance">System Maintenance / Enhancement</option>
+                        <option value="academic-project">Academic / Student Project</option>
+                        <option value="other">Other</option>
                     </select>
-
-
-                    <!-- ESTIMATED BUDGET -->
-
-                    <select
-                        name="budget"
-                    >
-
-                        <option value="">
-                            Estimated Budget (Optional)
-                        </option>
-
-
-                        <option value="below-10k">
-                            Below ₱10,000
-                        </option>
-
-
-                        <option value="10k-25k">
-                            ₱10,000 – ₱25,000
-                        </option>
-
-
-                        <option value="25k-50k">
-                            ₱25,000 – ₱50,000
-                        </option>
-
-
-                        <option value="50k-100k">
-                            ₱50,000 – ₱100,000
-                        </option>
-
-
-                        <option value="100k-plus">
-                            ₱100,000+
-                        </option>
-
-
-                        <option value="undecided">
-                            Not Yet Decided
-                        </option>
-
-
+                    <select name="budget">
+                        <option value="">Estimated Budget (Optional)</option>
+                        <option value="below-10k">Below ₱10,000</option>
+                        <option value="10k-25k">₱10,000 – ₱25,000</option>
+                        <option value="25k-50k">₱25,000 – ₱50,000</option>
+                        <option value="50k-100k">₱50,000 – ₱100,000</option>
+                        <option value="100k-plus">₱100,000+</option>
+                        <option value="undecided">Not Yet Decided</option>
                     </select>
-
-
-                    <!-- PROJECT DETAILS -->
-
-                    <textarea
-                        name="message"
-                        rows="7"
-                        placeholder="Tell us about your project, current process, problem, desired features, or requirements..."
-                        required
-                    ></textarea>
-
-
-                    <!-- SUBMIT -->
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary"
-                    >
-
-                        <i class="fas fa-paper-plane"></i>
-
-                        Send Project Inquiry
-
-                    </button>
-
-
+                    <textarea name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Project Inquiry</button>
                 </form>
-
-
             </div>
-
-
-
-            <!-- ========================================================
-            FOOTER (Full Width, directly under contact content)
-            ======================================================== -->
-
             <footer>
-
-
                 <div class="footer-inner">
-
-
-                    <!-- SOCIAL LINKS -->
-
                     <div class="footer-social">
-
-
-                        <!-- GITHUB -->
-
-                        <a
-                            href="https://github.com/TechGroupSolutions"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="GitHub"
-                        >
-
-                            <i class="fab fa-github"></i>
-
-                        </a>
-
-
-                        <!-- FACEBOOK -->
-
-                        <!--
-                            Replace # with your official Facebook page URL.
-                        -->
-
-                        <a
-                            href="#"
-                            aria-label="Facebook"
-                        >
-
-                            <i class="fab fa-facebook"></i>
-
-                        </a>
-
-
-                        <!-- INSTAGRAM -->
-
-                        <!--
-                            Replace # with your official Instagram URL.
-                        -->
-
-                        <a
-                            href="#"
-                            aria-label="Instagram"
-                        >
-
-                            <i class="fab fa-instagram"></i>
-
-                        </a>
-
-
-                        <!-- EMAIL -->
-
-                        <a
-                            href="mailto:techgroupsolutions@email.com"
-                            aria-label="Email"
-                        >
-
-                            <i class="fas fa-envelope"></i>
-
-                        </a>
-
-
+                        <a href="https://github.com/TechGroupSolutions" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:techgroupsolutions@email.com"><i class="fas fa-envelope"></i></a>
                     </div>
-
-
-
-                    <!-- COPYRIGHT -->
-
-                    <p class="footer-copy">
-
-                        &copy;
-
-                        <span id="current-year">
-                            2026
-                        </span>
-
-                        TechGroup Solutions.
-
-                        All rights reserved.
-
-                    </p>
-
-
+                    <p class="footer-copy">&copy; <span id="current-year">2026</span> TechGroup Solutions. All rights reserved.</p>
                 </div>
-
-
             </footer>
-
-
         </section>
-
 
     </main>
 
-
-
     <!-- ============================================================
-    JAVASCRIPT
+    SCRIPTS
     ============================================================ -->
-
     <script src="script.js"></script>
 
-
 </body>
-
 </html>
