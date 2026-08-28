@@ -1058,8 +1058,17 @@ section:last-of-type {
    CONTACT
    ============================================================ */
 #contact {
+    padding: 0;
     background: var(--bg-primary);
     border-bottom: none;
+}
+
+#contact .section-header {
+    padding: 60px 40px 0 40px;
+}
+
+#contact .contact-grid {
+    padding: 0 40px 40px 40px;
 }
 
 .contact-grid {
@@ -1156,17 +1165,18 @@ section:last-of-type {
 }
 
 /* ============================================================
-   FOOTER
+   FOOTER (Full Width, inside Contact)
    ============================================================ */
-footer {
+#contact footer {
     background: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
     padding: 20px 40px 16px;
-    margin-left: var(--nav-width);
+    width: 100%;
+    margin: 0;
     text-align: center;
 }
 
-footer .footer-inner {
+#contact footer .footer-inner {
     max-width: 700px;
     margin: 0 auto;
     display: flex;
@@ -1175,12 +1185,12 @@ footer .footer-inner {
     gap: 10px;
 }
 
-.footer-social {
+#contact footer .footer-social {
     display: flex;
     gap: 12px;
 }
 
-.footer-social a {
+#contact footer .footer-social a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1193,14 +1203,14 @@ footer .footer-inner {
     font-size: 0.85rem;
 }
 
-.footer-social a:hover {
+#contact footer .footer-social a:hover {
     border-color: var(--accent-1);
     color: var(--accent-1);
     box-shadow: 0 0 20px var(--accent-glow);
     transform: translateY(-3px);
 }
 
-.footer-copy {
+#contact footer .footer-copy {
     font-size: 0.7rem;
     color: var(--text-muted);
     opacity: 0.5;
@@ -1238,10 +1248,6 @@ footer .footer-inner {
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 30px;
-    }
-    footer {
-        margin-left: 0;
-        padding: 16px 20px 14px;
     }
 }
 
@@ -1352,6 +1358,18 @@ footer .footer-inner {
 
     .client-banner {
         padding: 24px;
+    }
+
+    #contact .section-header {
+        padding: 40px 16px 0 16px;
+    }
+
+    #contact .contact-grid {
+        padding: 0 16px 30px 16px;
+    }
+
+    #contact footer {
+        padding: 16px 16px 12px;
     }
 }
 
@@ -1509,4 +1527,7 @@ footer .footer-inner {
 [data-theme="light"] .contact-form textarea,
 [data-theme="light"] .contact-form select {
     background: var(--bg-card);
+}
+[data-theme="light"] #contact footer {
+    background: var(--bg-secondary);
 }
