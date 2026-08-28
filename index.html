@@ -16,7 +16,7 @@
 
     <style>
         /* ============================================================
-           ROOT VARIABLES – Dark & Light
+           ROOT VARIABLES – Modern, Clean Palette
            ============================================================ */
         :root {
             --bg-primary: #080a0f;
@@ -105,7 +105,7 @@
         }
 
         /* ============================================================
-           SIDEBAR NAVIGATION
+           SIDEBAR NAVIGATION (like screenshot)
            ============================================================ */
         .sidebar {
             position: fixed;
@@ -128,11 +128,13 @@
         .sidebar-profile {
             text-align: center;
             margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .sidebar-profile .avatar {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             margin: 0 auto 12px;
             border: 3px solid var(--border-color);
@@ -147,41 +149,15 @@
         }
 
         .sidebar-profile h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--text-primary);
         }
 
         .sidebar-profile .title {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             font-weight: 400;
-        }
-
-        .sidebar-profile .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .sidebar-profile .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            transition: var(--transition);
-        }
-
-        .sidebar-profile .social-links a:hover {
-            border-color: var(--accent-1);
-            color: var(--accent-1);
-            background: rgba(99, 102, 241, 0.06);
         }
 
         .sidebar-nav {
@@ -201,23 +177,43 @@
             font-weight: 500;
             color: var(--text-muted);
             transition: all 0.3s var(--ease-spring);
+            position: relative;
         }
 
         .sidebar-nav a i {
             width: 20px;
             font-size: 1rem;
             text-align: center;
+            transition: var(--transition);
         }
 
-        .sidebar-nav a:hover,
-        .sidebar-nav a.active {
+        .sidebar-nav a:hover {
             color: var(--text-primary);
-            background: rgba(99, 102, 241, 0.08);
+            background: rgba(99, 102, 241, 0.06);
         }
 
         .sidebar-nav a.active {
             color: var(--accent-1);
-            background: rgba(99, 102, 241, 0.12);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .sidebar-nav a.active i {
+            color: var(--accent-1);
+        }
+
+        .sidebar-nav a .nav-indicator {
+            position: absolute;
+            right: 14px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--border-color);
+            transition: var(--transition);
+        }
+
+        .sidebar-nav a.active .nav-indicator {
+            background: var(--accent-1);
+            box-shadow: 0 0 12px var(--accent-glow);
         }
 
         .sidebar-footer {
@@ -225,6 +221,7 @@
             border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: center;
+            gap: 12px;
         }
 
         .sidebar-footer #theme-toggle {
@@ -282,16 +279,21 @@
         }
 
         /* ============================================================
-           SECTION COMMON
+           SECTION COMMON — Clean, seamless backgrounds
            ============================================================ */
         section {
             padding: 60px 0 40px;
-            border-bottom: 1px solid var(--border-color);
             position: relative;
         }
 
-        section:last-of-type {
-            border-bottom: none;
+        section:not(:last-of-type)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background: var(--border-color);
         }
 
         .section-header {
@@ -353,8 +355,11 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-bottom: none;
             position: relative;
+        }
+
+        #hero::after {
+            display: none;
         }
 
         .hero-container {
@@ -432,6 +437,9 @@
             flex-wrap: wrap;
         }
 
+        /* ============================================================
+           BUTTONS (Tailwind-inspired)
+           ============================================================ */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -470,6 +478,14 @@
             transform: translateY(-3px);
         }
 
+        .btn-sm {
+            padding: 8px 18px;
+            font-size: 0.8rem;
+        }
+
+        /* ============================================================
+           HERO STATS
+           ============================================================ */
         .hero-stats {
             display: flex;
             align-items: center;
@@ -501,7 +517,9 @@
             background: var(--border-color);
         }
 
-        /* ---- ENHANCED HERO VISUAL ---- */
+        /* ============================================================
+           HERO VISUAL
+           ============================================================ */
         .hero-image {
             display: flex;
             justify-content: center;
@@ -514,7 +532,6 @@
             height: 400px;
         }
 
-        /* Glowing orb background */
         .hero-image-wrapper::before {
             content: '';
             position: absolute;
@@ -658,44 +675,39 @@
         }
 
         /* ============================================================
-           SCROLL NAVIGATION (Arrow Up / Down)
+           SINGLE VERSATILE ARROW BUTTON (like your portfolio)
            ============================================================ */
-        .scroll-nav {
+        .scroll-arrow {
             position: fixed;
             right: 30px;
             bottom: 30px;
             z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .scroll-nav a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: var(--bg-card);
             backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
             transition: all 0.3s var(--ease-spring);
             box-shadow: 0 4px 20px var(--shadow-color);
         }
 
-        .scroll-nav a:hover {
+        .scroll-arrow:hover {
             border-color: var(--accent-1);
             color: var(--accent-1);
             background: rgba(99, 102, 241, 0.12);
-            transform: translateY(-2px) scale(1.05);
+            transform: scale(1.08);
         }
 
-        .scroll-nav a .tooltip {
+        .scroll-arrow .tooltip {
             position: absolute;
-            right: 54px;
+            right: 58px;
             background: var(--bg-card);
             backdrop-filter: blur(12px);
             padding: 4px 12px;
@@ -709,15 +721,11 @@
             transition: var(--transition);
         }
 
-        .scroll-nav a:hover .tooltip {
+        .scroll-arrow:hover .tooltip {
             opacity: 1;
         }
 
-        .scroll-nav a:first-child {
-            margin-bottom: 4px;
-        }
-
-        /* Scroll indicator in hero (replaces old) */
+        /* Scroll indicator in hero */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -762,37 +770,24 @@
         }
 
         /* ============================================================
-           ABOUT
+           CARDS (Tailwind-inspired)
            ============================================================ */
-        #about {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .about-card {
+        .card {
             background: var(--bg-card);
             backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
             padding: 28px 24px;
-            text-align: center;
             transition: all 0.4s var(--ease-spring);
         }
 
-        .about-card:hover {
+        .card:hover {
             transform: translateY(-6px);
             border-color: var(--accent-1);
             box-shadow: 0 16px 40px var(--shadow-color);
         }
 
-        .service-icon {
+        .card-icon {
             width: 56px;
             height: 56px;
             margin: 0 auto 14px;
@@ -807,93 +802,69 @@
             transition: var(--transition);
         }
 
-        .about-card:hover .service-icon {
+        .card:hover .card-icon {
             background: rgba(99, 102, 241, 0.12);
             box-shadow: 0 0 24px var(--accent-glow);
             transform: scale(1.05);
         }
 
-        .about-card h3 {
+        .card h3 {
             font-size: 1.05rem;
             font-weight: 700;
             margin-bottom: 6px;
         }
 
-        .about-card p {
+        .card p {
             color: var(--text-secondary);
             font-size: 0.88rem;
             line-height: 1.7;
         }
 
         /* ============================================================
-           SERVICES
+           GRIDS
            ============================================================ */
-        .services-grid {
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .grid-auto {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
-        .service-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 28px 24px;
-            text-align: center;
-            transition: all 0.4s var(--ease-spring);
-        }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent-1);
-            box-shadow: 0 16px 40px var(--shadow-color);
-        }
-
-        .service-card .service-icon {
-            margin: 0 auto 14px;
-        }
-
-        .service-card h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .service-card p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.7;
-        }
-
-        /* ============================================================
-           PORTFOLIO
-           ============================================================ */
-        #portfolio {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .portfolio-grid {
+        .grid-portfolio {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
 
-        .portfolio-item {
-            background: var(--bg-card);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: all 0.4s var(--ease-spring);
+        /* ============================================================
+           ABOUT
+           ============================================================ */
+        #about .grid-3 .card {
+            text-align: center;
         }
 
-        .portfolio-item:hover {
+        /* ============================================================
+           SERVICES
+           ============================================================ */
+        #services .grid-auto .card {
+            text-align: center;
+        }
+
+        /* ============================================================
+           PORTFOLIO
+           ============================================================ */
+        .portfolio-item .card {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .portfolio-item .card:hover {
             transform: translateY(-6px);
-            border-color: var(--accent-1);
-            box-shadow: 0 16px 40px var(--shadow-color);
         }
 
         .portfolio-thumb {
@@ -929,13 +900,13 @@
             line-height: 1.6;
         }
 
-        .portfolio-tags {
+        .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
         }
 
-        .portfolio-tags span {
+        .tags span {
             background: rgba(99, 102, 241, 0.06);
             padding: 2px 12px;
             border-radius: 50px;
@@ -948,37 +919,13 @@
         }
 
         /* ============================================================
-           CO-DEVELOPER SECTION
+           CO-DEVELOPER
            ============================================================ */
-        #co-developer {
-            background: var(--bg-primary);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .codev-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
-        }
-
-        .codev-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 24px;
+        #co-developer .grid-auto .card {
             text-align: center;
-            transition: all 0.4s var(--ease-spring);
         }
 
-        .codev-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent-1);
-            box-shadow: 0 16px 40px var(--shadow-color);
-        }
-
-        .codev-card .avatar {
+        .codev-avatar {
             width: 80px;
             height: 80px;
             border-radius: 50%;
@@ -987,38 +934,26 @@
             overflow: hidden;
         }
 
-        .codev-card .avatar img {
+        .codev-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .codev-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .codev-card .role {
+        .codev-role {
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-bottom: 8px;
         }
 
-        .codev-card p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-
-        .codev-card .social-links {
+        .social-icons {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-top: 12px;
         }
 
-        .codev-card .social-links a {
+        .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1031,7 +966,7 @@
             transition: var(--transition);
         }
 
-        .codev-card .social-links a:hover {
+        .social-icons a:hover {
             border-color: var(--accent-1);
             color: var(--accent-1);
             background: rgba(99, 102, 241, 0.06);
@@ -1040,18 +975,6 @@
         /* ============================================================
            SKILLS
            ============================================================ */
-        #skills {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
         .skill-item {
             margin-bottom: 8px;
         }
@@ -1088,8 +1011,6 @@
            ============================================================ */
         #contact {
             padding: 0;
-            background: var(--bg-primary);
-            border-bottom: none;
         }
 
         #contact .section-header {
@@ -1185,7 +1106,9 @@
             background: rgba(99, 102, 241, 0.04);
         }
 
-        /* Footer inside contact */
+        /* ============================================================
+           FOOTER
+           ============================================================ */
         #contact footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
@@ -1306,7 +1229,7 @@
                 height: 300px;
             }
 
-            .about-grid {
+            .grid-3 {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -1323,15 +1246,12 @@
                 padding: 0 20px 30px 20px;
             }
 
-            .scroll-nav {
+            .scroll-arrow {
                 right: 16px;
                 bottom: 16px;
-            }
-
-            .scroll-nav a {
-                width: 38px;
-                height: 38px;
-                font-size: 0.85rem;
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
             }
         }
 
@@ -1396,14 +1316,12 @@
                 font-size: 1.8rem;
             }
 
-            .about-grid {
+            .grid-3 {
                 grid-template-columns: 1fr;
             }
 
-            .services-grid,
-            .portfolio-grid,
-            .skills-grid,
-            .codev-grid {
+            .grid-auto,
+            .grid-portfolio {
                 grid-template-columns: 1fr;
             }
 
@@ -1411,18 +1329,15 @@
                 padding: 16px 20px 12px;
             }
 
-            .scroll-nav {
+            .scroll-arrow {
                 right: 12px;
                 bottom: 12px;
+                width: 38px;
+                height: 38px;
+                font-size: 0.85rem;
             }
 
-            .scroll-nav a {
-                width: 34px;
-                height: 34px;
-                font-size: 0.75rem;
-            }
-
-            .scroll-nav a .tooltip {
+            .scroll-arrow .tooltip {
                 display: none;
             }
         }
@@ -1441,7 +1356,7 @@
                 font-size: 0.8rem;
             }
 
-            section {
+            section:not(#hero) {
                 padding: 40px 0 30px;
             }
 
@@ -1471,15 +1386,12 @@
                 padding: 12px 14px;
             }
 
-            .scroll-nav {
+            .scroll-arrow {
                 right: 8px;
                 bottom: 8px;
-            }
-
-            .scroll-nav a {
-                width: 30px;
-                height: 30px;
-                font-size: 0.65rem;
+                width: 34px;
+                height: 34px;
+                font-size: 0.75rem;
             }
         }
 
@@ -1523,19 +1435,11 @@
             color: var(--accent-1);
         }
 
-        [data-theme="light"] .service-icon {
+        [data-theme="light"] .card-icon {
             background: rgba(99, 102, 241, 0.04);
         }
 
-        [data-theme="light"] .service-card:hover .service-icon {
-            background: rgba(99, 102, 241, 0.08);
-        }
-
-        [data-theme="light"] .about-card .service-icon {
-            background: rgba(99, 102, 241, 0.04);
-        }
-
-        [data-theme="light"] .about-card:hover .service-icon {
+        [data-theme="light"] .card:hover .card-icon {
             background: rgba(99, 102, 241, 0.08);
         }
 
@@ -1553,7 +1457,7 @@
             background: var(--bg-secondary);
         }
 
-        [data-theme="light"] .scroll-nav a {
+        [data-theme="light"] .scroll-arrow {
             background: rgba(255, 255, 255, 0.85);
         }
 
@@ -1580,27 +1484,42 @@
         <!-- Profile -->
         <div class="sidebar-profile">
             <div class="avatar">
-                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=180&h=180&fit=crop&crop=face" alt="TechGroup Solutions" />
+                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=160&h=160&fit=crop&crop=face" alt="TechGroup Solutions" />
             </div>
             <h3>TechGroup Solutions</h3>
             <p class="title">System Development</p>
-            <div class="social-links">
-                <a href="https://github.com/TechGroupSolutions" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:techgroupsolutions@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            </div>
         </div>
 
         <!-- Navigation -->
         <nav class="sidebar-nav">
-            <a href="#hero" class="active"><i class="fas fa-house"></i> Home</a>
-            <a href="#about"><i class="fas fa-user"></i> About</a>
-            <a href="#services"><i class="fas fa-layer-group"></i> Services</a>
-            <a href="#portfolio"><i class="fas fa-folder-open"></i> Portfolio</a>
-            <a href="#co-developer"><i class="fas fa-users"></i> Co-Developer</a>
-            <a href="#skills"><i class="fas fa-chart-bar"></i> Skills</a>
-            <a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a>
+            <a href="#hero" class="active">
+                <i class="fas fa-house"></i> Home
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#about">
+                <i class="fas fa-user"></i> About
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#services">
+                <i class="fas fa-layer-group"></i> Services
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#portfolio">
+                <i class="fas fa-folder-open"></i> Portfolio
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#co-developer">
+                <i class="fas fa-users"></i> Co-Developer
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#skills">
+                <i class="fas fa-chart-bar"></i> Skills
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#contact">
+                <i class="fas fa-paper-plane"></i> Contact
+                <span class="nav-indicator"></span>
+            </a>
         </nav>
 
         <!-- Theme Toggle -->
@@ -1611,18 +1530,12 @@
     </aside>
 
     <!-- ============================================================
-    SCROLL NAVIGATION (Arrow Up / Down)
+    SINGLE VERSATILE ARROW BUTTON
     ============================================================ -->
-    <nav class="scroll-nav" aria-label="Scroll navigation">
-        <a href="#hero" aria-label="Scroll to top">
-            <i class="fas fa-chevron-up"></i>
-            <span class="tooltip">Top</span>
-        </a>
-        <a href="#contact" aria-label="Scroll to bottom">
-            <i class="fas fa-chevron-down"></i>
-            <span class="tooltip">Bottom</span>
-        </a>
-    </nav>
+    <button class="scroll-arrow" id="scrollArrow" aria-label="Scroll">
+        <i class="fas fa-chevron-down" id="arrowIcon"></i>
+        <span class="tooltip" id="arrowTooltip">Scroll Down</span>
+    </button>
 
     <!-- ============================================================
     MAIN CONTENT
@@ -1689,19 +1602,19 @@
                 <h2>Technology With a <span class="gradient-text">Purpose</span></h2>
                 <p class="section-sub">We create systems around real-world requirements, workflows, and objectives.</p>
             </div>
-            <div class="about-grid">
-                <div class="about-card reveal reveal-d1">
-                    <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+            <div class="grid-3">
+                <div class="card reveal reveal-d1">
+                    <div class="card-icon"><i class="fas fa-bullseye"></i></div>
                     <h3>Our Approach</h3>
                     <p>We begin by understanding the problem, users, workflow, requirements, and expected outcome before deciding how technology should be used.</p>
                 </div>
-                <div class="about-card reveal reveal-d2">
-                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="card reveal reveal-d2">
+                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Our Capability</h3>
                     <p>Our development scope includes web-based systems, application-based systems, database-driven solutions, user interfaces, and other custom system projects.</p>
                 </div>
-                <div class="about-card reveal reveal-d3">
-                    <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                <div class="card reveal reveal-d3">
+                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
                     <h3>Our Commitment</h3>
                     <p>We follow a structured project-based workflow where scope, deliverables, timelines, responsibilities, communication, and expectations are clearly established.</p>
                 </div>
@@ -1717,34 +1630,34 @@
                 <h2>System <span class="gradient-text">Development Services</span></h2>
                 <p class="section-sub">From websites and web applications to standalone software and custom management systems.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card reveal reveal-d1">
-                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+            <div class="grid-auto">
+                <div class="card reveal reveal-d1">
+                    <div class="card-icon"><i class="fas fa-globe"></i></div>
                     <h3>Web-Based Systems</h3>
                     <p>Responsive websites, web applications, portals, online platforms, and browser-based management systems designed for different operational needs.</p>
                 </div>
-                <div class="service-card reveal reveal-d2">
-                    <div class="service-icon"><i class="fas fa-desktop"></i></div>
+                <div class="card reveal reveal-d2">
+                    <div class="card-icon"><i class="fas fa-desktop"></i></div>
                     <h3>Application-Based Systems</h3>
                     <p>Standalone and desktop-oriented applications designed to support specific business, organizational, educational, or operational requirements.</p>
                 </div>
-                <div class="service-card reveal reveal-d3">
-                    <div class="service-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                <div class="card reveal reveal-d3">
+                    <div class="card-icon"><i class="fas fa-mobile-screen-button"></i></div>
                     <h3>Mobile Applications</h3>
                     <p>Mobile application projects designed around specific user needs, workflows, services, and digital experiences.</p>
                 </div>
-                <div class="service-card reveal reveal-d4">
-                    <div class="service-icon"><i class="fas fa-database"></i></div>
+                <div class="card reveal reveal-d4">
+                    <div class="card-icon"><i class="fas fa-database"></i></div>
                     <h3>Custom Management Systems</h3>
                     <p>Database-driven systems for records, inventory, transactions, appointments, monitoring, reporting, and organizational workflows.</p>
                 </div>
-                <div class="service-card reveal reveal-d1">
-                    <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
+                <div class="card reveal reveal-d1">
+                    <div class="card-icon"><i class="fas fa-pencil-ruler"></i></div>
                     <h3>UI/UX Design</h3>
                     <p>User-focused interfaces designed for usability, accessibility, visual clarity, consistency, and practical interaction.</p>
                 </div>
-                <div class="service-card reveal reveal-d2">
-                    <div class="service-icon"><i class="fas fa-screwdriver-wrench"></i></div>
+                <div class="card reveal reveal-d2">
+                    <div class="card-icon"><i class="fas fa-screwdriver-wrench"></i></div>
                     <h3>System Maintenance &amp; Enhancement</h3>
                     <p>Bug fixes, improvements, feature additions, adjustments, updates, and technical support for existing systems.</p>
                 </div>
@@ -1760,41 +1673,49 @@
                 <h2>Projects &amp; <span class="gradient-text">System Experience</span></h2>
                 <p class="section-sub">Selected projects demonstrating experience in system analysis, interface design, database development, and software implementation.</p>
             </div>
-            <div class="portfolio-grid">
+            <div class="grid-portfolio">
                 <div class="portfolio-item reveal reveal-d1">
-                    <div class="portfolio-thumb">🏥</div>
-                    <div class="portfolio-info">
-                        <span class="section-tag">Healthcare</span>
-                        <h3>Morong Health Center Management System</h3>
-                        <p>A web-based management system designed to organize health center records, patient-related information, monitoring, and administrative workflows.</p>
-                        <div class="portfolio-tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span></div>
+                    <div class="card">
+                        <div class="portfolio-thumb">🏥</div>
+                        <div class="portfolio-info">
+                            <span class="section-tag">Healthcare</span>
+                            <h3>Morong Health Center Management System</h3>
+                            <p>A web-based management system designed to organize health center records, patient-related information, monitoring, and administrative workflows.</p>
+                            <div class="tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span></div>
+                        </div>
                     </div>
                 </div>
                 <div class="portfolio-item reveal reveal-d2">
-                    <div class="portfolio-thumb">🎓</div>
-                    <div class="portfolio-info">
-                        <span class="section-tag">Education</span>
-                        <h3>Career Assessment System</h3>
-                        <p>A web-based platform designed to support student career assessment and organize assessment-related information for educational use.</p>
-                        <div class="portfolio-tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span></div>
+                    <div class="card">
+                        <div class="portfolio-thumb">🎓</div>
+                        <div class="portfolio-info">
+                            <span class="section-tag">Education</span>
+                            <h3>Career Assessment System</h3>
+                            <p>A web-based platform designed to support student career assessment and organize assessment-related information for educational use.</p>
+                            <div class="tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span></div>
+                        </div>
                     </div>
                 </div>
                 <div class="portfolio-item reveal reveal-d3">
-                    <div class="portfolio-thumb">🤝</div>
-                    <div class="portfolio-info">
-                        <span class="section-tag">Community</span>
-                        <h3>HowCan-i-Help</h3>
-                        <p>A web-based platform concept focused on connecting individuals who need assistance with people willing to provide support.</p>
-                        <div class="portfolio-tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                    <div class="card">
+                        <div class="portfolio-thumb">🤝</div>
+                        <div class="portfolio-info">
+                            <span class="section-tag">Community</span>
+                            <h3>HowCan-i-Help</h3>
+                            <p>A web-based platform concept focused on connecting individuals who need assistance with people willing to provide support.</p>
+                            <div class="tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                        </div>
                     </div>
                 </div>
                 <div class="portfolio-item reveal reveal-d4">
-                    <div class="portfolio-thumb">🏪</div>
-                    <div class="portfolio-info">
-                        <span class="section-tag">Business</span>
-                        <h3>Small Business Management System</h3>
-                        <p>A system concept focused on helping small businesses organize products, transactions, customer records, monitoring, and everyday operational activities.</p>
-                        <div class="portfolio-tags"><span>Web-Based</span><span>Database</span><span>Management</span></div>
+                    <div class="card">
+                        <div class="portfolio-thumb">🏪</div>
+                        <div class="portfolio-info">
+                            <span class="section-tag">Business</span>
+                            <h3>Small Business Management System</h3>
+                            <p>A system concept focused on helping small businesses organize products, transactions, customer records, monitoring, and everyday operational activities.</p>
+                            <div class="tags"><span>Web-Based</span><span>Database</span><span>Management</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1809,39 +1730,39 @@
                 <h2>Meet Our <span class="gradient-text">Co-Developer</span></h2>
                 <p class="section-sub">Collaborating with talented developers to deliver exceptional systems.</p>
             </div>
-            <div class="codev-grid">
-                <div class="codev-card reveal reveal-d1">
-                    <div class="avatar">
+            <div class="grid-auto">
+                <div class="card reveal reveal-d1">
+                    <div class="codev-avatar">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&crop=face" alt="Co-Developer" />
                     </div>
                     <h3>John Doe</h3>
-                    <p class="role">Senior System Developer</p>
+                    <p class="codev-role">Senior System Developer</p>
                     <p>Specializes in backend architecture, database optimization, and scalable system design.</p>
-                    <div class="social-links">
+                    <div class="social-icons">
                         <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                <div class="codev-card reveal reveal-d2">
-                    <div class="avatar">
+                <div class="card reveal reveal-d2">
+                    <div class="codev-avatar">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=face" alt="Co-Developer" />
                     </div>
                     <h3>Jane Smith</h3>
-                    <p class="role">Frontend &amp; UI/UX Developer</p>
+                    <p class="codev-role">Frontend &amp; UI/UX Developer</p>
                     <p>Focuses on user interfaces, accessibility, and creating seamless user experiences.</p>
-                    <div class="social-links">
+                    <div class="social-icons">
                         <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                <div class="codev-card reveal reveal-d3">
-                    <div class="avatar">
+                <div class="card reveal reveal-d3">
+                    <div class="codev-avatar">
                         <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&h=160&fit=crop&crop=face" alt="Co-Developer" />
                     </div>
                     <h3>Alex Rivera</h3>
-                    <p class="role">System Analyst &amp; QA</p>
+                    <p class="codev-role">System Analyst &amp; QA</p>
                     <p>Ensures system reliability, performance, and quality through rigorous testing and analysis.</p>
-                    <div class="social-links">
+                    <div class="social-icons">
                         <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
@@ -1858,22 +1779,26 @@
                 <h2>Technical <span class="gradient-text">Skills</span></h2>
                 <p class="section-sub">The technologies and tools we use to build your systems.</p>
             </div>
-            <div class="skills-grid">
-                <div class="skill-item reveal reveal-d1">
-                    <div class="skill-info"><span>System Architecture</span><span>95%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+            <div class="grid-auto">
+                <div>
+                    <div class="skill-item reveal reveal-d1">
+                        <div class="skill-info"><span>System Architecture</span><span>95%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="skill-item reveal reveal-d2">
+                        <div class="skill-info"><span>Web Development</span><span>90%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                    </div>
                 </div>
-                <div class="skill-item reveal reveal-d2">
-                    <div class="skill-info"><span>Web Development</span><span>90%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
-                </div>
-                <div class="skill-item reveal reveal-d3">
-                    <div class="skill-info"><span>Database Management</span><span>85%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
-                </div>
-                <div class="skill-item reveal reveal-d4">
-                    <div class="skill-info"><span>UI/UX Design</span><span>80%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+                <div>
+                    <div class="skill-item reveal reveal-d3">
+                        <div class="skill-info"><span>Database Management</span><span>85%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="skill-item reveal reveal-d4">
+                        <div class="skill-info"><span>UI/UX Design</span><span>80%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2058,6 +1983,55 @@
         }, { threshold: 0.2 });
 
         document.querySelectorAll('.skill-item').forEach(el => skillObserver.observe(el));
+
+        // ============================================================
+        // SINGLE VERSATILE ARROW BUTTON (like your portfolio)
+        // ============================================================
+        const scrollArrow = document.getElementById('scrollArrow');
+        const arrowIcon = document.getElementById('arrowIcon');
+        const arrowTooltip = document.getElementById('arrowTooltip');
+
+        function updateArrow() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const atTop = scrollTop < 50;
+            const atBottom = scrollTop > docHeight - 50;
+
+            if (atBottom) {
+                arrowIcon.className = 'fas fa-chevron-up';
+                arrowTooltip.textContent = 'Scroll to Top';
+            } else if (atTop) {
+                arrowIcon.className = 'fas fa-chevron-down';
+                arrowTooltip.textContent = 'Scroll Down';
+            } else {
+                // If in middle, check which direction is closer
+                const toTop = scrollTop;
+                const toBottom = docHeight - scrollTop;
+                if (toTop < toBottom) {
+                    arrowIcon.className = 'fas fa-chevron-up';
+                    arrowTooltip.textContent = 'Scroll to Top';
+                } else {
+                    arrowIcon.className = 'fas fa-chevron-down';
+                    arrowTooltip.textContent = 'Scroll Down';
+                }
+            }
+        }
+
+        scrollArrow.addEventListener('click', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const atTop = scrollTop < 50;
+            const atBottom = scrollTop > docHeight - 50;
+
+            if (atBottom || (!atTop && scrollTop > docHeight / 2)) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: docHeight, behavior: 'smooth' });
+            }
+        });
+
+        window.addEventListener('scroll', updateArrow);
+        updateArrow();
 
         // ============================================================
         // CONTACT FORM
