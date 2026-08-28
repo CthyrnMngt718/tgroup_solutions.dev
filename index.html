@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechGroup Solutions · Software &amp; System Development</title>
+    <title>TechGroup Solutions · System Development</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,13 +20,13 @@
            ============================================================ */
         :root {
             --bg-primary: #080a0f;
-            --bg-secondary: #0d1117;
+            --bg-secondary: #0f1219;
             --bg-card: rgba(22, 30, 46, 0.75);
             --bg-sidebar: rgba(10, 14, 20, 0.92);
             --accent-1: #6366f1;
             --accent-2: #14b8a6;
             --accent-gradient: linear-gradient(135deg, #6366f1, #14b8a6, #6366f1);
-            --accent-glow: rgba(99, 102, 241, 0.15);
+            --accent-glow: rgba(99, 102, 241, 0.2);
             --text-primary: #edf2f7;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
@@ -75,6 +75,7 @@
             line-height: 1.6;
             display: flex;
             min-height: 100vh;
+            position: relative;
         }
 
         a {
@@ -104,7 +105,7 @@
         }
 
         /* ============================================================
-           SIDEBAR NAVIGATION (MyResume style)
+           SIDEBAR NAVIGATION
            ============================================================ */
         .sidebar {
             position: fixed;
@@ -124,7 +125,6 @@
             overflow-y: auto;
         }
 
-        /* Profile section */
         .sidebar-profile {
             text-align: center;
             margin-bottom: 32px;
@@ -184,7 +184,6 @@
             background: rgba(99, 102, 241, 0.06);
         }
 
-        /* Navigation links */
         .sidebar-nav {
             flex: 1;
             display: flex;
@@ -221,7 +220,6 @@
             background: rgba(99, 102, 241, 0.12);
         }
 
-        /* Sidebar footer (theme toggle) */
         .sidebar-footer {
             padding-top: 16px;
             border-top: 1px solid var(--border-color);
@@ -251,7 +249,7 @@
             transform: rotate(20deg);
         }
 
-        /* Mobile toggle button */
+        /* Mobile toggle */
         .mobile-toggle {
             display: none;
             position: fixed;
@@ -289,6 +287,7 @@
         section {
             padding: 60px 0 40px;
             border-bottom: 1px solid var(--border-color);
+            position: relative;
         }
 
         section:last-of-type {
@@ -346,7 +345,7 @@
         }
 
         /* ============================================================
-           HERO SECTION
+           HERO
            ============================================================ */
         #hero {
             padding-top: 80px;
@@ -502,6 +501,7 @@
             background: var(--border-color);
         }
 
+        /* ---- ENHANCED HERO VISUAL ---- */
         .hero-image {
             display: flex;
             justify-content: center;
@@ -510,33 +510,72 @@
 
         .hero-image-wrapper {
             position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        /* Glowing orb background */
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 340px;
             height: 340px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            animation: orbPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes orbPulse {
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.15);
+                opacity: 1;
+            }
         }
 
         .hero-visual {
+            position: relative;
+            z-index: 1;
             width: 100%;
             height: 100%;
-            border-radius: 24px;
+            border-radius: 30px;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             overflow: hidden;
-            position: relative;
-            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 20px 60px var(--shadow-color);
+            transition: box-shadow 0.5s var(--ease-spring);
+        }
+
+        .hero-visual:hover {
+            box-shadow: 0 30px 80px var(--accent-glow);
         }
 
         .code-window {
-            width: 90%;
-            max-width: 280px;
+            width: 88%;
+            max-width: 300px;
             background: var(--bg-primary);
-            border-radius: 12px;
+            border-radius: 14px;
             border: 1px solid var(--border-color);
             overflow: hidden;
             font-family: var(--font-mono);
             font-size: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s var(--ease-spring);
+        }
+
+        .hero-visual:hover .code-window {
+            transform: translateY(-4px) scale(1.01);
         }
 
         .code-header {
@@ -579,9 +618,10 @@
             padding-left: 16px;
         }
 
+        /* Floating rings */
         .hero-ring {
             position: absolute;
-            inset: -12px;
+            inset: -16px;
             border-radius: 50%;
             border: 2px solid var(--border-color);
             animation: spinRing 25s linear infinite;
@@ -590,12 +630,22 @@
 
         .hero-ring-2 {
             position: absolute;
-            inset: -24px;
+            inset: -32px;
             border-radius: 50%;
             border: 2px dashed var(--border-color);
             animation: spinRing 40s linear infinite reverse;
             z-index: 0;
             opacity: 0.4;
+        }
+
+        .hero-ring-3 {
+            position: absolute;
+            inset: -48px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            animation: spinRing 60s linear infinite;
+            z-index: 0;
+            opacity: 0.2;
         }
 
         @keyframes spinRing {
@@ -607,7 +657,67 @@
             }
         }
 
-        /* Scroll down indicator */
+        /* ============================================================
+           SCROLL NAVIGATION (Arrow Up / Down)
+           ============================================================ */
+        .scroll-nav {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .scroll-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            transition: all 0.3s var(--ease-spring);
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .scroll-nav a:hover {
+            border-color: var(--accent-1);
+            color: var(--accent-1);
+            background: rgba(99, 102, 241, 0.12);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .scroll-nav a .tooltip {
+            position: absolute;
+            right: 54px;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .scroll-nav a:hover .tooltip {
+            opacity: 1;
+        }
+
+        .scroll-nav a:first-child {
+            margin-bottom: 4px;
+        }
+
+        /* Scroll indicator in hero (replaces old) */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -838,10 +948,100 @@
         }
 
         /* ============================================================
+           CO-DEVELOPER SECTION
+           ============================================================ */
+        #co-developer {
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .codev-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .codev-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            transition: all 0.4s var(--ease-spring);
+        }
+
+        .codev-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-1);
+            box-shadow: 0 16px 40px var(--shadow-color);
+        }
+
+        .codev-card .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            border: 3px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .codev-card .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .codev-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .codev-card .role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .codev-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .codev-card .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .codev-card .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .codev-card .social-links a:hover {
+            border-color: var(--accent-1);
+            color: var(--accent-1);
+            background: rgba(99, 102, 241, 0.06);
+        }
+
+        /* ============================================================
            SKILLS
            ============================================================ */
         #skills {
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
@@ -884,51 +1084,7 @@
         }
 
         /* ============================================================
-           TESTIMONIALS
-           ============================================================ */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .testimonial-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 28px 24px;
-            transition: all 0.4s var(--ease-spring);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent-1);
-            box-shadow: 0 16px 40px var(--shadow-color);
-        }
-
-        .testimonial-card p {
-            color: var(--text-secondary);
-            font-style: italic;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .testimonial-author .author {
-            font-weight: 700;
-            color: var(--text-primary);
-            display: block;
-        }
-
-        .testimonial-author .role {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            font-weight: 400;
-        }
-
-        /* ============================================================
-           CONTACT & FOOTER
+           CONTACT
            ============================================================ */
         #contact {
             padding: 0;
@@ -1146,8 +1302,8 @@
             }
 
             .hero-image-wrapper {
-                width: 260px;
-                height: 260px;
+                width: 300px;
+                height: 300px;
             }
 
             .about-grid {
@@ -1165,6 +1321,17 @@
 
             #contact .contact-grid {
                 padding: 0 20px 30px 20px;
+            }
+
+            .scroll-nav {
+                right: 16px;
+                bottom: 16px;
+            }
+
+            .scroll-nav a {
+                width: 38px;
+                height: 38px;
+                font-size: 0.85rem;
             }
         }
 
@@ -1208,8 +1375,8 @@
             }
 
             .hero-image-wrapper {
-                width: 180px;
-                height: 180px;
+                width: 220px;
+                height: 220px;
             }
 
             .hero-stats {
@@ -1235,12 +1402,28 @@
 
             .services-grid,
             .portfolio-grid,
-            .skills-grid {
+            .skills-grid,
+            .codev-grid {
                 grid-template-columns: 1fr;
             }
 
             #contact footer {
                 padding: 16px 20px 12px;
+            }
+
+            .scroll-nav {
+                right: 12px;
+                bottom: 12px;
+            }
+
+            .scroll-nav a {
+                width: 34px;
+                height: 34px;
+                font-size: 0.75rem;
+            }
+
+            .scroll-nav a .tooltip {
+                display: none;
             }
         }
 
@@ -1263,15 +1446,17 @@
             }
 
             .hero-image-wrapper {
-                width: 140px;
-                height: 140px;
+                width: 160px;
+                height: 160px;
             }
 
             .hero-ring {
                 inset: -8px;
             }
-
             .hero-ring-2 {
+                inset: -16px;
+            }
+            .hero-ring-3 {
                 display: none;
             }
 
@@ -1284,6 +1469,17 @@
             .contact-form select {
                 font-size: 0.85rem;
                 padding: 12px 14px;
+            }
+
+            .scroll-nav {
+                right: 8px;
+                bottom: 8px;
+            }
+
+            .scroll-nav a {
+                width: 30px;
+                height: 30px;
+                font-size: 0.65rem;
             }
         }
 
@@ -1356,6 +1552,14 @@
         [data-theme="light"] #contact footer {
             background: var(--bg-secondary);
         }
+
+        [data-theme="light"] .scroll-nav a {
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        [data-theme="light"] .hero-image-wrapper::before {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08), transparent 70%);
+        }
     </style>
 </head>
 
@@ -1379,7 +1583,7 @@
                 <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=180&h=180&fit=crop&crop=face" alt="TechGroup Solutions" />
             </div>
             <h3>TechGroup Solutions</h3>
-            <p class="title">Software &amp; System Development</p>
+            <p class="title">System Development</p>
             <div class="social-links">
                 <a href="https://github.com/TechGroupSolutions" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
@@ -1394,8 +1598,8 @@
             <a href="#about"><i class="fas fa-user"></i> About</a>
             <a href="#services"><i class="fas fa-layer-group"></i> Services</a>
             <a href="#portfolio"><i class="fas fa-folder-open"></i> Portfolio</a>
+            <a href="#co-developer"><i class="fas fa-users"></i> Co-Developer</a>
             <a href="#skills"><i class="fas fa-chart-bar"></i> Skills</a>
-            <a href="#testimonials"><i class="fas fa-quote-right"></i> Testimonials</a>
             <a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a>
         </nav>
 
@@ -1405,6 +1609,20 @@
         </div>
 
     </aside>
+
+    <!-- ============================================================
+    SCROLL NAVIGATION (Arrow Up / Down)
+    ============================================================ -->
+    <nav class="scroll-nav" aria-label="Scroll navigation">
+        <a href="#hero" aria-label="Scroll to top">
+            <i class="fas fa-chevron-up"></i>
+            <span class="tooltip">Top</span>
+        </a>
+        <a href="#contact" aria-label="Scroll to bottom">
+            <i class="fas fa-chevron-down"></i>
+            <span class="tooltip">Bottom</span>
+        </a>
+    </nav>
 
     <!-- ============================================================
     MAIN CONTENT
@@ -1419,19 +1637,19 @@
                 <div class="hero-content">
                     <div class="hero-badge">
                         <span class="badge-dot"></span>
-                        Project-Based · Custom Software
+                        Project-Based · Custom Systems
                     </div>
-                    <h1>Software Solutions <br><span class="gradient-text">Built Around Your Needs</span></h1>
+                    <h1>System Development <br><span class="gradient-text">Built Around Your Needs</span></h1>
                     <p class="hero-sub">Web-Based · Application-Based · Custom Systems · UI/UX</p>
                     <p class="hero-desc">
-                        TechGroup Solutions provides project-based software and system development services for businesses, organizations, schools, students, and individuals. From web-based platforms and management systems to application-based solutions, we design and develop practical technology around your requirements, workflow, users, and objectives.
+                        TechGroup Solutions provides project-based system development services for businesses, organizations, schools, students, and individuals. From web-based platforms and management systems to application-based solutions, we design and develop practical technology around your requirements, workflow, users, and objectives.
                     </p>
                     <div class="hero-buttons">
                         <a href="#portfolio" class="btn btn-primary"><i class="fas fa-folder-open"></i> Explore Projects</a>
                         <a href="#contact" class="btn btn-secondary"><i class="fas fa-comments"></i> Discuss a Project</a>
                     </div>
                     <div class="hero-stats">
-                        <div class="stat"><span class="stat-number">Custom</span><span class="stat-label">Software Solutions</span></div>
+                        <div class="stat"><span class="stat-number">Custom</span><span class="stat-label">System Solutions</span></div>
                         <div class="stat-divider"></div>
                         <div class="stat"><span class="stat-number">Flexible</span><span class="stat-label">Project-Based Approach</span></div>
                         <div class="stat-divider"></div>
@@ -1444,17 +1662,18 @@
                             <div class="code-window">
                                 <div class="code-header"><span></span><span></span><span></span></div>
                                 <div class="code-content">
-                                    <div>&lt;<span>solution</span>&gt;</div>
-                                    <div class="indent">&lt;<span>platform</span> type=<span>"web"</span> /&gt;</div>
-                                    <div class="indent">&lt;<span>application</span> type=<span>"custom"</span> /&gt;</div>
-                                    <div class="indent">&lt;<span>design</span> type=<span>"user-focused"</span> /&gt;</div>
-                                    <div class="indent">&lt;<span>development</span> type=<span>"project-based"</span> /&gt;</div>
-                                    <div>&lt;/<span>solution</span>&gt;</div>
+                                    <div>&lt;<span>system</span>&gt;</div>
+                                    <div class="indent">&lt;<span>architecture</span> type=<span>"scalable"</span> /&gt;</div>
+                                    <div class="indent">&lt;<span>database</span> type=<span>"relational"</span> /&gt;</div>
+                                    <div class="indent">&lt;<span>interface</span> type=<span>"user-focused"</span> /&gt;</div>
+                                    <div class="indent">&lt;<span>deployment</span> type=<span>"project-based"</span> /&gt;</div>
+                                    <div>&lt;/<span>system</span>&gt;</div>
                                 </div>
                             </div>
                         </div>
                         <div class="hero-ring"></div>
                         <div class="hero-ring-2"></div>
+                        <div class="hero-ring-3"></div>
                     </div>
                 </div>
             </div>
@@ -1468,7 +1687,7 @@
             <div class="section-header reveal">
                 <span class="section-tag">About</span>
                 <h2>Technology With a <span class="gradient-text">Purpose</span></h2>
-                <p class="section-sub">We create software around real-world requirements, workflows, and objectives.</p>
+                <p class="section-sub">We create systems around real-world requirements, workflows, and objectives.</p>
             </div>
             <div class="about-grid">
                 <div class="about-card reveal reveal-d1">
@@ -1479,7 +1698,7 @@
                 <div class="about-card reveal reveal-d2">
                     <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Our Capability</h3>
-                    <p>Our development scope includes web-based systems, application-based systems, database-driven solutions, user interfaces, and other custom software projects.</p>
+                    <p>Our development scope includes web-based systems, application-based systems, database-driven solutions, user interfaces, and other custom system projects.</p>
                 </div>
                 <div class="about-card reveal reveal-d3">
                     <div class="service-icon"><i class="fas fa-handshake"></i></div>
@@ -1495,7 +1714,7 @@
         <section id="services">
             <div class="section-header reveal">
                 <span class="section-tag">What We Do</span>
-                <h2>Software &amp; System <span class="gradient-text">Development Services</span></h2>
+                <h2>System <span class="gradient-text">Development Services</span></h2>
                 <p class="section-sub">From websites and web applications to standalone software and custom management systems.</p>
             </div>
             <div class="services-grid">
@@ -1582,57 +1801,79 @@
         </section>
 
         <!-- ========================================================
+        CO-DEVELOPER
+        ======================================================== -->
+        <section id="co-developer">
+            <div class="section-header reveal">
+                <span class="section-tag">Team</span>
+                <h2>Meet Our <span class="gradient-text">Co-Developer</span></h2>
+                <p class="section-sub">Collaborating with talented developers to deliver exceptional systems.</p>
+            </div>
+            <div class="codev-grid">
+                <div class="codev-card reveal reveal-d1">
+                    <div class="avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&crop=face" alt="Co-Developer" />
+                    </div>
+                    <h3>John Doe</h3>
+                    <p class="role">Senior System Developer</p>
+                    <p>Specializes in backend architecture, database optimization, and scalable system design.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="codev-card reveal reveal-d2">
+                    <div class="avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=face" alt="Co-Developer" />
+                    </div>
+                    <h3>Jane Smith</h3>
+                    <p class="role">Frontend &amp; UI/UX Developer</p>
+                    <p>Focuses on user interfaces, accessibility, and creating seamless user experiences.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="codev-card reveal reveal-d3">
+                    <div class="avatar">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&h=160&fit=crop&crop=face" alt="Co-Developer" />
+                    </div>
+                    <h3>Alex Rivera</h3>
+                    <p class="role">System Analyst &amp; QA</p>
+                    <p>Ensures system reliability, performance, and quality through rigorous testing and analysis.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
         SKILLS
         ======================================================== -->
         <section id="skills">
             <div class="section-header reveal">
                 <span class="section-tag">Our Expertise</span>
                 <h2>Technical <span class="gradient-text">Skills</span></h2>
-                <p class="section-sub">The technologies and tools we use to build your solutions.</p>
+                <p class="section-sub">The technologies and tools we use to build your systems.</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-item reveal reveal-d1">
-                    <div class="skill-info"><span>Web Development</span><span>95%</span></div>
+                    <div class="skill-info"><span>System Architecture</span><span>95%</span></div>
                     <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
                 </div>
                 <div class="skill-item reveal reveal-d2">
-                    <div class="skill-info"><span>UI/UX Design</span><span>85%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                    <div class="skill-info"><span>Web Development</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
                 </div>
                 <div class="skill-item reveal reveal-d3">
-                    <div class="skill-info"><span>Database Management</span><span>80%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+                    <div class="skill-info"><span>Database Management</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
                 </div>
                 <div class="skill-item reveal reveal-d4">
-                    <div class="skill-info"><span>System Architecture</span><span>75%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================================
-        TESTIMONIALS
-        ======================================================== -->
-        <section id="testimonials">
-            <div class="section-header reveal">
-                <span class="section-tag">Testimonials</span>
-                <h2>What Clients <span class="gradient-text">Say</span></h2>
-                <p class="section-sub">Feedback from our valued clients and partners.</p>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card reveal reveal-d1">
-                    <p>"TechGroup Solutions delivered a robust health information system that exceeded our expectations. Their attention to detail and commitment to quality is exceptional."</p>
-                    <div class="testimonial-author">
-                        <span class="author">Jane Lorraine Carlet</span>
-                        <span class="role">Executive Agent Supervisor, Skyline CATV</span>
-                    </div>
-                </div>
-                <div class="testimonial-card reveal reveal-d2">
-                    <p>"A dedicated and skilled team. The career assessment platform they built was professional, intuitive, and well‑received by both students and faculty."</p>
-                    <div class="testimonial-author">
-                        <span class="author">Maikee Bolante</span>
-                        <span class="role">Executive Agent Supervisor, Skyline CATV</span>
-                    </div>
+                    <div class="skill-info"><span>UI/UX Design</span><span>80%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
                 </div>
             </div>
         </section>
@@ -1652,7 +1893,7 @@
                     <p>Share your goals, current process, desired features, and any information that may help us understand your project. We'll review your inquiry and discuss the appropriate next steps before preparing a project proposal or quotation.</p>
                     <div class="contact-item"><i class="fas fa-envelope"></i><span>techgroupsolutions@email.com</span></div>
                     <div class="contact-item"><i class="fas fa-location-dot"></i><span>Rizal, Philippines</span></div>
-                    <div class="contact-item"><i class="fas fa-briefcase"></i><span>Project-Based Software Development</span></div>
+                    <div class="contact-item"><i class="fas fa-briefcase"></i><span>Project-Based System Development</span></div>
                 </div>
                 <form class="contact-form reveal" id="contact-form">
                     <input type="text" name="name" placeholder="Your Name" required />
