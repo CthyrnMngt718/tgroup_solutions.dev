@@ -8,14 +8,16 @@
     <meta property="og:title" content="TechGroup Solutions · System Development" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Custom system development built around your needs. Web-based, mobile, and desktop solutions." />
-    <!-- Fonts & Icons -->
+
+    <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <style>
         /* ============================================================
-           ROOT VARIABLES – Modern, Clean Palette
+           ROOT VARIABLES – Modern Dashboard Palette
            ============================================================ */
         :root {
             --bg-primary: #080a0f;
@@ -37,7 +39,8 @@
             --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            --header-height: 72px;
+            --sidebar-width: 280px;
+            --header-height: 0; /* no floating header now */
         }
 
         /* Light mode */
@@ -65,7 +68,7 @@
         }
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+            scroll-padding-top: 20px;
         }
         body {
             font-family: var(--font-sans);
@@ -75,6 +78,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             transition: background 0.3s, color 0.3s;
+            display: flex;
         }
         a {
             text-decoration: none;
@@ -103,7 +107,7 @@
         }
 
         /* ============================================================
-           AMBIENT BACKGROUND (Mesh + Mouse-follow)
+           AMBIENT BACKGROUND (Mouse-follow mesh)
            ============================================================ */
         .ambient-bg {
             position: fixed;
@@ -143,176 +147,233 @@
         }
 
         /* ============================================================
-           FLOATING HEADER (Profile-centric, like screenshot)
+           LEFT SIDEBAR NAVIGATION (Modern Dashboard Style)
            ============================================================ */
-        .floating-header {
+        .sidebar {
             position: fixed;
-            top: 16px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 8px 18px 8px 12px;
-            border-radius: 60px;
             background: var(--surface-strong);
-            backdrop-filter: blur(20px) saturate(160%);
-            -webkit-backdrop-filter: blur(20px) saturate(160%);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 40px var(--shadow-color);
-            width: min(92%, 1200px);
-            transition: background 0.3s, border-color 0.3s;
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border-right: 1px solid var(--border-color);
+            padding: 28px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            transition: transform 0.4s var(--ease-spring), background 0.3s, border-color 0.3s;
         }
-        .header-left {
+
+        /* Sidebar Brand / Logo */
+        .sidebar-brand {
             display: flex;
             align-items: center;
             gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
         }
-        .header-avatar {
+        .sidebar-brand .logo {
             width: 44px;
             height: 44px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-1);
+            border-radius: 12px;
             overflow: hidden;
+            border: 1px solid var(--border-color);
             flex-shrink: 0;
-            box-shadow: 0 0 20px var(--accent-glow);
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .header-avatar img {
+        .sidebar-brand .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .sidebar-brand .brand-text {
+            display: grid;
+            line-height: 1.1;
+        }
+        .sidebar-brand .brand-text strong {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .sidebar-brand .brand-text small {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* Sidebar Profile (like screenshot) */
+        .sidebar-profile {
+            text-align: center;
+            padding: 16px 0 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        .sidebar-profile .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            border: 3px solid var(--accent-1);
+            overflow: hidden;
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+        .sidebar-profile .avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .header-title {
-            display: grid;
-            line-height: 1.2;
-        }
-        .header-title strong {
-            font-size: 0.95rem;
+        .sidebar-profile h3 {
+            font-size: 1rem;
             font-weight: 700;
-            letter-spacing: -0.02em;
         }
-        .header-title span {
-            font-size: 0.65rem;
+        .sidebar-profile .title {
+            font-size: 0.75rem;
             color: var(--text-muted);
             font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
         }
-        .header-actions {
+        .sidebar-profile .social-links {
             display: flex;
-            align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
         }
-        .header-actions .icon-btn {
-            width: 36px;
-            height: 36px;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
+        .sidebar-profile .social-links a {
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
+            border: 1px solid var(--border-color);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.25s var(--ease-spring);
-            font-size: 1rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            transition: var(--transition);
         }
-        .header-actions .icon-btn:hover {
+        .sidebar-profile .social-links a:hover {
+            border-color: var(--accent-1);
             color: var(--accent-1);
-            background: rgba(99, 102, 241, 0.08);
-            transform: translateY(-2px);
-        }
-        .header-actions .menu-btn {
-            display: none;
-        }
-        .header-actions .theme-btn {
-            font-size: 0.95rem;
+            background: rgba(99, 102, 241, 0.06);
         }
 
-        /* ============================================================
-           OFF-CANVAS NAV (Slide-out)
-           ============================================================ */
-        .nav-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 999;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(6px);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-        .nav-overlay.open {
-            opacity: 1;
-            visibility: visible;
-        }
-        .slide-nav {
-            position: fixed;
-            top: 0;
-            right: -320px;
-            width: 300px;
-            height: 100vh;
-            z-index: 1001;
-            background: var(--surface-strong);
-            backdrop-filter: blur(24px);
-            border-left: 1px solid var(--border-color);
-            padding: 30px 24px;
+        /* Navigation Links */
+        .sidebar-nav {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            transition: right 0.4s var(--ease-spring);
-            box-shadow: -20px 0 60px var(--shadow-color);
+            gap: 4px;
+            margin-bottom: 20px;
         }
-        .slide-nav.open {
-            right: 0;
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.3s var(--ease-spring);
+            position: relative;
         }
-        .slide-nav .close-btn {
-            align-self: flex-end;
+        .sidebar-nav a i {
+            width: 22px;
+            text-align: center;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .sidebar-nav a:hover {
+            color: var(--text-primary);
+            background: rgba(99, 102, 241, 0.06);
+            transform: translateX(4px);
+        }
+        .sidebar-nav a.active {
+            color: var(--accent-1);
+            background: rgba(99, 102, 241, 0.1);
+        }
+        .sidebar-nav a.active i {
+            color: var(--accent-1);
+        }
+        .sidebar-nav a .nav-indicator {
+            position: absolute;
+            right: 14px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: transparent;
+            transition: var(--transition);
+        }
+        .sidebar-nav a.active .nav-indicator {
+            background: var(--accent-1);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        /* Sidebar Footer (Theme Toggle) */
+        .sidebar-footer {
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .sidebar-footer button {
             background: none;
             border: none;
             color: var(--text-muted);
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             cursor: pointer;
             padding: 8px;
-        }
-        .slide-nav a {
+            border-radius: 50%;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            transition: all 0.25s var(--ease-spring);
-            font-size: 0.9rem;
+            justify-content: center;
         }
-        .slide-nav a i {
-            width: 22px;
-            text-align: center;
+        .sidebar-footer button:hover {
             color: var(--accent-1);
-        }
-        .slide-nav a:hover,
-        .slide-nav a.active {
             background: rgba(99, 102, 241, 0.08);
-            color: var(--text-primary);
+            transform: rotate(20deg);
         }
-        .slide-nav a.active {
-            background: rgba(99, 102, 241, 0.12);
-            color: var(--accent-1);
+
+        /* Mobile Toggle (Hamburger) */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 16px;
+            right: 20px;
+            z-index: 1100;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px 12px;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .mobile-toggle:hover {
+            border-color: var(--accent-1);
         }
 
         /* ============================================================
-           MAIN CONTENT
+           MAIN CONTENT (Offset by sidebar)
            ============================================================ */
         .main-content {
-            padding-top: calc(var(--header-height) + 20px);
-            padding-bottom: 60px;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-left: 24px;
-            padding-right: 24px;
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 0 50px 60px;
+            max-width: 100%;
+            min-height: 100vh;
         }
 
         /* ============================================================
@@ -377,7 +438,7 @@
            HERO
            ============================================================ */
         #hero {
-            padding-top: 20px;
+            padding-top: 40px;
             min-height: 80vh;
             display: flex;
             flex-direction: column;
@@ -471,7 +532,6 @@
             background: var(--border-color);
         }
 
-        /* Hero visual with 3D tilt */
         .hero-image {
             display: flex;
             justify-content: center;
@@ -650,7 +710,6 @@
             font-size: 0.8rem;
         }
 
-        /* Ripple */
         .ripple {
             position: absolute;
             border-radius: 50%;
@@ -734,7 +793,7 @@
         }
 
         /* ============================================================
-           PROCESS SECTION
+           PROCESS
            ============================================================ */
         .process-shell {
             display: grid;
@@ -855,7 +914,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Modal */
+        /* Modals */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -933,51 +992,63 @@
         }
 
         /* ============================================================
-           CO-DEVELOPER
+           CO-DEVELOPER (Single)
            ============================================================ */
-        #co-developer .grid-auto .card {
+        .co-dev-single {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .co-dev-single .card {
             text-align: center;
+            padding: 32px 24px;
         }
-        .codev-avatar {
-            width: 80px;
-            height: 80px;
+        .co-dev-single .codev-avatar {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 0 auto 12px;
-            border: 3px solid var(--border-color);
+            margin: 0 auto 16px;
+            border: 4px solid var(--accent-1);
             overflow: hidden;
+            box-shadow: 0 0 40px var(--accent-glow);
         }
-        .codev-avatar img {
+        .co-dev-single .codev-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .codev-role {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
+        .co-dev-single .codev-role {
+            font-size: 0.85rem;
+            color: var(--accent-2);
+            font-weight: 600;
+            margin-bottom: 6px;
         }
-        .social-icons {
+        .co-dev-single p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .co-dev-single .social-icons {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 12px;
+            gap: 12px;
+            margin-top: 16px;
         }
-        .social-icons a {
+        .co-dev-single .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             border: 1px solid var(--border-color);
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 1rem;
             transition: var(--transition);
         }
-        .social-icons a:hover {
+        .co-dev-single .social-icons a:hover {
             border-color: var(--accent-1);
             color: var(--accent-1);
             background: rgba(99, 102, 241, 0.06);
+            transform: translateY(-3px);
         }
 
         /* ============================================================
@@ -1313,16 +1384,24 @@
         }
 
         @media (max-width: 768px) {
-            .floating-header {
-                top: 12px;
-                padding: 6px 14px 6px 10px;
-                width: calc(100% - 24px);
-                border-radius: 40px;
+            :root { --sidebar-width: 0; }
+            .sidebar {
+                transform: translateX(-100%);
+                width: 280px;
             }
-            .header-title span { display: none; }
-            .header-actions .menu-btn { display: inline-flex; }
-            .header-actions .icon-btn:not(.menu-btn):not(.theme-btn) { display: none; }
-            .main-content { padding: calc(var(--header-height) + 10px) 16px 40px; }
+            .sidebar.open {
+                transform: translateX(0);
+                box-shadow: 20px 0 60px var(--shadow-color);
+            }
+            .mobile-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 20px 20px 40px;
+            }
             .hero h1 { font-size: 2.6rem; }
             .hero-stats { gap: 16px; flex-wrap: wrap; }
             .stat-divider { height: 28px; }
@@ -1370,17 +1449,17 @@
         }
 
         /* Light theme overrides */
-        [data-theme="light"] .floating-header {
-            background: rgba(255, 255, 255, 0.92);
-            border-color: rgba(0, 0, 0, 0.06);
-        }
-        [data-theme="light"] .slide-nav {
+        [data-theme="light"] .sidebar {
             background: rgba(255, 255, 255, 0.95);
-            border-color: rgba(0, 0, 0, 0.06);
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
         }
-        [data-theme="light"] .slide-nav a:hover,
-        [data-theme="light"] .slide-nav a.active {
+        [data-theme="light"] .sidebar-nav a:hover,
+        [data-theme="light"] .sidebar-nav a.active {
             background: rgba(99, 102, 241, 0.04);
+        }
+        [data-theme="light"] .mobile-toggle {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.06);
         }
         [data-theme="light"] .modal-content {
             background: #ffffff;
@@ -1390,6 +1469,15 @@
         }
         [data-theme="light"] .process-index {
             background: #f1f5f9;
+        }
+        [data-theme="light"] .hero-visual {
+            background: var(--bg-card);
+        }
+        [data-theme="light"] .code-window {
+            background: var(--bg-secondary);
+        }
+        [data-theme="light"] .code-header {
+            background: var(--bg-primary);
         }
     </style>
 </head>
@@ -1401,55 +1489,81 @@
     <!-- Progress Bar -->
     <div id="progress-bar"></div>
 
-    <!-- Floating Header (Profile-centric) -->
-    <header class="floating-header" role="banner">
-        <div class="header-left">
-            <div class="header-avatar">
+    <!-- Mobile Toggle (Hamburger) -->
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- ============================================================
+    LEFT SIDEBAR NAVIGATION
+    ============================================================ -->
+    <aside class="sidebar" id="sidebar" role="navigation">
+        <!-- Brand / Logo -->
+        <div class="sidebar-brand">
+            <div class="logo">
+                <img src="images/logo.png" alt="TechGroup Solutions Logo" />
+            </div>
+            <div class="brand-text">
+                <strong>TechGroup</strong>
+                <small>Solutions</small>
+            </div>
+        </div>
+
+        <!-- Profile (like screenshot) -->
+        <div class="sidebar-profile">
+            <div class="avatar">
                 <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=160&h=160&fit=crop&crop=face" alt="TechGroup Solutions" loading="lazy" />
             </div>
-            <div class="header-title">
-                <strong>TechGroup Solutions</strong>
-                <span>System Development</span>
+            <h3>TechGroup Solutions</h3>
+            <p class="title">System Development</p>
+            <div class="social-links">
+                <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
-        <div class="header-actions">
-            <button class="icon-btn" aria-label="Twitter" onclick="window.open('#','_blank')"><i class="fab fa-x-twitter"></i></button>
-            <button class="icon-btn" aria-label="Instagram" onclick="window.open('#','_blank')"><i class="fab fa-instagram"></i></button>
-            <button class="icon-btn" aria-label="Dashboard" onclick="window.open('#','_blank')"><i class="fas fa-chart-simple"></i></button>
-            <button class="icon-btn theme-btn" id="themeToggleHeader" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
-            <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+
+        <!-- Navigation Links -->
+        <nav class="sidebar-nav">
+            <a href="#hero" class="active">
+                <i class="fas fa-house"></i> Home
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#about">
+                <i class="fas fa-user"></i> About
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#services">
+                <i class="fas fa-layer-group"></i> Services
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#process">
+                <i class="fas fa-arrow-trend-up"></i> Process
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#portfolio">
+                <i class="fas fa-folder-open"></i> Portfolio
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#co-developer">
+                <i class="fas fa-users"></i> Co-Developer
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#skills">
+                <i class="fas fa-chart-bar"></i> Skills
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="#contact">
+                <i class="fas fa-paper-plane"></i> Contact
+                <span class="nav-indicator"></span>
+            </a>
+        </nav>
+
+        <!-- Footer: Theme Toggle -->
+        <div class="sidebar-footer">
+            <button id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
         </div>
-    </header>
-
-    <!-- Off-canvas Navigation -->
-    <div class="nav-overlay" id="navOverlay"></div>
-    <nav class="slide-nav" id="slideNav" role="navigation">
-        <button class="close-btn" id="closeNav" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
-        <a href="#hero" class="active"><i class="fas fa-house"></i> Home</a>
-        <a href="#about"><i class="fas fa-user"></i> About</a>
-        <a href="#services"><i class="fas fa-layer-group"></i> Services</a>
-        <a href="#process"><i class="fas fa-arrow-trend-up"></i> Process</a>
-        <a href="#portfolio"><i class="fas fa-folder-open"></i> Portfolio</a>
-        <a href="#co-developer"><i class="fas fa-users"></i> Co-Developer</a>
-        <a href="#skills"><i class="fas fa-chart-bar"></i> Skills</a>
-        <a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a>
-    </nav>
-
-    <!-- Floating CTA -->
-    <div class="floating-cta" id="floatingCta">
-        <button class="cta-main" id="ctaToggle" aria-label="Contact options"><i class="fas fa-comment"></i></button>
-        <div class="cta-options">
-            <a href="mailto:techgroupsolutions@email.com"><i class="fas fa-envelope"></i> Email</a>
-            <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="#"><i class="fas fa-calendar"></i> Book a Call</a>
-        </div>
-    </div>
-
-    <!-- Scroll Arrow (bottom-right) -->
-    <button class="scroll-arrow" id="scrollArrow" aria-label="Scroll">
-        <i class="fas fa-chevron-down" id="arrowIcon"></i>
-        <span class="tooltip" id="arrowTooltip">Scroll Down</span>
-    </button>
+    </aside>
 
     <!-- ============================================================
     MAIN CONTENT
@@ -1579,7 +1693,7 @@
         </section>
 
         <!-- ========================================================
-        PROCESS (New Section)
+        PROCESS
         ======================================================== -->
         <section id="process">
             <div class="section-header reveal">
@@ -1690,49 +1804,26 @@
         </section>
 
         <!-- ========================================================
-        CO-DEVELOPER
+        CO-DEVELOPER (Single: Ariel B. Eubanas, Jr.)
         ======================================================== -->
         <section id="co-developer">
             <div class="section-header reveal">
                 <span class="section-tag">Team</span>
                 <h2>Meet Our <span class="gradient-text">Co-Developer</span></h2>
-                <p class="section-sub">Collaborating with talented developers to deliver exceptional systems.</p>
+                <p class="section-sub">Collaborating with a talented developer to deliver exceptional systems.</p>
             </div>
-            <div class="grid-auto">
-                <div class="card reveal reveal-d1">
+            <div class="co-dev-single reveal">
+                <div class="card">
                     <div class="codev-avatar">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&crop=face" alt="Co-Developer" loading="lazy" />
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&crop=face" alt="Ariel B. Eubanas, Jr." loading="lazy" />
                     </div>
-                    <h3>John Doe</h3>
-                    <p class="codev-role">Senior System Developer</p>
-                    <p>Specializes in backend architecture, database optimization, and scalable system design.</p>
+                    <h3>Ariel B. Eubanas, Jr.</h3>
+                    <p class="codev-role">System Developer &amp; Co-Founder</p>
+                    <p>Specializes in backend architecture, database optimization, and full‑stack system development. Ariel brings deep expertise in building scalable, user‑centric solutions across web and mobile platforms.</p>
                     <div class="social-icons">
                         <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="card reveal reveal-d2">
-                    <div class="codev-avatar">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=face" alt="Co-Developer" loading="lazy" />
-                    </div>
-                    <h3>Jane Smith</h3>
-                    <p class="codev-role">Frontend &amp; UI/UX Developer</p>
-                    <p>Focuses on user interfaces, accessibility, and creating seamless user experiences.</p>
-                    <div class="social-icons">
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="card reveal reveal-d3">
-                    <div class="codev-avatar">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&h=160&fit=crop&crop=face" alt="Co-Developer" loading="lazy" />
-                    </div>
-                    <h3>Alex Rivera</h3>
-                    <p class="codev-role">System Analyst &amp; QA</p>
-                    <p>Ensures system reliability, performance, and quality through rigorous testing and analysis.</p>
-                    <div class="social-icons">
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
                     </div>
                 </div>
             </div>
@@ -1833,7 +1924,27 @@
     </main>
 
     <!-- ============================================================
-    MODALS (hidden by default)
+    FLOATING CTA
+    ============================================================ -->
+    <div class="floating-cta" id="floatingCta">
+        <button class="cta-main" id="ctaToggle" aria-label="Contact options"><i class="fas fa-comment"></i></button>
+        <div class="cta-options">
+            <a href="mailto:techgroupsolutions@email.com"><i class="fas fa-envelope"></i> Email</a>
+            <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#"><i class="fas fa-calendar"></i> Book a Call</a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    SCROLL ARROW
+    ============================================================ -->
+    <button class="scroll-arrow" id="scrollArrow" aria-label="Scroll">
+        <i class="fas fa-chevron-down" id="arrowIcon"></i>
+        <span class="tooltip" id="arrowTooltip">Scroll Down</span>
+    </button>
+
+    <!-- ============================================================
+    PORTFOLIO MODALS
     ============================================================ -->
     <div class="modal-overlay" id="modal1">
         <div class="modal-content">
@@ -1915,53 +2026,49 @@
         });
 
         // ============================================================
-        // THEME TOGGLE (Header)
+        // THEME TOGGLE
         // ============================================================
-        const themeToggleBtn = document.getElementById('themeToggleHeader');
+        const themeToggle = document.getElementById('themeToggle');
         const storedTheme = localStorage.getItem('theme') || 'dark';
         if (storedTheme === 'light') {
             document.documentElement.setAttribute('data-theme', 'light');
-            themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
-        themeToggleBtn.addEventListener('click', () => {
+        themeToggle.addEventListener('click', () => {
             const current = document.documentElement.getAttribute('data-theme');
             const newTheme = current === 'light' ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            themeToggleBtn.innerHTML = newTheme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            themeToggle.innerHTML = newTheme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
 
         // ============================================================
-        // MOBILE NAV
+        // MOBILE SIDEBAR TOGGLE
         // ============================================================
-        const menuToggle = document.getElementById('menuToggle');
-        const navOverlay = document.getElementById('navOverlay');
-        const slideNav = document.getElementById('slideNav');
-        const closeNav = document.getElementById('closeNav');
-
-        function openNav() {
-            slideNav.classList.add('open');
-            navOverlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeNavFn() {
-            slideNav.classList.remove('open');
-            navOverlay.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-        menuToggle.addEventListener('click', openNav);
-        closeNav.addEventListener('click', closeNavFn);
-        navOverlay.addEventListener('click', closeNavFn);
-        // Close nav on link click (mobile)
-        document.querySelectorAll('.slide-nav a').forEach(link => {
-            link.addEventListener('click', closeNavFn);
+        const mobileToggle = document.getElementById('mobileToggle');
+        const sidebar = document.getElementById('sidebar');
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            const isOpen = sidebar.classList.contains('open');
+            mobileToggle.innerHTML = isOpen ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+            mobileToggle.setAttribute('aria-expanded', isOpen);
+        });
+        // Close sidebar on link click (mobile)
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('open');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
         });
 
         // ============================================================
-        // SCROLLSPY for slide-nav
+        // SCROLLSPY for sidebar nav
         // ============================================================
         const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.slide-nav a');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
         function updateActiveLink() {
             let current = '';
             sections.forEach(section => {
@@ -2130,7 +2237,7 @@
         });
 
         // ============================================================
-        // SINGLE VERSATILE ARROW BUTTON
+        // SCROLL ARROW
         // ============================================================
         const scrollArrow = document.getElementById('scrollArrow');
         const arrowIcon = document.getElementById('arrowIcon');
@@ -2220,7 +2327,7 @@
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // ============================================================
-        // CLOSE FLOATING CTA ON ESCAPE
+        // CLOSE FLOATING CTA & MODALS ON ESCAPE
         // ============================================================
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
