@@ -9,6 +9,7 @@ mobileToggle.addEventListener('click', () => {
     sidebar.classList.toggle('open');
     const isOpen = sidebar.classList.contains('open');
     menuIcon.className = isOpen ? 'fas fa-xmark' : 'fas fa-bars';
+    mobileToggle.setAttribute('aria-expanded', isOpen);
 });
 
 // Close sidebar when a nav link is clicked (mobile)
@@ -17,6 +18,7 @@ document.querySelectorAll('.sidebar-nav a').forEach(link => {
         if (window.innerWidth <= 768) {
             sidebar.classList.remove('open');
             menuIcon.className = 'fas fa-bars';
+            mobileToggle.setAttribute('aria-expanded', 'false');
         }
     });
 });
@@ -98,7 +100,7 @@ document.querySelectorAll('.reveal').forEach(el => {
 });
 
 // ============================================================
-// CONTACT FORM (demo)
+// CONTACT FORM
 // ============================================================
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -118,7 +120,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 });
 
 // ============================================================
-// GITHUB REPOS – Fetch from API (or use fallback static data)
+// GITHUB REPOS – Fetch from API (with fallback)
 // ============================================================
 (async function fetchGitHubRepos() {
     const username = 'TechGroupSolutions'; // Replace with your actual GitHub username
@@ -132,7 +134,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
             language: 'PHP',
             stargazers_count: 12,
             forks_count: 4,
-            updated_at: '2026-08-26T10:00:00Z'
+            updated_at: new Date(Date.now() - 2 * 86400000).toISOString() // 2 days ago
         },
         {
             name: 'career-assessment-angono',
@@ -140,7 +142,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
             language: 'PHP',
             stargazers_count: 8,
             forks_count: 2,
-            updated_at: '2026-08-20T14:30:00Z'
+            updated_at: new Date(Date.now() - 7 * 86400000).toISOString() // 7 days ago
         },
         {
             name: 'howcan-i-help',
@@ -148,7 +150,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
             language: 'PHP',
             stargazers_count: 6,
             forks_count: 1,
-            updated_at: '2026-08-10T09:15:00Z'
+            updated_at: new Date(Date.now() - 21 * 86400000).toISOString() // 3 weeks ago
         }
     ];
 
@@ -157,14 +159,15 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
         if (!response.ok) throw new Error('GitHub API limit or error');
         const repos = await response.json();
 
-        // Update stats
-        const totalStars = repos.reduce((acc, r) => acc + r.stargazers_count, 0);
-        const totalForks = repos.reduce((acc, r) => acc + r.forks_count, 0);
-        document.getElementById('gh-repo-count').textContent = repos.length;
-        document.getElementById('gh-star-count').textContent = totalStars;
-        document.getElementById('gh-fork-count').textContent = totalForks;
-
         // Render repos
+        renderRepos(repos);
+
+    } catch (error) {
+        console.warn('GitHub API not available, using fallback data.');
+        renderRepos(fallbackRepos);
+    }
+
+    function renderRepos(repos) {
         container.innerHTML = repos.map(repo => `
             <div class="repo-card reveal reveal-d1">
                 <div class="repo-top">
@@ -183,36 +186,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
             </div>
         `).join('');
 
-        // Re-trigger reveal for new elements
-        document.querySelectorAll('#repo-container .repo-card').forEach(el => {
-            revealObserver.observe(el);
-        });
-
-    } catch (error) {
-        console.warn('GitHub API not available, using fallback data.');
-        // Use fallback data
-        renderFallbackRepos(fallbackRepos);
-    }
-
-    function renderFallbackRepos(repos) {
-        container.innerHTML = repos.map(repo => `
-            <div class="repo-card reveal reveal-d1">
-                <div class="repo-top">
-                    <div class="repo-name">
-                        <i class="fas fa-book"></i> ${repo.name}
-                    </div>
-                    <span style="font-size:0.65rem;color:var(--text-muted);font-family:var(--font-mono);">public</span>
-                </div>
-                <div class="repo-desc">${repo.description}</div>
-                <div class="repo-meta">
-                    <span><span class="lang-dot" style="background:${getLanguageColor(repo.language)};"></span> ${repo.language}</span>
-                    <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
-                    <span><i class="fas fa-code-fork"></i> ${repo.forks_count}</span>
-                    <span>updated ${timeAgo(repo.updated_at)}</span>
-                </div>
-            </div>
-        `).join('');
-
+        // Observe new repo cards for scroll reveal
         document.querySelectorAll('#repo-container .repo-card').forEach(el => {
             revealObserver.observe(el);
         });
@@ -252,3 +226,8 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
         return 'just now';
     }
 })();
+
+// ============================================================
+// UPDATE FOOTER YEAR
+// ============================================================
+document.getElementById('current-year').textContent = new Date().getFullYear();
