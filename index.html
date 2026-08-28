@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cathyrine Menguito | Freelance Web Developer & System Developer</title>
-    
+    <title>TechGroup Solutions | Freelance Web &amp; System Development</title>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    
+
     <style>
         /* ============================================
-           ROOT VARIABLES
+           ROOT VARIABLES (Dark & Light)
            ============================================ */
         :root {
             --bg-primary: #070a08;
@@ -35,7 +35,6 @@
             --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        /* Light Mode */
         [data-theme="light"] {
             --bg-primary: #f0f7f3;
             --bg-secondary: #e6f0ea;
@@ -129,8 +128,13 @@
         }
 
         @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         /* ============================================
@@ -177,7 +181,7 @@
         }
 
         /* ============================================
-           BACKGROUND EFFECTS
+           BG EFFECTS
            ============================================ */
         body::before {
             content: '';
@@ -359,7 +363,6 @@
         [data-theme="light"] #theme-toggle {
             color: #0b1a14;
         }
-
         [data-theme="light"] #theme-toggle:hover {
             color: var(--mint-primary);
         }
@@ -380,7 +383,7 @@
         }
 
         /* ============================================
-           HERO SECTION
+           HERO
            ============================================ */
         #hero {
             min-height: 100vh;
@@ -424,8 +427,15 @@
         }
 
         @keyframes pulseDot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
         }
 
         .hero-content h1 {
@@ -434,7 +444,6 @@
             line-height: 1.1;
             margin-bottom: 12px;
         }
-
         .hero-content h1 .gradient-text {
             font-size: 3.5rem;
         }
@@ -525,12 +534,16 @@
         }
 
         @keyframes ringSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* ============================================
-           ABOUT ME SECTION
+           ABOUT
            ============================================ */
         #about {
             background: var(--bg-secondary);
@@ -611,7 +624,7 @@
         }
 
         /* ============================================
-           SERVICES SECTION
+           SERVICES
            ============================================ */
         #services {
             background: var(--bg-primary);
@@ -692,7 +705,7 @@
         }
 
         /* ============================================
-           PORTFOLIO SECTION
+           PORTFOLIO
            ============================================ */
         #portfolio {
             background: var(--bg-secondary);
@@ -829,7 +842,7 @@
         }
 
         /* ============================================
-           PROCESS SECTION
+           PROCESS
            ============================================ */
         #process {
             background: var(--bg-secondary);
@@ -877,7 +890,7 @@
         }
 
         /* ============================================
-           CONTACT SECTION
+           CONTACT
            ============================================ */
         #contact {
             background: var(--bg-primary);
@@ -1039,7 +1052,6 @@
                 padding-top: 120px;
                 gap: 40px;
             }
-
             .hero-content h1 {
                 font-size: 3rem;
             }
@@ -1091,19 +1103,15 @@
                 transition: var(--transition);
                 border-bottom: 1px solid var(--border-mint);
             }
-
             [data-theme="light"] .nav-links {
                 background: rgba(255, 255, 255, 0.96);
             }
-
             .nav-links.active {
                 clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             }
-
             .menu-toggle {
                 display: flex;
             }
-
             .menu-toggle.active .bar:nth-child(1) {
                 transform: rotate(45deg) translate(6px, 6px);
             }
@@ -1113,7 +1121,6 @@
             .menu-toggle.active .bar:nth-child(3) {
                 transform: rotate(-45deg) translate(6px, -6px);
             }
-
             .hero-content h1 {
                 font-size: 2.4rem;
             }
@@ -1294,8 +1301,8 @@
         <nav>
             <div class="logo">
                 <a href="index.html">
-                    <span class="logo-icon">CM</span>
-                    <span class="logo-text">Cathyrine <span>Menguito</span></span>
+                    <span class="logo-icon">TS</span>
+                    <span class="logo-text">TechGroup <span>Solutions</span></span>
                 </a>
             </div>
             <ul class="nav-links">
@@ -1317,90 +1324,93 @@
         </nav>
     </header>
 
-    <!-- ========== HERO SECTION ========== -->
+    <!-- ========== HERO ========== -->
     <section id="hero">
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
-                Available for freelance &amp; project-based work
+                Project‑Based · Freelance · Full‑Cycle Development
             </div>
             <h1>
-                Hi, I'm <span class="gradient-text">Cathyrine Menguito</span>
+                Build Smarter with <span class="gradient-text">TechGroup Solutions</span>
             </h1>
-            <p class="hero-subtitle">Web Developer · System Developer · UI/UX Enthusiast</p>
+            <p class="hero-subtitle">Custom Web · Systems · UI/UX for Real‑World Impact</p>
             <p class="hero-description">
-                I build clean, functional, and user‑friendly web systems and applications.
-                Whether it's a custom web system, a business website, or an academic project —
-                I deliver solutions that work.
+                We design and deliver clean, functional, and user‑friendly web systems
+                and applications — from healthcare to education, real estate to business.
+                Reliable, scalable, and built to work.
             </p>
             <div class="hero-buttons">
                 <a href="#portfolio" class="btn btn-primary">
-                    <i class="fas fa-rocket"></i> View My Work
+                    <i class="fas fa-rocket"></i> View Our Work
                 </a>
                 <a href="#contact" class="btn btn-secondary">
-                    <i class="fas fa-paper-plane"></i> Let's Talk
+                    <i class="fas fa-paper-plane"></i> Start a Project
                 </a>
             </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-number">4+</span>
+                    <span class="stat-number">8+</span>
                     <span class="stat-label">Projects Delivered</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-number">2</span>
+                    <span class="stat-number">3</span>
                     <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-number">5</span>
-                    <span class="stat-label">Certifications</span>
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Client Satisfaction</span>
                 </div>
             </div>
         </div>
         <div class="hero-image">
             <div class="hero-image-wrapper">
-                <img src="1000014492.jpg" alt="Cathyrine Menguito" />
+                <!-- Replace with your team / brand image -->
+                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&h=400&fit=crop&crop=face" alt="TechGroup Solutions Team" />
                 <div class="hero-image-ring"></div>
             </div>
         </div>
     </section>
 
-    <!-- ========== ABOUT ME ========== -->
+    <!-- ========== ABOUT ========== -->
     <section id="about">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">About Me</span>
-                <h2>Who I <span class="gradient-text">Am</span></h2>
+                <span class="section-tag">About Us</span>
+                <h2>Who We <span class="gradient-text">Are</span></h2>
             </div>
             <div class="about-grid">
                 <div class="about-text">
                     <p>
-                        I'm Cathyrine Menguito, a <span class="highlight">Bachelor of Science in Computer Science</span>
-                        graduate from Renaissance School of Science and Technology, Inc.
+                        <span class="highlight">TechGroup Solutions</span> is a freelance / project‑based
+                        development team with a strong foundation in <span class="highlight">Computer Science</span>
+                        and real‑world project experience.
                     </p>
                     <p>
-                        I specialize in <span class="highlight">web development, UI/UX design, and system development</span>.
-                        My academic and professional journey has given me hands-on experience in building
-                        web-based systems for healthcare, education, and real estate.
+                        We specialise in <span class="highlight">web development, UI/UX design, and full‑stack
+                        system development</span>. We've built systems for healthcare, education, and business —
+                        solving real problems with clean, maintainable code.
                     </p>
                     <p>
-                        I'm passionate about creating <span class="highlight">intuitive, user-friendly interfaces</span>
-                        that make technology accessible and useful. I work with a team of talented developers
-                        to deliver complete, high-quality solutions.
+                        Our approach is <span class="highlight">user‑centric</span>: we focus on clarity,
+                        usability, and performance. Every project is treated as a partnership, from
+                        discovery to deployment and beyond.
                     </p>
                     <div class="about-badges">
-                        <span><i class="fas fa-award"></i> TESDA NC II (CSS)</span>
+                        <span><i class="fas fa-award"></i> Certified Developers</span>
                         <span><i class="fas fa-trophy"></i> Outstanding System Design</span>
-                        <span><i class="fas fa-users"></i> Class President 2024–2025</span>
+                        <span><i class="fas fa-users"></i> Collaborative Team</span>
                     </div>
                     <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Let's Work Together
+                        <i class="fas fa-paper-plane"></i> Let's Build Together
                     </a>
                 </div>
                 <div class="about-image">
                     <div class="about-image-wrapper">
-                        <img src="1000014492.jpg" alt="Cathyrine Menguito" />
+                        <!-- Replace with your team / brand image -->
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&crop=face" alt="TechGroup Solutions Team" />
                         <div class="about-image-ring"></div>
                     </div>
                 </div>
@@ -1412,49 +1422,29 @@
     <section id="services">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">What I Do</span>
-                <h2>Services I <span class="gradient-text">Offer</span></h2>
+                <span class="section-tag">What We Do</span>
+                <h2>Services We <span class="gradient-text">Offer</span></h2>
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
                     <h3>Web Development</h3>
-                    <p>
-                        Responsive websites and web applications built with
-                        PHP, JavaScript, MySQL, and Bootstrap.
-                    </p>
+                    <p>Responsive, secure websites and web applications using PHP, JavaScript, MySQL, and Bootstrap.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-pencil-ruler"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
                     <h3>UI/UX Design</h3>
-                    <p>
-                        Clean, intuitive interfaces designed with usability,
-                        accessibility, and visual appeal in mind.
-                    </p>
+                    <p>Intuitive, accessible interfaces designed with user experience and visual clarity at the core.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3>Web Systems</h3>
-                    <p>
-                        Custom web-based systems for businesses, healthcare,
-                        education, and real estate.
-                    </p>
+                    <div class="service-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h3>Custom Systems</h3>
+                    <p>End‑to‑end web‑based systems for healthcare, education, real estate, and business operations.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
                     <h3>Technical Documentation</h3>
-                    <p>
-                        System documentation, technical diagrams, and project
-                        presentations for software projects.
-                    </p>
+                    <p>System documentation, technical diagrams, and project presentations for stakeholders.</p>
                 </div>
             </div>
         </div>
@@ -1464,19 +1454,17 @@
     <section id="portfolio">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">My Work</span>
-                <h2>Projects I've <span class="gradient-text">Built</span></h2>
+                <span class="section-tag">Our Work</span>
+                <h2>Projects We've <span class="gradient-text">Built</span></h2>
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <div class="portfolio-image">🏥</div>
                     <div class="portfolio-info">
                         <h3>RHU Morong Health System</h3>
-                        <p>Healthcare management system reducing paperwork by 70%.</p>
+                        <p>Complete healthcare management system – reduced paperwork by 70%.</p>
                         <div class="portfolio-tags">
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
+                            <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
                         </div>
                     </div>
                 </div>
@@ -1484,11 +1472,9 @@
                     <div class="portfolio-image">🎓</div>
                     <div class="portfolio-info">
                         <h3>Angono NHS Career Assessment</h3>
-                        <p>Career assessment tool for 100+ Senior High students.</p>
+                        <p>Career guidance tool used by 100+ Senior High students.</p>
                         <div class="portfolio-tags">
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
+                            <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
                         </div>
                     </div>
                 </div>
@@ -1496,11 +1482,9 @@
                     <div class="portfolio-image">🤝</div>
                     <div class="portfolio-info">
                         <h3>HowCan‑i‑Help</h3>
-                        <p>Healthcare assistance platform connecting patients and donors.</p>
+                        <p>Healthcare assistance platform connecting patients with donors.</p>
                         <div class="portfolio-tags">
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
+                            <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
                         </div>
                     </div>
                 </div>
@@ -1513,16 +1497,16 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Testimonials</span>
-                <h2>What People <span class="gradient-text">Say</span></h2>
+                <h2>What Clients <span class="gradient-text">Say</span></h2>
             </div>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <p>"Cathyrine delivered a fully functional health information system that exceeded our expectations. Her attention to detail and commitment to quality is exceptional."</p>
+                    <p>"TechGroup Solutions delivered a robust health information system that exceeded our expectations. Their attention to detail and commitment to quality is exceptional."</p>
                     <span class="testimonial-author">Jane Lorraine Carlet</span>
                     <span class="testimonial-title">Executive Agent Supervisor, Skyline CATV</span>
                 </div>
                 <div class="testimonial-card">
-                    <p>"A dedicated and talented developer. Her work on the career assessment system was professional and well-received by students and faculty."</p>
+                    <p>"A dedicated and skilled team. The career assessment platform they built was professional, intuitive, and well‑received by both students and faculty."</p>
                     <span class="testimonial-author">Maikee Bolante</span>
                     <span class="testimonial-title">Executive Agent Supervisor, Skyline CATV</span>
                 </div>
@@ -1534,29 +1518,29 @@
     <section id="process">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">How I Work</span>
-                <h2>My <span class="gradient-text">Process</span></h2>
+                <span class="section-tag">How We Work</span>
+                <h2>Our <span class="gradient-text">Process</span></h2>
             </div>
             <div class="process-grid">
                 <div class="process-step">
                     <div class="step-number">1</div>
-                    <h3>Listen &amp; Understand</h3>
-                    <p>I learn about your needs, goals, and requirements.</p>
+                    <h3>Discover</h3>
+                    <p>We listen, ask questions, and understand your goals and constraints.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">2</div>
-                    <h3>Plan &amp; Design</h3>
-                    <p>I create wireframes and mockups for your approval.</p>
+                    <h3>Design</h3>
+                    <p>We create wireframes and prototypes for your feedback and approval.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">3</div>
-                    <h3>Build &amp; Test</h3>
-                    <p>I develop clean code and test thoroughly.</p>
+                    <h3>Develop</h3>
+                    <p>We build clean, well‑tested code with regular updates and demos.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">4</div>
                     <h3>Launch &amp; Support</h3>
-                    <p>I deploy and provide ongoing support.</p>
+                    <p>We deploy, train, and offer ongoing support to ensure success.</p>
                 </div>
             </div>
         </div>
@@ -1573,17 +1557,17 @@
                 <div class="contact-info">
                     <h3>Have a project in mind?</h3>
                     <p>
-                        I'm always open to new opportunities, collaborations, and projects.
-                        Whether you need a web system, a business website, or technical assistance —
+                        We're always open to new collaborations and challenging projects.
+                        Whether it's a custom web system, a business website, or technical documentation —
                         let's talk.
                     </p>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <span>cthyrnmgt718@gmail.com</span>
+                        <span>techgroupsolutions@email.com</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
-                        <span>+63 965 803 9637</span>
+                        <span>+63 912 345 6789</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
@@ -1594,7 +1578,7 @@
                     <input type="text" name="name" placeholder="Your Name" required />
                     <input type="email" name="email" placeholder="Your Email" required />
                     <input type="text" name="subject" placeholder="Project Type" />
-                    <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                    <textarea name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
@@ -1607,33 +1591,26 @@
     <footer>
         <div class="container">
             <div class="footer-brand">
-                <span>Cathyrine Menguito</span>
+                <span>TechGroup Solutions</span>
             </div>
             <div class="footer-social">
-                <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="mailto:cthyrnmgt718@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
+                <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:techgroupsolutions@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
-            <p class="footer-copy">&copy; 2026 Cathyrine Menguito. All rights reserved.</p>
+            <p class="footer-copy">&copy; 2026 TechGroup Solutions. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- ========== SCROLL PROGRESS BAR ========== -->
     <div id="progress-bar" style="position:fixed;top:0;left:0;height:3px;background:var(--mint-gradient);width:0%;z-index:9999;box-shadow:0 0 20px var(--mint-glow);transition:width 0.1s ease-out;"></div>
 
+    <!-- ========== JAVASCRIPT ========== -->
     <script>
-        // ============================================
-        // MOBILE MENU TOGGLE
-        // ============================================
+        // -------------------------------------------------
+        // MOBILE MENU
+        // -------------------------------------------------
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
@@ -1651,9 +1628,9 @@
             });
         }
 
-        // ============================================
-        // NAVBAR SCROLL EFFECT
-        // ============================================
+        // -------------------------------------------------
+        // NAVBAR SCROLL
+        // -------------------------------------------------
         const header = document.querySelector('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1663,9 +1640,9 @@
             }
         });
 
-        // ============================================
-        // SCROLL PROGRESS BAR
-        // ============================================
+        // -------------------------------------------------
+        // SCROLL PROGRESS
+        // -------------------------------------------------
         const progressBar = document.getElementById('progress-bar');
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
@@ -1674,9 +1651,9 @@
             progressBar.style.width = Math.min(progress, 100) + '%';
         });
 
-        // ============================================
-        // DARK/LIGHT MODE TOGGLE
-        // ============================================
+        // -------------------------------------------------
+        // THEME TOGGLE (Dark / Light)
+        // -------------------------------------------------
         const themeToggle = document.getElementById('theme-toggle');
         const currentTheme = localStorage.getItem('theme') || 'dark';
 
@@ -1692,9 +1669,9 @@
             themeToggle.innerHTML = theme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
 
-        // ============================================
-        // SCROLL REVEAL
-        // ============================================
+        // -------------------------------------------------
+        // SCROLL REVEAL (IntersectionObserver)
+        // -------------------------------------------------
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -50px 0px'
@@ -1708,23 +1685,18 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('section, .service-card, .portfolio-item, .process-step, .testimonial-card, .about-text, .about-image').forEach(el => {
+        // Target all sections, cards, steps, etc.
+        document.querySelectorAll(
+            'section, .service-card, .portfolio-item, .process-step, .testimonial-card, .about-text, .about-image'
+        ).forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(40px)';
-            el.style.transition = 'opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1)';
+            el.style.transition =
+                'opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1)';
             observer.observe(el);
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.querySelectorAll('.visible').forEach(el => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                });
-            }, 100);
-        });
-
-        // Staggered delays
+        // Staggered delays for cards
         document.querySelectorAll('.service-card:nth-child(1)').forEach(el => el.style.transitionDelay = '0.05s');
         document.querySelectorAll('.service-card:nth-child(2)').forEach(el => el.style.transitionDelay = '0.10s');
         document.querySelectorAll('.service-card:nth-child(3)').forEach(el => el.style.transitionDelay = '0.15s');
