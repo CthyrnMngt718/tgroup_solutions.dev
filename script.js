@@ -113,6 +113,55 @@ const skillObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.skill-item').forEach(el => skillObserver.observe(el));
 
 // ============================================================
+// SINGLE VERSATILE ARROW BUTTON (like your portfolio)
+// ============================================================
+const scrollArrow = document.getElementById('scrollArrow');
+const arrowIcon = document.getElementById('arrowIcon');
+const arrowTooltip = document.getElementById('arrowTooltip');
+
+function updateArrow() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const atTop = scrollTop < 50;
+    const atBottom = scrollTop > docHeight - 50;
+
+    if (atBottom) {
+        arrowIcon.className = 'fas fa-chevron-up';
+        arrowTooltip.textContent = 'Scroll to Top';
+    } else if (atTop) {
+        arrowIcon.className = 'fas fa-chevron-down';
+        arrowTooltip.textContent = 'Scroll Down';
+    } else {
+        // If in middle, check which direction is closer
+        const toTop = scrollTop;
+        const toBottom = docHeight - scrollTop;
+        if (toTop < toBottom) {
+            arrowIcon.className = 'fas fa-chevron-up';
+            arrowTooltip.textContent = 'Scroll to Top';
+        } else {
+            arrowIcon.className = 'fas fa-chevron-down';
+            arrowTooltip.textContent = 'Scroll Down';
+        }
+    }
+}
+
+scrollArrow.addEventListener('click', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const atTop = scrollTop < 50;
+    const atBottom = scrollTop > docHeight - 50;
+
+    if (atBottom || (!atTop && scrollTop > docHeight / 2)) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: docHeight, behavior: 'smooth' });
+    }
+});
+
+window.addEventListener('scroll', updateArrow);
+updateArrow();
+
+// ============================================================
 // CONTACT FORM
 // ============================================================
 document.getElementById('contact-form').addEventListener('submit', function(e) {
