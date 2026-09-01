@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tgs-portfolio-v7-2-rhu-showcase';
+const CACHE_NAME = 'tgs-portfolio-v7-3-featured-only';
 const CORE_ASSETS = [
   './',
   './index.html',

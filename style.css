@@ -5693,151 +5693,6 @@ canvas {
     transform: translateY(-2px);
 }
 
-.portfolio-thumb-project {
-    display: block;
-    min-height: 0;
-    aspect-ratio: 16 / 8.8;
-    background: #07131a;
-}
-
-.portfolio-thumb-project::after {
-    display: none;
-}
-
-.portfolio-thumb-project img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .6s var(--ease-spring), filter .35s ease;
-}
-
-.portfolio-thumb-project::before {
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 42%, rgba(3, 10, 17, .88) 100%);
-    content: '';
-    pointer-events: none;
-}
-
-.portfolio-thumb-project:hover img,
-.portfolio-thumb-project:focus-visible img {
-    transform: scale(1.035);
-    filter: brightness(1.05) saturate(1.05);
-}
-
-.portfolio-thumb-project span,
-.portfolio-thumb-project b {
-    z-index: 2;
-}
-
-.portfolio-thumb-project span {
-    color: rgba(232, 247, 255, .78);
-    text-align: left;
-}
-
-.portfolio-thumb-project b {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 9px;
-    border: 1px solid rgba(74, 222, 128, .24);
-    border-radius: 999px;
-    background: rgba(4, 18, 16, .76);
-    color: #6cf0bf;
-    font-family: var(--font-mono);
-    font-size: .55rem;
-    letter-spacing: .04em;
-    backdrop-filter: blur(10px);
-}
-
-.dialog-project-media {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 18px 0 22px;
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
-    background: var(--bg-secondary);
-}
-
-.dialog-project-media img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    transition: transform .55s var(--ease-spring);
-}
-
-.dialog-project-media > span {
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 7px 10px;
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 999px;
-    background: rgba(4, 14, 20, .76);
-    color: #e7fbff;
-    font-size: .65rem;
-    font-weight: 750;
-    backdrop-filter: blur(10px);
-}
-
-.dialog-project-media:hover img,
-.dialog-project-media:focus-visible img {
-    transform: scale(1.018);
-}
-
-.case-page-showcase {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0 0 28px;
-    border: 1px solid rgba(34,211,238,.22);
-    border-radius: clamp(18px, 2vw, 28px);
-    background: #07131a;
-    box-shadow: 0 26px 78px rgba(0,0,0,.2);
-}
-
-.case-page-showcase img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1672 / 941;
-    object-fit: cover;
-    transition: transform .7s var(--ease-spring), filter .35s ease;
-}
-
-.case-page-showcase > span {
-    position: absolute;
-    right: 18px;
-    bottom: 18px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 13px;
-    border: 1px solid rgba(255,255,255,.14);
-    border-radius: 999px;
-    background: rgba(4, 14, 20, .78);
-    color: #fff;
-    font-size: .7rem;
-    font-weight: 750;
-    backdrop-filter: blur(12px);
-}
-
-.case-page-showcase:hover img,
-.case-page-showcase:focus-visible img {
-    transform: scale(1.018);
-    filter: brightness(1.035) saturate(1.04);
-}
-
 #featured-work.is-active .rhu-showcase-link {
     animation: rhu-showcase-float 6s ease-in-out infinite;
 }
@@ -5865,9 +5720,7 @@ canvas {
         padding: 14px;
     }
 
-    .rhu-showcase-link,
-    .dialog-project-media,
-    .case-page-showcase {
+    .rhu-showcase-link {
         border-radius: 15px;
     }
 
@@ -5878,28 +5731,17 @@ canvas {
         font-size: .56rem;
     }
 
-    .rhu-showcase-hint,
-    .case-page-showcase > span {
+    .rhu-showcase-hint {
         right: 9px;
         bottom: 9px;
         padding: 6px 8px;
         font-size: .56rem;
-    }
-
-    .portfolio-thumb-project b {
-        top: 9px;
-        right: 9px;
     }
 }
 
 @media (max-width: 480px) {
     .rhu-showcase-hint {
         display: none;
-    }
-
-    .case-page-showcase > span {
-        max-width: calc(100% - 18px);
-        white-space: normal;
     }
 }
 
@@ -5914,10 +5756,7 @@ canvas {
         display: none;
     }
 
-    .rhu-showcase-image,
-    .portfolio-thumb-project img,
-    .dialog-project-media img,
-    .case-page-showcase img {
+    .rhu-showcase-image {
         transform: none !important;
     }
 }
