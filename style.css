@@ -5581,3 +5581,343 @@ canvas {
 @media (min-width: 981px) {
     .sidebar-backdrop { display: none !important; }
 }
+
+
+/* ============================================================
+   V7.2 — RHU MORONG REAL PROJECT SHOWCASE
+   Replaces the abstract dashboard placeholder with the approved
+   project presentation while preserving responsive behavior.
+   ============================================================ */
+.case-visual-rhu {
+    min-height: 500px;
+    padding: clamp(18px, 2.2vw, 30px);
+    background:
+        radial-gradient(circle at 80% 10%, rgba(34, 211, 238, .12), transparent 32%),
+        radial-gradient(circle at 8% 90%, rgba(99, 102, 241, .16), transparent 38%),
+        #060a12;
+}
+
+.case-visual-rhu::before,
+.case-visual-rhu::after {
+    display: none;
+}
+
+.rhu-showcase-link {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(34, 211, 238, .24);
+    border-radius: 22px;
+    background: #07131a;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .38), 0 0 48px rgba(34, 211, 238, .08);
+    transform: perspective(1200px) rotateY(-2.4deg) rotateX(1.2deg);
+    transform-origin: center;
+    transition: transform .55s var(--ease-spring), border-color .35s ease, box-shadow .35s ease;
+}
+
+.rhu-showcase-link::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.11) 43%, transparent 60%);
+    content: '';
+    opacity: 0;
+    transform: translateX(-85%);
+    transition: transform .8s ease, opacity .35s ease;
+    pointer-events: none;
+}
+
+.rhu-showcase-link:hover,
+.rhu-showcase-link:focus-visible {
+    border-color: rgba(34, 211, 238, .46);
+    box-shadow: 0 34px 90px rgba(0, 0, 0, .42), 0 0 58px rgba(34, 211, 238, .14);
+    transform: perspective(1200px) rotateY(0) rotateX(0) translateY(-5px) scale(1.01);
+}
+
+.rhu-showcase-link:hover::after,
+.rhu-showcase-link:focus-visible::after {
+    opacity: 1;
+    transform: translateX(85%);
+}
+
+.rhu-showcase-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1672 / 941;
+    object-fit: cover;
+    transition: transform .7s var(--ease-spring), filter .35s ease;
+}
+
+.rhu-showcase-link:hover .rhu-showcase-image,
+.rhu-showcase-link:focus-visible .rhu-showcase-image {
+    transform: scale(1.025);
+    filter: brightness(1.04) saturate(1.04);
+}
+
+.rhu-showcase-badge,
+.rhu-showcase-hint {
+    position: absolute;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 999px;
+    background: rgba(4, 14, 20, .72);
+    color: #e7fbff;
+    font-size: .66rem;
+    font-weight: 750;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.rhu-showcase-badge {
+    top: 15px;
+    left: 15px;
+    padding: 7px 11px;
+    color: #67f5d4;
+}
+
+.rhu-showcase-hint {
+    right: 15px;
+    bottom: 15px;
+    padding: 8px 12px;
+    transition: transform .3s var(--ease-spring), background .3s ease;
+}
+
+.rhu-showcase-link:hover .rhu-showcase-hint,
+.rhu-showcase-link:focus-visible .rhu-showcase-hint {
+    background: rgba(6, 25, 31, .9);
+    transform: translateY(-2px);
+}
+
+.portfolio-thumb-project {
+    display: block;
+    min-height: 0;
+    aspect-ratio: 16 / 8.8;
+    background: #07131a;
+}
+
+.portfolio-thumb-project::after {
+    display: none;
+}
+
+.portfolio-thumb-project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--ease-spring), filter .35s ease;
+}
+
+.portfolio-thumb-project::before {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 42%, rgba(3, 10, 17, .88) 100%);
+    content: '';
+    pointer-events: none;
+}
+
+.portfolio-thumb-project:hover img,
+.portfolio-thumb-project:focus-visible img {
+    transform: scale(1.035);
+    filter: brightness(1.05) saturate(1.05);
+}
+
+.portfolio-thumb-project span,
+.portfolio-thumb-project b {
+    z-index: 2;
+}
+
+.portfolio-thumb-project span {
+    color: rgba(232, 247, 255, .78);
+    text-align: left;
+}
+
+.portfolio-thumb-project b {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 9px;
+    border: 1px solid rgba(74, 222, 128, .24);
+    border-radius: 999px;
+    background: rgba(4, 18, 16, .76);
+    color: #6cf0bf;
+    font-family: var(--font-mono);
+    font-size: .55rem;
+    letter-spacing: .04em;
+    backdrop-filter: blur(10px);
+}
+
+.dialog-project-media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 18px 0 22px;
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    background: var(--bg-secondary);
+}
+
+.dialog-project-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform .55s var(--ease-spring);
+}
+
+.dialog-project-media > span {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 999px;
+    background: rgba(4, 14, 20, .76);
+    color: #e7fbff;
+    font-size: .65rem;
+    font-weight: 750;
+    backdrop-filter: blur(10px);
+}
+
+.dialog-project-media:hover img,
+.dialog-project-media:focus-visible img {
+    transform: scale(1.018);
+}
+
+.case-page-showcase {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0 0 28px;
+    border: 1px solid rgba(34,211,238,.22);
+    border-radius: clamp(18px, 2vw, 28px);
+    background: #07131a;
+    box-shadow: 0 26px 78px rgba(0,0,0,.2);
+}
+
+.case-page-showcase img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1672 / 941;
+    object-fit: cover;
+    transition: transform .7s var(--ease-spring), filter .35s ease;
+}
+
+.case-page-showcase > span {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px;
+    background: rgba(4, 14, 20, .78);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 750;
+    backdrop-filter: blur(12px);
+}
+
+.case-page-showcase:hover img,
+.case-page-showcase:focus-visible img {
+    transform: scale(1.018);
+    filter: brightness(1.035) saturate(1.04);
+}
+
+#featured-work.is-active .rhu-showcase-link {
+    animation: rhu-showcase-float 6s ease-in-out infinite;
+}
+
+@keyframes rhu-showcase-float {
+    50% { transform: perspective(1200px) rotateY(-1deg) rotateX(.5deg) translateY(-6px); }
+}
+
+@media (max-width: 1024px) {
+    .case-visual-rhu {
+        min-height: 0;
+        padding: 24px;
+    }
+
+    .rhu-showcase-link {
+        width: min(100%, 900px);
+        margin-inline: auto;
+        transform: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .case-visual-rhu {
+        min-height: 0;
+        padding: 14px;
+    }
+
+    .rhu-showcase-link,
+    .dialog-project-media,
+    .case-page-showcase {
+        border-radius: 15px;
+    }
+
+    .rhu-showcase-badge {
+        top: 9px;
+        left: 9px;
+        padding: 5px 8px;
+        font-size: .56rem;
+    }
+
+    .rhu-showcase-hint,
+    .case-page-showcase > span {
+        right: 9px;
+        bottom: 9px;
+        padding: 6px 8px;
+        font-size: .56rem;
+    }
+
+    .portfolio-thumb-project b {
+        top: 9px;
+        right: 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    .rhu-showcase-hint {
+        display: none;
+    }
+
+    .case-page-showcase > span {
+        max-width: calc(100% - 18px);
+        white-space: normal;
+    }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .rhu-showcase-link,
+    #featured-work.is-active .rhu-showcase-link {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .rhu-showcase-link::after {
+        display: none;
+    }
+
+    .rhu-showcase-image,
+    .portfolio-thumb-project img,
+    .dialog-project-media img,
+    .case-page-showcase img {
+        transform: none !important;
+    }
+}
