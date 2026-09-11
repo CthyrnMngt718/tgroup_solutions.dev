@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tgs-portfolio-v8-brand-refresh';
+const CACHE_NAME = 'tgs-portfolio-v8-1-brand-motion';
 const CORE_ASSETS = [
   './',
   './index.html',

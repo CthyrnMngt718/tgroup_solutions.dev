@@ -101,7 +101,7 @@ function initMobileNavigation() {
     backdrop?.addEventListener('click', () => setOpen(false));
     window.addEventListener('resize', () => { if (window.innerWidth > 980) setOpen(false); }, { passive: true });
 
-    qsa('.sidebar-nav a', sidebar).forEach((link) => {
+    qsa('a[href^="#"]', sidebar).forEach((link) => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 980) setOpen(false);
         });
@@ -112,6 +112,63 @@ function initMobileNavigation() {
             setOpen(false);
             toggle.focus();
         }
+    });
+}
+
+/* ============================================================
+   SAME-PAGE NAVIGATION
+   Keeps sidebar, dock, command palette, footer, and CTA anchors in sync.
+   ============================================================ */
+function initSamePageNavigation() {
+    const links = qsa('a[href^="#"]:not(.skip-link)');
+    if (!links.length) return;
+
+    const setSidebarState = (targetId) => {
+        const alias = targetId === 'featured-work' ? 'portfolio' : targetId;
+        const sidebarLinks = qsa('.sidebar-nav a[href^="#"]');
+        sidebarLinks.forEach((link) => {
+            const active = link.getAttribute('href') === `#${alias}`;
+            link.classList.toggle('active', active);
+            if (active) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+        });
+        const activeLink = sidebarLinks.find((link) => link.classList.contains('active'));
+        const currentLabel = qs('#sidebarCurrentSection');
+        if (currentLabel && activeLink) currentLabel.textContent = activeLink.dataset.label || activeLink.textContent.trim();
+    };
+
+    links.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            const hash = link.getAttribute('href');
+            if (!hash || hash === '#') return;
+            const target = document.getElementById(hash.slice(1));
+            if (!target) return;
+
+            event.preventDefault();
+            setSidebarState(target.id);
+
+            const quickContact = qs('#quickContact');
+            if (quickContact && typeof quickContact.hidePopover === 'function') {
+                try { quickContact.hidePopover(); } catch { /* Popover was already closed. */ }
+            }
+
+            target.scrollIntoView({
+                behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+                block: 'start'
+            });
+
+            if (location.hash !== hash) history.pushState(null, '', hash);
+            else history.replaceState(null, '', hash);
+        });
+    });
+
+    window.addEventListener('popstate', () => {
+        const id = location.hash.slice(1);
+        const target = id && document.getElementById(id);
+        if (!target) return;
+        setSidebarState(target.id);
+        target.scrollIntoView({ behavior: prefersReducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
     });
 }
 
@@ -474,28 +531,48 @@ function initRevealObserver() {
 function initScrollSpy() {
     const sections = qsa('main section[id]');
     const links = qsa('.sidebar-nav a[href^="#"]');
-    if (!sections.length || !links.length || !('IntersectionObserver' in window)) return;
+    if (!sections.length || !links.length) return;
 
+    const aliases = new Map([['featured-work', 'portfolio']]);
     const linkMap = new Map(links.map((link) => [link.getAttribute('href')?.slice(1), link]));
+    const currentLabel = qs('#sidebarCurrentSection');
+
+    const activate = (sectionId) => {
+        const navId = aliases.get(sectionId) || sectionId;
+        const activeLink = linkMap.get(navId);
+        if (!activeLink) return;
+
+        links.forEach((link) => {
+            const active = link === activeLink;
+            link.classList.toggle('active', active);
+            if (active) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+        });
+        if (currentLabel) currentLabel.textContent = activeLink.dataset.label || activeLink.textContent.trim() || navId;
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        activate(location.hash.slice(1) || 'hero');
+        return;
+    }
+
     const visible = new Map();
-
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => visible.set(entry.target.id, entry.intersectionRatio));
-        const current = [...visible.entries()]
-            .filter(([, ratio]) => ratio > 0)
-            .sort((a, b) => b[1] - a[1])[0]?.[0];
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) visible.set(entry.target.id, entry.intersectionRatio);
+            else visible.delete(entry.target.id);
+        });
 
-        if (!current || !linkMap.has(current)) return;
-        const activeLink = linkMap.get(current);
-        links.forEach((link) => link.classList.toggle('active', link === activeLink));
-        const currentLabel = qs('#sidebarCurrentSection');
-        if (currentLabel) currentLabel.textContent = activeLink?.dataset.label || activeLink?.textContent.trim() || current;
+        const current = [...visible.entries()]
+            .sort((a, b) => b[1] - a[1])[0]?.[0];
+        if (current) activate(current);
     }, {
-        rootMargin: '-20% 0px -62% 0px',
-        threshold: [0, 0.05, 0.15, 0.3, 0.6]
+        rootMargin: '-18% 0px -58% 0px',
+        threshold: [0.01, 0.08, 0.2, 0.4, 0.65]
     });
 
     sections.forEach((section) => observer.observe(section));
+    activate(location.hash.slice(1) || 'hero');
 }
 
 /* ============================================================
@@ -1286,6 +1363,7 @@ function boot() {
     initSiteIntro();
     initTheme();
     initMobileNavigation();
+    initSamePageNavigation();
     initAdvancedSidebar();
     initPointerEffects();
     initCustomCursor();
