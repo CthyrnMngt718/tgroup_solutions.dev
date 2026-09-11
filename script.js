@@ -64,7 +64,7 @@ function initTheme() {
         button.innerHTML = `<i class="fas ${isLight ? 'fa-sun' : 'fa-moon'}" aria-hidden="true"></i><span class="sidebar-footer-label">Theme</span>`;
         button.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} theme`);
         const themeMeta = qs('meta[name="theme-color"]');
-        if (themeMeta) themeMeta.content = isLight ? '#f8fafc' : '#080a0f';
+        if (themeMeta) themeMeta.content = isLight ? '#f7fbff' : '#020817';
     };
 
     applyTheme(initialTheme);

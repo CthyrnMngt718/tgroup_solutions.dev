@@ -1,12 +1,12 @@
 {
   "name": "TechGroup Solutions",
   "short_name": "TGS",
-  "description": "Custom web platforms, application-based systems, management solutions, UI/UX, database workflows, documentation, maintenance, and project-based development from Rizal, Philippines.",
+  "description": "TechGroup Solutions builds web platforms, application-based systems, management solutions, and custom digital workflows. Your Ideas. Our Solutions.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#080a0f",
-  "theme_color": "#080a0f",
+  "background_color": "#020817",
+  "theme_color": "#0b66e4",
   "icons": [
     {
       "src": "web-app-manifest-192x192.png",

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tgs-portfolio-v7-3-featured-only';
+const CACHE_NAME = 'tgs-portfolio-v8-brand-refresh';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -13,6 +13,7 @@ const CORE_ASSETS = [
   './web-app-manifest-512x512.png',
   './images/hero-1100.webp',
   './images/logo-256.webp',
+  './images/tgs-logo-icon.webp',
   './images/social-preview.jpg',
   './images/rhu-morong-showcase.webp',
   './case-studies/morong-health-center.html',
@@ -32,7 +33,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+      .then((keys) => Promise.all(keys.filter((key) => key.startsWith('tgs-portfolio-') && key !== CACHE_NAME).map((key) => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });
