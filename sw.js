@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tgs-portfolio-v8-2-mbmis-rsst-case-study';
+const CACHE_NAME = 'tgs-portfolio-v8-4-client-conversion-evidence';
 const CORE_ASSETS = [
   './',
   './index.html',

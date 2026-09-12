@@ -19,6 +19,19 @@ function trackEvent(name, detail = {}) {
     window.dispatchEvent(new CustomEvent('tgs:analytics', { detail: { name, ...detail } }));
 }
 
+function showToast(message) {
+    const toast = qs('#siteToast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.hidden = false;
+    toast.classList.add('show');
+    window.clearTimeout(showToast._timer);
+    showToast._timer = window.setTimeout(() => {
+        toast.classList.remove('show');
+        window.setTimeout(() => { toast.hidden = true; }, 220);
+    }, 2600);
+}
+
 
 /* ============================================================
    SITE INTRO
@@ -124,7 +137,8 @@ function initSamePageNavigation() {
     if (!links.length) return;
 
     const setSidebarState = (targetId) => {
-        const alias = targetId === 'featured-work' ? 'portfolio' : targetId;
+        const aliases = { 'featured-work': 'portfolio', industries: 'portfolio', delivery: 'capabilities', 'start-path': 'contact' };
+        const alias = aliases[targetId] || targetId;
         const sidebarLinks = qsa('.sidebar-nav a[href^="#"]');
         sidebarLinks.forEach((link) => {
             const active = link.getAttribute('href') === `#${alias}`;
@@ -533,7 +547,7 @@ function initScrollSpy() {
     const links = qsa('.sidebar-nav a[href^="#"]');
     if (!sections.length || !links.length) return;
 
-    const aliases = new Map([['featured-work', 'portfolio']]);
+    const aliases = new Map([['featured-work', 'portfolio'], ['industries', 'portfolio'], ['delivery', 'capabilities'], ['start-path', 'contact']]);
     const linkMap = new Map(links.map((link) => [link.getAttribute('href')?.slice(1), link]));
     const currentLabel = qs('#sidebarCurrentSection');
 
@@ -797,6 +811,7 @@ function initProjectEstimator() {
     const reason = qs('#complexityReason');
     const preview = qs('#briefPreview');
     const useButton = qs('#useBriefButton');
+    const copyButton = qs('#copyBriefButton');
     if (!form || !complexity || !meter || !reason || !preview || !useButton) return;
 
     let currentBrief = '';
@@ -805,8 +820,13 @@ function initProjectEstimator() {
     const calculate = () => {
         const data = new FormData(form);
         const type = data.get('estimator_type') || 'Custom Management System';
+        const stage = data.get('estimator_stage') || 'New idea / early planning';
         const roles = data.get('estimator_roles') || '1–3';
+        const environment = data.get('estimator_environment') || 'Browser / online';
         const features = data.getAll('estimator_features');
+        const delivery = data.getAll('estimator_delivery');
+        const timeline = data.get('estimator_timeline') || 'Flexible / discuss first';
+        const notes = String(data.get('estimator_notes') || '').trim();
 
         const typeScore = {
             'Business Website': 1,
@@ -817,26 +837,41 @@ function initProjectEstimator() {
         }[type] || 2;
 
         const roleScore = { '1–3': 1, '4–6': 2, '7+': 3 }[roles] || 1;
+        const environmentScore = environment === 'Local / limited connectivity' ? 2 : environment === 'Dedicated application' ? 1 : 0;
         const advancedFeatures = new Set(['Notifications', 'File uploads', 'Data export / reporting', 'Appointments / Scheduling', 'Offline / local workflow', 'External integration']);
         const advancedCount = features.filter((feature) => advancedFeatures.has(feature)).length;
-        const score = typeScore + roleScore + Math.ceil(features.length / 3) + advancedCount;
+        const score = typeScore + roleScore + environmentScore + Math.ceil(features.length / 3) + advancedCount;
 
         let level = 'Low';
         let width = 32;
         let explanation = 'A focused project with a small number of user roles and core features can usually be scoped with fewer moving parts.';
 
-        if (score >= 10) {
+        if (score >= 11) {
             level = 'High';
             width = 88;
-            explanation = 'Multiple roles, workflows, and advanced features increase coordination across interface, business logic, database design, integrations, testing, and deployment.';
+            explanation = 'Multiple roles, workflows, advanced features, or deployment constraints increase coordination across interface, business logic, data, testing, integration, and release planning.';
         } else if (score >= 6) {
             level = 'Medium';
             width = 62;
-            explanation = 'A multi-user system with several core features typically needs structured planning across interface, application logic, data, validation, testing, and deployment.';
+            explanation = 'A multi-user solution with several core features typically needs structured planning across interface, application logic, data, validation, testing, and deployment.';
         }
 
         const featureText = features.length ? features.join(', ') : 'Core features to be defined during discovery';
-        currentBrief = `Project type: ${type}\nUser roles: ${roles}\nRequested features: ${featureText}\nInitial complexity indicator: ${level}\n\nI would like to discuss the current workflow, users, priorities, timeline, and technical requirements.`;
+        const deliveryText = delivery.length ? delivery.join(', ') : 'Delivery and handover items to be confirmed';
+        const noteText = notes || 'Current workflow / main pain point to be discussed during discovery';
+        currentBrief = [
+            `Project type: ${type}`,
+            `Current situation: ${stage}`,
+            `User roles: ${roles}`,
+            `Primary environment: ${environment}`,
+            `Requested features: ${featureText}`,
+            `Preferred delivery items: ${deliveryText}`,
+            `Preferred timeline: ${timeline}`,
+            `Workflow / priority: ${noteText}`,
+            `Initial complexity indicator: ${level}`,
+            '',
+            'I would like to discuss the current workflow, users, priorities, technical requirements, delivery scope, timeline, and next steps.'
+        ].join('\n');
         currentType = type;
 
         complexity.textContent = level;
@@ -846,26 +881,45 @@ function initProjectEstimator() {
     };
 
     form.addEventListener('change', calculate);
+    form.addEventListener('input', (event) => {
+        if (event.target?.matches('textarea, input[type="text"]')) calculate();
+    });
 
     useButton.addEventListener('click', () => {
         const contactMessage = qs('#contactMessage');
         const projectType = qs('#projectType');
+        const projectStage = qs('#projectStage');
+        const timeline = qs('#timeline');
         if (!contactMessage || !projectType) return;
 
-        const typeMap = {
-            'Existing System Upgrade': 'System Maintenance / Enhancement'
-        };
-
+        const data = new FormData(form);
+        const typeMap = { 'Existing System Upgrade': 'System Maintenance / Enhancement' };
         const optionValue = typeMap[currentType] || currentType;
-        if (qsa('option', projectType).some((option) => option.value === optionValue)) {
-            projectType.value = optionValue;
-        }
+        if (qsa('option', projectType).some((option) => option.value === optionValue)) projectType.value = optionValue;
+
+        const stage = data.get('estimator_stage');
+        if (projectStage && qsa('option', projectStage).some((option) => option.value === stage)) projectStage.value = stage;
+
+        const preferredTimeline = data.get('estimator_timeline');
+        const timelineMap = { '3+ months': '3–6 months' };
+        const mappedTimeline = timelineMap[preferredTimeline] || preferredTimeline;
+        if (timeline && qsa('option', timeline).some((option) => option.value === mappedTimeline)) timeline.value = mappedTimeline;
 
         contactMessage.value = currentBrief;
         contactMessage.dispatchEvent(new Event('input', { bubbles: true }));
         qs('#contact')?.scrollIntoView({ behavior: prefersReducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
         window.setTimeout(() => contactMessage.focus({ preventScroll: true }), prefersReducedMotion.matches ? 0 : 550);
         trackEvent('project_brief_used', { project_type: currentType, complexity: complexity.textContent });
+    });
+
+    copyButton?.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(currentBrief);
+            showToast('Project brief copied.');
+            trackEvent('project_brief_copied', { project_type: currentType, complexity: complexity.textContent });
+        } catch {
+            showToast('Copy was unavailable. You can select the brief text manually.');
+        }
     });
 
     calculate();
