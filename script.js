@@ -137,7 +137,7 @@ function initSamePageNavigation() {
     if (!links.length) return;
 
     const setSidebarState = (targetId) => {
-        const aliases = { 'featured-work': 'portfolio', industries: 'portfolio', delivery: 'capabilities', 'start-path': 'contact' };
+        const aliases = { 'featured-work': 'portfolio', 'start-path': 'contact' };
         const alias = aliases[targetId] || targetId;
         const sidebarLinks = qsa('.sidebar-nav a[href^="#"]');
         sidebarLinks.forEach((link) => {
@@ -547,7 +547,7 @@ function initScrollSpy() {
     const links = qsa('.sidebar-nav a[href^="#"]');
     if (!sections.length || !links.length) return;
 
-    const aliases = new Map([['featured-work', 'portfolio'], ['industries', 'portfolio'], ['delivery', 'capabilities'], ['start-path', 'contact']]);
+    const aliases = new Map([['featured-work', 'portfolio'], ['start-path', 'contact']]);
     const linkMap = new Map(links.map((link) => [link.getAttribute('href')?.slice(1), link]));
     const currentLabel = qs('#sidebarCurrentSection');
 

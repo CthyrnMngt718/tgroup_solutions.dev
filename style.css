@@ -1840,6 +1840,45 @@ section:not(#hero)::after {
     border-radius: inherit;
 }
 
+.brand-avatar-photo,
+.proof-avatar-photo {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    background: var(--bg-secondary);
+}
+
+.brand-avatar-photo::after,
+.proof-avatar-photo::after {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), inset 0 -18px 28px rgba(2,8,23,.14);
+    content: '';
+    pointer-events: none;
+}
+
+.brand-avatar-photo img,
+.proof-avatar-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.team-card:nth-child(1) .brand-avatar-photo img,
+.developer-proof-card:nth-child(1) .proof-avatar-photo img {
+    object-position: center 18%;
+    transform: scale(1.22);
+}
+
+.team-card:nth-child(2) .brand-avatar-photo img,
+.developer-proof-card:nth-child(2) .proof-avatar-photo img {
+    object-position: center 17%;
+    transform: scale(1.2);
+}
+
 .team-card .tags {
     margin-top: 12px;
 }
@@ -6248,6 +6287,11 @@ canvas {
     color: var(--accent-2-bright);
     font-weight: 900;
     letter-spacing: .04em;
+}
+
+.proof-avatar-photo {
+    border-color: var(--border-strong);
+    box-shadow: 0 8px 24px rgba(0,0,0,.18), 0 0 20px var(--accent-glow);
 }
 .proof-kicker,
 .recognition-kicker {
