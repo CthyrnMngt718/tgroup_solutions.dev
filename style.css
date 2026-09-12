@@ -1275,6 +1275,18 @@ section:not(#hero)::after {
     text-align: center;
 }
 
+.project-thumb-mbmis {
+    background:
+        radial-gradient(circle at 72% 22%, rgba(15,230,247,0.18), transparent 36%),
+        radial-gradient(circle at 24% 78%, rgba(35,210,142,0.20), transparent 42%),
+        linear-gradient(145deg, rgba(6,36,35,0.96), var(--bg-secondary));
+}
+
+.project-thumb-mbmis i {
+    color: #64f3c8;
+    filter: drop-shadow(0 0 22px rgba(100,243,200,0.28));
+}
+
 .portfolio-info {
     padding: 22px 24px 26px;
 }
@@ -3811,6 +3823,7 @@ dialog.case-dialog[open] .dialog-shell {
 #portfolio.is-active .portfolio-item:nth-child(2) .portfolio-thumb i { animation-delay: -.8s; }
 #portfolio.is-active .portfolio-item:nth-child(3) .portfolio-thumb i { animation-delay: -1.6s; }
 #portfolio.is-active .portfolio-item:nth-child(4) .portfolio-thumb i { animation-delay: -2.4s; }
+#portfolio.is-active .portfolio-item:nth-child(5) .portfolio-thumb i { animation-delay: -3.2s; }
 @keyframes project-icon-float { 50% { transform: translateY(-7px) scale(1.06); filter: drop-shadow(0 0 15px rgba(15,230,247,.2)); } }
 
 /* Process line now progresses with scroll and highlights the current phase. */
@@ -6040,6 +6053,7 @@ canvas {
 #faq[data-motion-seen="true"] .faq-grid > details:nth-child(4) { animation-delay: .21s; }
 
 #services[data-motion-seen="true"] .services-grid > article:nth-child(5),
+#portfolio[data-motion-seen="true"] .portfolio-item:nth-child(5),
 #process[data-motion-seen="true"] .process-step:nth-child(5),
 #faq[data-motion-seen="true"] .faq-grid > details:nth-child(5) { animation-delay: .28s; }
 

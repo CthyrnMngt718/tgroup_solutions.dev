@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tgs-portfolio-v8-1-brand-motion';
+const CACHE_NAME = 'tgs-portfolio-v8-1-brand-motion-mbmis';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -18,6 +18,7 @@ const CORE_ASSETS = [
   './images/rhu-morong-showcase.webp',
   './case-studies/morong-health-center.html',
   './case-studies/career-assessment.html',
+  './case-studies/mbmis.html',
   './case-studies/how-can-i-help.html',
   './case-studies/ritremis.html'
 ];
