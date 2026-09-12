@@ -1287,6 +1287,18 @@ section:not(#hero)::after {
     filter: drop-shadow(0 0 22px rgba(100,243,200,0.28));
 }
 
+.project-thumb-rsst {
+    background:
+        radial-gradient(circle at 72% 22%, rgba(155,110,255,0.18), transparent 36%),
+        radial-gradient(circle at 24% 78%, rgba(15,230,247,0.17), transparent 42%),
+        linear-gradient(145deg, rgba(21,19,52,0.96), var(--bg-secondary));
+}
+
+.project-thumb-rsst i {
+    color: #b9a8ff;
+    filter: drop-shadow(0 0 22px rgba(185,168,255,0.28));
+}
+
 .portfolio-info {
     padding: 22px 24px 26px;
 }
