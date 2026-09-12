@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tgs-portfolio-v8-5-team-avatars-nav-qa';
+const CACHE_NAME = 'tgs-portfolio-v8-6-team-profile-refinement';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -17,7 +17,7 @@ const CORE_ASSETS = [
   './images/social-preview.jpg',
   './images/rhu-morong-showcase.webp',
   './images/cathyrine-menguito-team.jpg',
-  './images/ariel-eubanas-team.png',
+  './images/ariel-eubanas-team.jpg',
   './case-studies/morong-health-center.html',
   './case-studies/career-assessment.html',
   './case-studies/mbmis.html',
