@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hassou-portfolio-v9-brand-refresh';
+const CACHE_NAME = 'hassou-portfolio-v11-hero-motion';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -25,7 +25,6 @@ const CORE_ASSETS = [
   './case-studies/career-assessment.html',
   './case-studies/mbmis.html',
   './case-studies/rsst-shs-credentials.html',
-  './case-studies/how-can-i-help.html',
   './case-studies/ritremis.html'
 ];
 

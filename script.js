@@ -1442,3 +1442,84 @@ function boot() {
 }
 
 boot();
+
+
+/* ============================================================
+   V11 HERO ENHANCEMENTS (micro-interactions + counters)
+   ============================================================ */
+(function initV11Enhancements() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const initHeroSpotlight = () => {
+        const heroVisual = document.querySelector('#heroVisual');
+        if (!heroVisual || prefersReduced.matches || !window.matchMedia('(pointer:fine)').matches) return;
+
+        const setSpot = (event) => {
+            const rect = heroVisual.getBoundingClientRect();
+            const x = Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100));
+            const y = Math.max(0, Math.min(100, ((event.clientY - rect.top) / rect.height) * 100));
+            heroVisual.style.setProperty('--hero-spot-x', `${x.toFixed(2)}%`);
+            heroVisual.style.setProperty('--hero-spot-y', `${y.toFixed(2)}%`);
+            heroVisual.style.setProperty('--hero-spot-opacity', '1');
+        };
+
+        heroVisual.addEventListener('pointerenter', setSpot, { passive: true });
+        heroVisual.addEventListener('pointermove', setSpot, { passive: true });
+        heroVisual.addEventListener('pointerleave', () => {
+            heroVisual.style.setProperty('--hero-spot-opacity', '0');
+            heroVisual.style.setProperty('--hero-spot-x', '50%');
+            heroVisual.style.setProperty('--hero-spot-y', '50%');
+        });
+    };
+
+    const initProofCounters = () => {
+        const counters = [...document.querySelectorAll('.proof-item strong[data-count]')];
+        if (!counters.length) return;
+
+        const animate = (element) => {
+            if (element.dataset.animated === 'true') return;
+            element.dataset.animated = 'true';
+            const target = Number(element.dataset.count || 0);
+            const suffix = element.dataset.suffix || '';
+            if (!Number.isFinite(target) || prefersReduced.matches) {
+                element.textContent = `${target}${suffix}`;
+                return;
+            }
+            const duration = 1100;
+            const start = performance.now();
+            const step = (now) => {
+                const progress = Math.min(1, (now - start) / duration);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const value = Math.round(target * eased);
+                element.textContent = `${value}${suffix}`;
+                if (progress < 1) requestAnimationFrame(step);
+                else element.textContent = `${target}${suffix}`;
+            };
+            requestAnimationFrame(step);
+        };
+
+        if (!('IntersectionObserver' in window)) {
+            counters.forEach(animate);
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    animate(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.65 });
+
+        counters.forEach((counter) => observer.observe(counter));
+    };
+
+    const run = () => {
+        initHeroSpotlight();
+        initProofCounters();
+    };
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run, { once: true });
+    else run();
+})();
