@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hassou-portfolio-v11-1-layout-nav-fix';
+const CACHE_NAME = 'hassou-portfolio-v11-2-nav-hero-footer';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -14,6 +14,9 @@ const CORE_ASSETS = [
   './images/hero-1100.webp',
   './images/logo-256.webp',
   './images/hassou-hero-avatar.webp',
+  './images/hassou-hero-avatar-sharp-900.webp',
+  './images/hassou-hero-avatar-sharp-1600.webp',
+  './images/hassou-logo-transparent.webp',
   './images/hassou-logo-icon.webp',
   './images/hassou-logo-mark.webp',
   './images/hassou-brand-lockup.webp',

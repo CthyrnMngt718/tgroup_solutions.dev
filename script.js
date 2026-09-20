@@ -40,23 +40,53 @@ function initSiteIntro() {
     const intro = qs('#siteIntro');
     if (!intro) return;
 
-    if (prefersReducedMotion.matches) {
+    const label = qs('#introRouteLabel');
+    const routeLabels = {
+        hero: 'Preparing the portfolio',
+        problems: 'Opening Problems We Solve',
+        'why-us': 'Opening Why Us',
+        services: 'Opening Services',
+        portfolio: 'Opening Case Studies',
+        industries: 'Opening Industries & Use Cases',
+        proof: 'Opening Developer Proof',
+        recognition: 'Opening Recognition',
+        process: 'Opening Process',
+        capabilities: 'Opening Capabilities',
+        delivery: 'Opening Delivery & Engagement',
+        estimator: 'Opening Project Planner',
+        team: 'Opening Our Team',
+        faq: 'Opening FAQ',
+        contact: 'Opening Contact'
+    };
+    const route = location.hash.slice(1) || 'hero';
+    if (label) label.textContent = routeLabels[route] || 'Preparing your portfolio experience';
+
+    // Do not replay the full-screen intro on every internal return in the same tab.
+    // Deep links get an even faster handoff to the requested section.
+    const alreadyShown = sessionStorage.getItem('hassou-intro-shown') === '1';
+    if (prefersReducedMotion.matches || alreadyShown) {
         intro.remove();
         return;
     }
 
+    sessionStorage.setItem('hassou-intro-shown', '1');
     const startedAt = performance.now();
+    const minimumVisibleMs = location.hash ? 260 : 520;
+    let dismissed = false;
+
     const dismiss = () => {
-        const minimumVisibleMs = 760;
+        if (dismissed) return;
+        dismissed = true;
         const wait = Math.max(0, minimumVisibleMs - (performance.now() - startedAt));
         window.setTimeout(() => {
             intro.classList.add('is-dismissing');
-            window.setTimeout(() => intro.remove(), 760);
+            window.setTimeout(() => intro.remove(), 470);
         }, wait);
     };
 
     if (document.readyState === 'complete') dismiss();
     else window.addEventListener('load', dismiss, { once: true });
+    window.setTimeout(dismiss, 1350);
 }
 
 /* ============================================================
@@ -136,6 +166,15 @@ function initSamePageNavigation() {
     const links = qsa('a[href^="#"]:not(.skip-link)');
     if (!links.length) return;
 
+    let routeCueTimer = 0;
+    const cueTarget = (target) => {
+        if (!target) return;
+        qsa('main section.is-route-target').forEach((section) => section.classList.remove('is-route-target'));
+        target.classList.add('is-route-target');
+        window.clearTimeout(routeCueTimer);
+        routeCueTimer = window.setTimeout(() => target.classList.remove('is-route-target'), 820);
+    };
+
     const setSidebarState = (targetId) => {
         const aliases = { 'featured-work': 'portfolio', 'start-path': 'contact' };
         const alias = aliases[targetId] || targetId;
@@ -171,6 +210,7 @@ function initSamePageNavigation() {
                 behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
                 block: 'start'
             });
+            cueTarget(target);
 
             if (location.hash !== hash) history.pushState(null, '', hash);
             else history.replaceState(null, '', hash);
@@ -186,7 +226,10 @@ function initSamePageNavigation() {
         const activeSidebarLink = qs(`.sidebar-nav a[href="#${id}"]`) || qs('.sidebar-nav a.active');
         activeSidebarLink?.scrollIntoView({ block: 'nearest', behavior: 'auto' });
 
-        if (scroll) target.scrollIntoView({ behavior, block: 'start' });
+        if (scroll) {
+            target.scrollIntoView({ behavior, block: 'start' });
+            cueTarget(target);
+        }
     };
 
     window.addEventListener('popstate', () => {
@@ -207,6 +250,12 @@ function initSamePageNavigation() {
     };
     if (document.readyState === 'complete') restoreInitialHash();
     else window.addEventListener('load', restoreInitialHash, { once: true });
+
+    if (document.fonts?.ready) {
+        document.fonts.ready.then(() => {
+            if (location.hash) syncFromLocation({ scroll: true, behavior: 'auto' });
+        }).catch(() => {});
+    }
 }
 
 /* ============================================================

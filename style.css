@@ -7798,3 +7798,173 @@ textarea::placeholder, input::placeholder {
         border-radius: 16%;
     }
 }
+
+
+/* ============================================================
+   V11.2 — NAVIGATION TRANSITIONS + SHARPER HERO + TRUE PAGE-END FOOTER
+   ============================================================ */
+:root {
+    --footer-safe-bottom: 34px;
+}
+
+/* Faster, route-aware intro. The transparent HASSOU mark floats naturally
+   without the visual box/frame seen in earlier builds. */
+.site-intro {
+    gap: 14px;
+    pointer-events: auto;
+    animation: intro-failsafe 1.65s var(--ease-spring) forwards;
+}
+
+.site-intro img {
+    width: 126px;
+    height: 126px;
+    object-fit: contain;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    filter: drop-shadow(0 18px 32px rgba(9, 87, 214, .32)) drop-shadow(0 0 28px rgba(28, 226, 247, .20));
+}
+
+.intro-copy {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 5px;
+    place-items: center;
+    text-align: center;
+}
+
+.intro-copy strong {
+    color: #f6fbff;
+    font-size: .78rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}
+
+.intro-copy span {
+    color: rgba(210, 232, 255, .70);
+    font-family: var(--font-mono);
+    font-size: .62rem;
+    letter-spacing: .08em;
+}
+
+.site-intro.is-dismissing {
+    animation: intro-dismiss .46s cubic-bezier(.22,.8,.25,1) forwards;
+}
+
+.intro-progress {
+    width: min(220px, 54vw);
+}
+
+/* More breathing room between the logo and HASSOU wordmark. */
+.sidebar-profile .avatar {
+    margin-bottom: 20px;
+}
+
+.sidebar-profile .brand-name {
+    margin-top: 2px;
+}
+
+/* Slightly larger/sharper hero visual. Avoid heavy CSS filters that can
+   soften rasterized imagery during 3D transforms. */
+@media (min-width: 1181px) {
+    .hero-image-wrapper {
+        width: min(100%, 600px);
+    }
+}
+
+#hero .hero-avatar-img {
+    width: 91%;
+    height: 91%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 17%;
+    filter: saturate(1.015) contrast(1.02);
+    image-rendering: auto;
+    backface-visibility: hidden;
+    transform: translateZ(34px);
+    box-shadow: 0 30px 92px rgba(0,0,0,.33), 0 0 54px rgba(27,165,255,.20);
+}
+
+[data-theme="light"] #hero .hero-avatar-img {
+    box-shadow: 0 26px 72px rgba(25,74,134,.16), 0 0 44px rgba(11,159,245,.14);
+}
+
+/* Section navigation gets a brief destination cue without flashing or
+   blocking interaction. */
+section[id] {
+    scroll-margin-top: 14px;
+}
+
+section.is-route-target::before {
+    content: '';
+    position: absolute;
+    z-index: 8;
+    top: 10px;
+    left: 0;
+    width: 72px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-1-bright), transparent);
+    box-shadow: 0 0 18px rgba(15,230,247,.24);
+    animation: route-target-line .72s ease both;
+    pointer-events: none;
+}
+
+@keyframes route-target-line {
+    0% { opacity: 0; transform: scaleX(.15); transform-origin: left; }
+    35% { opacity: 1; transform: scaleX(1); transform-origin: left; }
+    100% { opacity: 0; transform: translateX(28px) scaleX(.82); transform-origin: left; }
+}
+
+/* Footer is the real end of the page—not a card hanging above a large
+   reserved blank zone. Mobile still keeps enough room for the dock. */
+.main-content {
+    padding-bottom: 0;
+}
+
+.site-footer {
+    margin-top: clamp(54px, 6vw, 86px);
+    padding-top: 34px;
+    padding-bottom: max(30px, env(safe-area-inset-bottom));
+}
+
+.footer-meta {
+    padding-bottom: 0;
+}
+
+@media (max-width: 980px) {
+    .site-footer {
+        padding-bottom: calc(88px + env(safe-area-inset-bottom));
+    }
+}
+
+@media (max-width: 720px) {
+    .sidebar-profile .avatar {
+        margin-bottom: 16px;
+    }
+
+    #hero .hero-avatar-img {
+        width: 92%;
+        height: 92%;
+        border-radius: 15%;
+        transform: translateZ(22px);
+    }
+}
+
+@media (max-width: 560px) {
+    .hero-image-wrapper {
+        width: min(100%, 410px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    section.is-route-target::before {
+        animation: none;
+        display: none;
+    }
+
+    #hero .hero-avatar-img {
+        transform: none;
+    }
+}
