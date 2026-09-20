@@ -66,7 +66,7 @@ function initTheme() {
     const button = qs('#themeToggle');
     if (!button) return;
 
-    const stored = localStorage.getItem('tgs-theme');
+    const stored = localStorage.getItem('hassou-theme');
     const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
     const initialTheme = stored || (systemPrefersLight ? 'light' : 'dark');
 
@@ -84,7 +84,7 @@ function initTheme() {
 
     button.addEventListener('click', () => {
         const next = root.dataset.theme === 'light' ? 'dark' : 'light';
-        localStorage.setItem('tgs-theme', next);
+        localStorage.setItem('hassou-theme', next);
         applyTheme(next);
         trackEvent('theme_changed', { theme: next });
     });
@@ -211,17 +211,17 @@ function initAdvancedSidebar() {
         collapse?.setAttribute('title', shouldCollapse ? 'Expand sidebar' : 'Collapse sidebar');
         const icon = qs('i', collapse || document);
         if (icon) icon.className = `fas ${shouldCollapse ? 'fa-angles-right' : 'fa-angles-left'}`;
-        if (persist) localStorage.setItem('tgs-sidebar-collapsed', shouldCollapse ? '1' : '0');
+        if (persist) localStorage.setItem('hassou-sidebar-collapsed', shouldCollapse ? '1' : '0');
     };
 
     if (collapse && sidebar) {
-        setCollapsed(localStorage.getItem('tgs-sidebar-collapsed') === '1', false);
+        setCollapsed(localStorage.getItem('hassou-sidebar-collapsed') === '1', false);
         collapse.addEventListener('click', () => {
             const next = !body.classList.contains('sidebar-collapsed');
             setCollapsed(next);
             trackEvent('sidebar_toggled', { collapsed: next });
         });
-        desktopQuery.addEventListener?.('change', () => setCollapsed(localStorage.getItem('tgs-sidebar-collapsed') === '1', false));
+        desktopQuery.addEventListener?.('change', () => setCollapsed(localStorage.getItem('hassou-sidebar-collapsed') === '1', false));
     }
 
     if (!(palette instanceof HTMLDialogElement) || !paletteButton || !paletteSearch) return;
@@ -382,12 +382,12 @@ function initCustomCursor() {
     document.addEventListener('pointermove', (event) => {
         pointerX = event.clientX;
         pointerY = event.clientY;
-        body.classList.add('tgs-pointer-active');
+        body.classList.add('hassou-pointer-active');
         schedule();
     }, { passive: true });
 
-    document.addEventListener('pointerleave', () => body.classList.remove('tgs-pointer-active'));
-    document.addEventListener('pointerenter', () => body.classList.add('tgs-pointer-active'));
+    document.addEventListener('pointerleave', () => body.classList.remove('hassou-pointer-active'));
+    document.addEventListener('pointerenter', () => body.classList.add('hassou-pointer-active'));
 
     qsa('a, button, input, select, textarea, summary, [role="button"]').forEach((element) => {
         element.addEventListener('pointerenter', () => ring.classList.add('is-hovering'));
@@ -950,7 +950,7 @@ function initContactForm() {
     const contactEmail = (body.dataset.contactEmail || 'tgroupsolutions.dev2026@gmail.com').trim();
     const configuredId = (form.dataset.formspreeId || body.dataset.formspreeId || '').trim();
     const formspreeEndpoint = form.action || (configuredId ? `https://formspree.io/f/${encodeURIComponent(configuredId)}` : '');
-    const draftKey = form.dataset.draftKey || 'tgs-project-inquiry-draft-v1';
+    const draftKey = form.dataset.draftKey || 'hassou-project-inquiry-draft-v1';
     const consent = qs('#contactConsent');
     const honeypot = qs('#companyWebsite');
     const referenceInput = qs('#inquiryReference');
@@ -996,12 +996,12 @@ function initContactForm() {
         const now = new Date();
         const date = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('');
         const random = Math.random().toString(36).slice(2, 6).toUpperCase();
-        return `TGS-${date}-${random}`;
+        return `HASSOU TechGroup Solutions-${date}-${random}`;
     };
 
     const buildFallbackMail = () => {
         const data = new FormData(form);
-        const subject = `TechGroup Solutions Project Inquiry — ${data.get('project_type') || 'Custom System'}`;
+        const subject = `HASSOU TechGroup Solutions Project Inquiry — ${data.get('project_type') || 'Custom System'}`;
         const message = [
             `Name: ${data.get('name') || ''}`,
             `Email: ${data.get('email') || ''}`,
@@ -1182,7 +1182,7 @@ function initContactForm() {
         if (sourceUrlInput) sourceUrlInput.value = location.href;
 
         const data = new FormData(form);
-        data.set('subject', `TechGroup Solutions Project Inquiry — ${data.get('project_type') || 'Custom System'} — ${reference}`);
+        data.set('subject', `HASSOU TechGroup Solutions Project Inquiry — ${data.get('project_type') || 'Custom System'} — ${reference}`);
         data.set('inquiry_reference', reference);
         data.set('submitted_at', new Date().toISOString());
         data.set('source_url', location.href);
@@ -1382,7 +1382,7 @@ function initPwa() {
         installButton.type = 'button';
         installButton.id = 'installAppButton';
         installButton.className = 'quick-contact-install';
-        installButton.innerHTML = '<i class="fas fa-download" aria-hidden="true"></i><span>Install TGS app</span>';
+        installButton.innerHTML = '<i class="fas fa-download" aria-hidden="true"></i><span>Install HASSOU TechGroup Solutions app</span>';
         quickContact.appendChild(installButton);
 
         installButton.addEventListener('click', async () => {

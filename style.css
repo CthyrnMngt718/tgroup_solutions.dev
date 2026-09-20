@@ -3041,7 +3041,7 @@ section:not(#hero)::after {
 
 /* ============================================================
    V4 — BRAND MOTION & INTERACTION LAYER
-   Uses the supplied TGS favicon/PWA artwork while respecting
+   Uses the supplied HASSOU TechGroup Solutions favicon/PWA artwork while respecting
    reduced-motion, coarse-pointer, and keyboard users.
    ============================================================ */
 
@@ -3183,12 +3183,12 @@ section:not(#hero)::after {
     backdrop-filter: blur(1px);
 }
 
-body.tgs-pointer-active .cursor-dot,
-body.tgs-pointer-active .cursor-ring {
+body.hassou-pointer-active .cursor-dot,
+body.hassou-pointer-active .cursor-ring {
     opacity: 1;
 }
 
-body.tgs-pointer-active .cursor-ring.is-hovering {
+body.hassou-pointer-active .cursor-ring.is-hovering {
     width: 52px;
     height: 52px;
     border-color: rgba(78,143,255,0.62);
@@ -3209,7 +3209,7 @@ body.tgs-pointer-active .cursor-ring.is-hovering {
     transform: translateZ(0);
 }
 
-/* Brand avatar and hero seal use the uploaded TGS identity assets. */
+/* Brand avatar and hero seal use the uploaded HASSOU TechGroup Solutions identity assets. */
 .sidebar-profile .avatar {
     position: relative;
     isolation: isolate;
@@ -3517,9 +3517,9 @@ dialog.case-dialog[open] .dialog-shell {
 }
 
 @media (pointer: fine) {
-    body.tgs-pointer-active a,
-    body.tgs-pointer-active button,
-    body.tgs-pointer-active [role="button"] {
+    body.hassou-pointer-active a,
+    body.hassou-pointer-active button,
+    body.hassou-pointer-active [role="button"] {
         cursor: none;
     }
 }
@@ -5842,7 +5842,7 @@ canvas {
 
 /* ============================================================
    V8 OFFICIAL BRAND SYSTEM
-   Official palette sampled from the TechGroup Solutions identity:
+   Official palette sampled from the HASSOU TechGroup Solutions identity:
    deep navy · electric blue · sky blue · cyan.
    ============================================================ */
 
@@ -6009,7 +6009,7 @@ canvas {
    Scoped additions only; existing portfolio content stays intact.
    ============================================================ */
 
-/* The supplied square TGS artwork already contains its own orbiting product
+/* The supplied square HASSOU TechGroup Solutions artwork already contains its own orbiting product
    symbols, so the hero keeps the site rings/glow but removes duplicate chips. */
 #hero .hero-avatar-img {
     width: 88%;
@@ -6028,14 +6028,14 @@ canvas {
 }
 
 #hero.is-active .hero-avatar-img {
-    animation: tgs-hero-artwork-float 6.8s ease-in-out infinite;
+    animation: hassou-hero-artwork-float 6.8s ease-in-out infinite;
 }
 
 #hero.is-active .hero-ring-1 { animation-duration: 30s; }
 #hero.is-active .hero-ring-2 { animation-duration: 44s; }
 #hero.is-active .hero-ring-3 { animation-duration: 62s; }
 
-@keyframes tgs-hero-artwork-float {
+@keyframes hassou-hero-artwork-float {
     0%, 100% { translate: 0 0; }
     50% { translate: 0 -8px; }
 }
@@ -6052,23 +6052,23 @@ canvas {
 
 /* One-time entrance choreography. Existing continuous section animations are
    preserved; `translate` is used so card tilt `transform` remains untouched. */
-@keyframes tgs-section-enter {
+@keyframes hassou-section-enter {
     from { opacity: 0; translate: 0 18px; }
     to { opacity: 1; translate: 0 0; }
 }
 
-@keyframes tgs-section-enter-left {
+@keyframes hassou-section-enter-left {
     from { opacity: 0; translate: -18px 0; }
     to { opacity: 1; translate: 0 0; }
 }
 
-@keyframes tgs-section-enter-right {
+@keyframes hassou-section-enter-right {
     from { opacity: 0; translate: 18px 0; }
     to { opacity: 1; translate: 0 0; }
 }
 
 .section-motion[data-motion-seen="true"] > .section-header {
-    animation: tgs-section-enter .68s var(--ease-spring) both;
+    animation: hassou-section-enter .68s var(--ease-spring) both;
 }
 
 #why-us[data-motion-seen="true"] .why-grid > article,
@@ -6078,7 +6078,7 @@ canvas {
 #capabilities[data-motion-seen="true"] .capability-card,
 #team[data-motion-seen="true"] .team-card,
 #faq[data-motion-seen="true"] .faq-grid > details {
-    animation: tgs-section-enter .64s var(--ease-spring) both;
+    animation: hassou-section-enter .64s var(--ease-spring) both;
 }
 
 #why-us[data-motion-seen="true"] .why-grid > article:nth-child(2),
@@ -6116,17 +6116,17 @@ canvas {
 #faq[data-motion-seen="true"] .faq-grid > details:nth-child(7) { animation-delay: .42s; }
 #services[data-motion-seen="true"] .services-grid > article:nth-child(8) { animation-delay: .49s; }
 
-#featured-work[data-motion-seen="true"] .case-visual { animation: tgs-section-enter-left .78s var(--ease-spring) both; }
-#featured-work[data-motion-seen="true"] .case-copy { animation: tgs-section-enter-right .78s .08s var(--ease-spring) both; }
+#featured-work[data-motion-seen="true"] .case-visual { animation: hassou-section-enter-left .78s var(--ease-spring) both; }
+#featured-work[data-motion-seen="true"] .case-copy { animation: hassou-section-enter-right .78s .08s var(--ease-spring) both; }
 
-#portfolio[data-motion-seen="true"] .truth-note { animation: tgs-section-enter .62s .06s var(--ease-spring) both; }
-#portfolio[data-motion-seen="true"] .portfolio-filters { animation: tgs-section-enter .62s .12s var(--ease-spring) both; }
+#portfolio[data-motion-seen="true"] .truth-note { animation: hassou-section-enter .62s .06s var(--ease-spring) both; }
+#portfolio[data-motion-seen="true"] .portfolio-filters { animation: hassou-section-enter .62s .12s var(--ease-spring) both; }
 
-#capabilities[data-motion-seen="true"] .architecture-demo { animation: tgs-section-enter .72s .12s var(--ease-spring) both; }
-#estimator[data-motion-seen="true"] .estimator-shell { animation: tgs-section-enter .72s .1s var(--ease-spring) both; }
-#team[data-motion-seen="true"] .team-bridge { animation: tgs-section-enter .66s .16s var(--ease-spring) both; }
-#contact[data-motion-seen="true"] .contact-info { animation: tgs-section-enter-left .7s .06s var(--ease-spring) both; }
-#contact[data-motion-seen="true"] .contact-form { animation: tgs-section-enter-right .7s .12s var(--ease-spring) both; }
+#capabilities[data-motion-seen="true"] .architecture-demo { animation: hassou-section-enter .72s .12s var(--ease-spring) both; }
+#estimator[data-motion-seen="true"] .estimator-shell { animation: hassou-section-enter .72s .1s var(--ease-spring) both; }
+#team[data-motion-seen="true"] .team-bridge { animation: hassou-section-enter .66s .16s var(--ease-spring) both; }
+#contact[data-motion-seen="true"] .contact-info { animation: hassou-section-enter-left .7s .06s var(--ease-spring) both; }
+#contact[data-motion-seen="true"] .contact-form { animation: hassou-section-enter-right .7s .12s var(--ease-spring) both; }
 
 /* Give the mobile drawer a clearer active state and enough room for the toggle. */
 @media (max-width: 980px) {
@@ -6969,5 +6969,120 @@ canvas {
     #team .team-bridge-flow b::after {
         animation: none !important;
         transform: none !important;
+    }
+}
+
+
+/* ============================================================
+   V9 — HASSOU TECHGROUP SOLUTIONS BRAND IDENTITY
+   Uses the supplied HASSOU mark, horizontal lockup and hero visual.
+   ============================================================ */
+
+.sidebar-profile .brand-name {
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.16rem 0.28rem;
+    line-height: 1.02;
+}
+
+.brand-hassou {
+    background: linear-gradient(180deg, #ffffff 0%, #d9efff 54%, #16c9ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+}
+
+[data-theme="light"] .brand-hassou {
+    background: linear-gradient(180deg, #071a48 0%, #0759c7 58%, #087f94 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.sidebar-profile .brand-hassou {
+    flex-basis: 100%;
+    font-size: 0.86rem;
+    letter-spacing: 0.13em;
+}
+
+.sidebar-profile .brand-techgroup,
+.sidebar-profile .brand-solutions {
+    font-size: 0.93rem;
+}
+
+.footer-brand-hassou {
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-brand .footer-brand-lockup-img {
+    width: clamp(210px, 24vw, 340px);
+    height: auto;
+    max-height: 92px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    object-fit: contain;
+    object-position: left center;
+}
+
+.footer-brand-hassou > div {
+    min-width: 180px;
+}
+
+.footer-brand-hassou .brand-name {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.16rem 0.28rem;
+}
+
+.footer-brand-hassou .brand-hassou {
+    flex-basis: 100%;
+    font-size: 0.74rem;
+}
+
+.case-page-brand img {
+    background: transparent;
+}
+
+#hero .hero-avatar-img {
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
+
+/* The official hero artwork already contains the HASSOU service identity,
+   so its surrounding motion stays restrained and supportive. */
+#hero.is-active .hero-avatar-img {
+    animation: hassou-hero-artwork-float 7.4s ease-in-out infinite;
+}
+
+@keyframes hassou-hero-artwork-float {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(0, -8px, 0) scale(1.008); }
+}
+
+@media (max-width: 1180px) {
+    .footer-brand-hassou {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .footer-brand .footer-brand-lockup-img {
+        width: min(320px, 70vw);
+    }
+}
+
+@media (max-width: 560px) {
+    .sidebar-profile .brand-techgroup,
+    .sidebar-profile .brand-solutions {
+        font-size: 0.86rem;
+    }
+
+    .footer-brand .footer-brand-lockup-img {
+        width: min(290px, 82vw);
     }
 }
