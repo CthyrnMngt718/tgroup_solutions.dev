@@ -177,13 +177,36 @@ function initSamePageNavigation() {
         });
     });
 
-    window.addEventListener('popstate', () => {
-        const id = location.hash.slice(1);
-        const target = id && document.getElementById(id);
+    const syncFromLocation = ({ scroll = true, behavior = 'auto' } = {}) => {
+        const id = location.hash.slice(1) || 'hero';
+        const target = document.getElementById(id);
         if (!target) return;
         setSidebarState(target.id);
-        target.scrollIntoView({ behavior: prefersReducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
+
+        const activeSidebarLink = qs(`.sidebar-nav a[href="#${id}"]`) || qs('.sidebar-nav a.active');
+        activeSidebarLink?.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+
+        if (scroll) target.scrollIntoView({ behavior, block: 'start' });
+    };
+
+    window.addEventListener('popstate', () => {
+        syncFromLocation({ scroll: true, behavior: prefersReducedMotion.matches ? 'auto' : 'smooth' });
     });
+
+    window.addEventListener('hashchange', () => {
+        syncFromLocation({ scroll: true, behavior: prefersReducedMotion.matches ? 'auto' : 'smooth' });
+    });
+
+    // Re-apply the initial hash after layout, intro removal, fonts and images settle.
+    // This prevents a URL such as #problems from showing the hero while the sidebar
+    // highlights a different section.
+    const restoreInitialHash = () => {
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => syncFromLocation({ scroll: Boolean(location.hash), behavior: 'auto' }));
+        });
+    };
+    if (document.readyState === 'complete') restoreInitialHash();
+    else window.addEventListener('load', restoreInitialHash, { once: true });
 }
 
 /* ============================================================
@@ -563,6 +586,7 @@ function initScrollSpy() {
             else link.removeAttribute('aria-current');
         });
         if (currentLabel) currentLabel.textContent = activeLink.dataset.label || activeLink.textContent.trim() || navId;
+        activeLink.scrollIntoView({ block: 'nearest', behavior: 'auto' });
     };
 
     if (!('IntersectionObserver' in window)) {

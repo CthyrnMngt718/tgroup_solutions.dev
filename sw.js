@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hassou-portfolio-v11-hero-motion';
+const CACHE_NAME = 'hassou-portfolio-v11-1-layout-nav-fix';
 const CORE_ASSETS = [
   './',
   './index.html',
