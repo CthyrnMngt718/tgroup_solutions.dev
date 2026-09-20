@@ -1,7 +1,7 @@
 {
-  "name": "TechGroup Solutions",
-  "short_name": "TGS",
-  "description": "TechGroup Solutions builds web platforms, application-based systems, management solutions, and custom digital workflows. Your Ideas. Our Solutions.",
+  "name": "HASSOU TechGroup Solutions",
+  "short_name": "HASSOU",
+  "description": "HASSOU TechGroup Solutions builds web platforms, application-based systems, management solutions, and custom digital workflows. Your Ideas. Our Solutions.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
