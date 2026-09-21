@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hassou-portfolio-v12-5-1-layout-hotfix';
+const CACHE_NAME = 'hassou-portfolio-v12-5-2-clean-hero-footer';
 const CORE_ASSETS = [
   './',
   './index.html',

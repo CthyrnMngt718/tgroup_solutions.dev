@@ -9059,3 +9059,33 @@ html {
         font-size: 1rem;
     }
 }
+
+
+/* ============================================================
+   V12.5.2 — HERO OVERLAY / FOOTER CONTROL CLEANUP
+   Removes the hero label pills that cover the artwork and relies on
+   the existing floating right-side scroll control instead of a duplicate
+   footer back-to-top action.
+   ============================================================ */
+.hero-visual-caption,
+.footer-back-top {
+    display: none !important;
+}
+
+.footer-bottom {
+    justify-content: flex-start;
+}
+
+.footer-meta {
+    margin-right: 0;
+}
+
+#hero .hero-avatar-img {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-ring,
+.hero-glow {
+    pointer-events: none;
+}
