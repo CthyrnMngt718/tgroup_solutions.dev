@@ -1,7 +1,7 @@
 {
   "name": "HASSOU TechGroup Solutions",
   "short_name": "HASSOU",
-  "description": "HASSOU TechGroup Solutions builds web platforms, application-based systems, management solutions, and custom digital workflows. Your Ideas. Our Solutions.",
+  "description": "HASSOU TechGroup Solutions portfolio for web, application, custom system, database, UI/UX, and maintenance services.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

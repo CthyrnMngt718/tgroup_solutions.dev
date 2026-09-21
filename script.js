@@ -1,5 +1,5 @@
 /* ============================================================
-   TECHGROUP SOLUTIONS — PORTFOLIO V7
+   HASSOU TECHGROUP SOLUTIONS — PORTFOLIO V12.5
    Native ES module, no framework required.
    ============================================================ */
 
@@ -16,7 +16,7 @@ function trackEvent(name, detail = {}) {
     if (Array.isArray(window.dataLayer)) {
         window.dataLayer.push({ event: name, ...detail });
     }
-    window.dispatchEvent(new CustomEvent('tgs:analytics', { detail: { name, ...detail } }));
+    window.dispatchEvent(new CustomEvent('hassou:analytics', { detail: { name, ...detail } }));
 }
 
 function showToast(message) {
@@ -636,6 +636,21 @@ function initScrollSpy() {
         });
         if (currentLabel) currentLabel.textContent = activeLink.dataset.label || activeLink.textContent.trim() || navId;
         activeLink.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+
+        const dockLink = qs(`.mobile-dock [data-dock-target="${navId}"]`);
+        if (dockLink) {
+            qsa('.mobile-dock [data-dock-target]').forEach((link) => {
+                const active = link === dockLink;
+                link.classList.toggle('active', active);
+                if (active) link.setAttribute('aria-current', 'page');
+                else link.removeAttribute('aria-current');
+            });
+        }
+
+        const nextHash = `#${navId}`;
+        if (!document.querySelector('dialog[open]') && location.hash !== nextHash) {
+            history.replaceState(null, '', nextHash);
+        }
     };
 
     if (!('IntersectionObserver' in window)) {
@@ -1428,7 +1443,7 @@ function initMobileDock() {
         }, { rootMargin: '-25% 0px -55% 0px', threshold: [0.01, 0.15, 0.35] });
         sections.forEach((section) => observer.observe(section));
     }
-    setActive('hero');
+    setActive(location.hash.slice(1) || 'hero');
 }
 
 /* ============================================================

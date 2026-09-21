@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hassou-portfolio-v11-2-nav-hero-footer';
+const CACHE_NAME = 'hassou-portfolio-v12-5-final';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -11,15 +11,15 @@ const CORE_ASSETS = [
   './apple-touch-icon.png',
   './web-app-manifest-192x192.png',
   './web-app-manifest-512x512.png',
-  './images/hero-1100.webp',
-  './images/logo-256.webp',
-  './images/hassou-hero-avatar.webp',
-  './images/hassou-hero-avatar-sharp-900.webp',
-  './images/hassou-hero-avatar-sharp-1600.webp',
-  './images/hassou-logo-transparent.webp',
-  './images/hassou-logo-icon.webp',
-  './images/hassou-logo-mark.webp',
-  './images/hassou-brand-lockup.webp',
+  './offline.html',
+  './images/hassou-mark-clean.webp',
+  './images/hassou-mark-clean.png',
+  './images/hassou-avatar-circle-clean.webp',
+  './images/hassou-lockup-clean.webp',
+  './images/hassou-lockup-clean.png',
+  './images/hassou-hero-clean-720.webp',
+  './images/hassou-hero-clean-1100.webp',
+  './images/hassou-hero-clean-1500.webp',
   './images/social-preview.jpg',
   './images/rhu-morong-showcase.webp',
   './images/cathyrine-menguito-team.jpg',
@@ -42,7 +42,11 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => (key.startsWith('hassou-portfolio-') || key.startsWith('tgs-portfolio-')) && key !== CACHE_NAME).map((key) => caches.delete(key))))
+      .then((keys) => Promise.all(
+        keys
+          .filter((key) => (key.startsWith('hassou-portfolio-') || key.startsWith('tgs-portfolio-')) && key !== CACHE_NAME)
+          .map((key) => caches.delete(key))
+      ))
       .then(() => self.clients.claim())
   );
 });
@@ -62,7 +66,7 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           return response;
         })
-        .catch(async () => (await caches.match(request)) || caches.match('./index.html'))
+        .catch(async () => (await caches.match(request)) || caches.match('./index.html') || caches.match('./offline.html'))
     );
     return;
   }
